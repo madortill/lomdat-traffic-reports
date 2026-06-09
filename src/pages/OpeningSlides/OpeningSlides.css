@@ -1,0 +1,103 @@
+.opening-slide-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4.5px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+/* אנימציית צניחה לסלייד 1 */
+.drop-animation-wrapper {
+    animation: dropDown 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.dropping-image {
+    max-width: 80vw;
+    max-height: 60vh;
+    object-fit: contain;
+}
+
+@keyframes dropDown {
+    from {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* @keyframes dropDown {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+
+    25% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(-50vh);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+} */
+
+/* עיצוב שלט החוצות */
+.billboard-wrapper {
+    position: relative;
+    width: 85vw;
+    max-width: 800px;
+}
+
+.billboard-bg {
+    width: 100%;
+    height: auto;
+}
+
+/* התוכן שיושב *בתוך* השלט */
+.billboard-content {
+    position: absolute;
+    /* המיקומים האלה באחוזים כדי שיתאימו בדיוק על השלט גם ברספונסיביות */
+    top: 15%;
+    left: 10%;
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    direction: rtl;
+}
+
+.typewriter-text {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #002446;
+    text-align: center;
+}
+
+.learning-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}

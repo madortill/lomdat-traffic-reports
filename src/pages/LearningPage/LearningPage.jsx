@@ -1,328 +1,122 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import slides from "../../data/slides.json";
+import slidesData from "../../data/slides.json"; // ה-JSON שכתבנו בשלב הקודם
+import OpeningSlides from "../../pages/OpeningSlides/OpeningSlides";
 import "./LearningPage.css";
 
-import BigCloud from "../../assets/cloud-big.svg";
-import SmallCloud from "../../assets/cloud-small.svg";
-import logo from "../../assets/logo.png";
-import tillWhiteLogo from "../../assets/till_whitelogo.svg";
-import carFront from "../../assets/car-front.svg";
-import chapterNextBtn from "../../assets/chapter-next-btn.svg";
+// לוגואים קבועים (תוכלי להחליף בנתיבים שלך)
+import logoBahad13 from "../../assets/logo_shadow.svg";
+import tillBlackLogo from "../../assets/till_blacklogo_shadow.svg";
 import nextBtn from "../../assets/next-btn.svg";
 import backBtn from "../../assets/back-btn.svg";
-import sign from "../../assets/sign-photos.svg";
-import garageSVG from "../../assets/Shutter.svg";
 
-import NormalSlide from "../../slides/NormalSlide/NormalSlide";
-import FlipCardsSlide from "../../slides/FlipCards/FlipCards";
-import VehicleTypesSlide from "../../slides/VehicleTypesSlide/VehicleTypesSlide";
-import TwoOptionsSlide from "../../slides/TwoOptionsSlide/TwoOptionsSlide";
-import QuestionSlide from "../../components/QuestionOverlay/QuestionOverlay";
-import DriveTypesSlide from "../../slides/DriveTypesSlide/DriveTypesSlide";
-import RoadSign from "../../slides/RoadSign/RoadSign";
-import BillboardCarsSlide from "../../slides/BillboardCarsSlide/BillboardCarsSlide";
-import VehicleGameSlide from "../../slides/VehicleIdentifyGameSlide/VehicleIdentifyGameSlide";
-import NavbarLearning from "../../components/NavbarLearning/NavbarLearning";
+import road from "../../assets/road.svg";
+import BigCloud from "../../assets/cloud-big.svg";
+import SmallCloud from "../../assets/cloud-small.svg";
+// import lightingPole from "../../assets/LightingPole.svg";
+import bushLeft from "../../assets/bush-left.svg";
+import bushRight from "../../assets/bush-right.svg";
+import gader from "../../assets/gader.svg";
 
-function LearningPage({ progress, setProgress }) {
+function LearningPage() {
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [canProceed, setCanProceed] = useState(true);
   const navigate = useNavigate();
 
-  // const { currentSlide, maxVisitedSlide, completedSlides } = progress;
-  const { currentSlide, maxVisited, completed } = progress;
+  // ה-סלייד הנוכחי מתוך מערך הנתונים
+  const slide = slidesData[currentSlideIndex];
 
-  const [showGarage, setShowGarage] = useState(false);
-  const [firstLoad, setFirstLoad] = useState(true);
-  const [canProceed, setCanProceed] = useState(false);
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-
-  const isLastSlide = currentSlide === slides.length - 1;
-
-  // const [currentSlide, setCurrentSlide] = useState(0);
-  // const [maxVisitedSlide, setMaxVisitedSlide] = useState(0);
-  // const [completedSlides, setCompletedSlides] = useState({});
-
-  // const isLastSlide = currentSlide === slides.length - 1;
-
-  // const nextSlide = () => {
-  //     const isLastSlide = currentSlide === slides.length - 1;
-
-  //     if (isLastSlide) {
-  //         navigate("/end");
-  //         return;
-  //     }
-
-  //     setCurrentSlide(prev => prev + 1);
-  // };
-
-  // פונקציה לעדכון הסטייט ב-App
-  const updateProgress = (newData) => {
-    setProgress((prev) => ({ ...prev, ...newData }));
-  };
-
-  // פונקציה שמסמנת סלייד כהושלם
-  const markSlideAsComplete = (slideId) => {
-    updateProgress({
-      completed: { ...completed, [slideId]: true },
-    });
-  };
-
-  const nextSlide = () => {
-    const isLastSlide = currentSlide === slides.length - 1;
-    if (isLastSlide) {
-      navigate("/learning2");
-      return;
-    }
-    const next = currentSlide + 1;
-    updateProgress({
-      currentSlide: next,
-      maxVisited: Math.max(maxVisited, next),
-    });
-  };
-
-  // const prevSlide = () => {
-  //     if (currentSlide > 0) setCurrentSlide(currentSlide - 1);
-  // };
-
-  const prevSlide = () => {
-    let prevIndex = currentSlide - 1;
-    while (prevIndex >= 0 && slides[prevIndex].type === "question") {
-      prevIndex--;
-    }
-    if (prevIndex >= 0) {
-      updateProgress({ currentSlide: prevIndex });
-    }
-  };
-
-  // פונקציה עבור הנאבבר כדי שיוכל לשנות סלייד
-  const setCurrentSlideFromNav = (index) => {
-    updateProgress({ currentSlide: index });
-  };
-
+  // בכל פעם שהסלייד משתנה, נבדוק ב-JSON אם הוא דורש נעילה
   useEffect(() => {
-    if (!slides || slides.length === 0) {
-      navigate("/end");
+    if (slide) {
+      // אם requireUnlock הוא true, כפתור ההמשך יינעל (false)
+      setCanProceed(!slide.requireUnlock);
     }
-  }, []);
+  }, [currentSlideIndex, slide]);
 
-  const slide = slides[currentSlide];
-
+  // הגנת בטיחות - אם אין סלייד, שלא יקרוס
   if (!slide) return null;
 
-  // בדיקה אם הגראז' צריך להופיע או להיעלם
-  useEffect(() => {
-    if (!slide) return;
-
-    if (!firstLoad) {
-      setShowGarage(slide.type === "question");
+  // פונקציות ניווט
+  const nextSlide = () => {
+    const isLastSlide = currentSlideIndex === slidesData.length - 1;
+    if (isLastSlide) {
+      navigate("/end"); // סיום הלומדה
     } else {
-      if (slide.type === "question") setShowGarage(true);
-      setFirstLoad(false);
-    }
-  }, [slide]);
-
-  const sectionsLearning1 = [
-    { title: "רכב חום", slideIndex: 0 },
-    { title: "רכב לבן", slideIndex: 1 },
-    { title: "זיהוי רכב צבאי", slideIndex: 2 },
-    { title: "סוגי רכבים", slideIndex: 12 },
-    { title: "סוגי נסיעות", slideIndex: 14 },
-    { title: "הוראות לרכב חום", slideIndex: 18 },
-    { title: "הוראות לרכב אישי", slideIndex: 19 },
-    { title: "מעבר לפרק הבא", slideIndex: 21 },
-  ];
-
-  const renderSlide = () => {
-    switch (slide.type) {
-      case "normal":
-        return <NormalSlide data={slide} />;
-      case "flipCards":
-        return (
-          <FlipCardsSlide
-            data={slide}
-            unlock={() => {
-              setCanProceed(true);
-              markSlideAsComplete(slide.id);
-            }}
-            setIsOverlayOpen={setIsOverlayOpen}
-            wasCompleted={!!completed[slide.id]}
-          />
-        );
-      case "vehicleTypes":
-        return (
-          <VehicleTypesSlide data={slide} setIsOverlayOpen={setIsOverlayOpen} />
-        );
-      case "twoOptions":
-        return (
-          <TwoOptionsSlide
-            data={slide}
-            unlock={() => {
-              setCanProceed(true);
-              markSlideAsComplete(slide.id);
-            }}
-            setIsOverlayOpen={setIsOverlayOpen}
-            wasCompleted={!!completed[slide.id]} // זה חשוב!
-          />
-        );
-      case "question":
-        return (
-          <QuestionSlide
-            key={slide.id}
-            data={slide}
-            onCorrect={() => {
-              markSlideAsComplete(slide.id); // 1. סימון השאלה כהושלמה בסטייט הכללי
-              nextSlide(); // 2. מעבר לסלייד הבא
-            }}
-            isLastQuestion={currentSlide === slides.length - 1}
-            wasCompleted={!!completed[slide.id]} // 3. בדיקה אם השאלה כבר נפתרה בעבר
-          />
-        );
-      case "driveTypes":
-        return (
-          <DriveTypesSlide
-            data={slide}
-            unlock={() => {
-              setCanProceed(true);
-              markSlideAsComplete(slide.id);
-            }}
-            wasCompleted={!!completed[slide.id]}
-          />
-        );
-      case "roadSign":
-        return <RoadSign data={slide} />;
-      case "billBoard":
-        return (
-          <BillboardCarsSlide
-            data={slide}
-            unlock={() => {
-              setCanProceed(true);
-              markSlideAsComplete(slide.id);
-            }}
-            wasCompleted={!!completed[slide.id]}
-          />
-        );
-      case "vehicleGame":
-        return (
-          <VehicleGameSlide
-            data={slide}
-            unlock={nextSlide}
-            goBack={prevSlide}
-          />
-        );
-      default:
-        return null;
+      setCurrentSlideIndex((prev) => prev + 1);
     }
   };
 
-  // useEffect(() => {
-  //   if (
-  //     slide.type === "flipCards" ||
-  //     slide.type === "twoOptions" ||
-  //     slide.type === "driveTypes" ||
-  //     slide.type === "billBoard"
-  //   ) {
-  //     setCanProceed(false);
-  //   } else {
-  //     setCanProceed(true);
-  //   }
-  // }, [slide]);
-
-  useEffect(() => {
-    // אם הסלייד הנוכחי כבר נמצא ברשימת המושלמים - אפשר להמשיך מיד
-    if (completed && completed[slide.id]) {
-      setCanProceed(true);
-      return;
+  const prevSlide = () => {
+    if (currentSlideIndex > 0) {
+      setCurrentSlideIndex((prev) => prev - 1);
     }
+  };
 
-    // לוגיקה רגילה לסליידים חדשים
-    const interactionTypes = [
-      "flipCards",
-      "twoOptions",
-      "driveTypes",
-      "billBoard",
-    ];
-    if (interactionTypes.includes(slide.type)) {
-      setCanProceed(false);
-    } else {
-      setCanProceed(true);
-    }
-  }, [slide, completed]);
+  // שחרור החסימה (ייקרא מתוך קומפוננטת הוידאו כשהוא יסתיים)
+  const handleVideoFinished = () => {
+    setCanProceed(true);
+  };
 
   return (
-    <div className="learning-page">
-      {/* עננים ולוגו */}
-      <img src={logo} className="logo-bahad13-learning-pages" />
-      <img src={BigCloud} className="big-cloud-learning-page-left" />
-      <img src={BigCloud} className="big-cloud-learning-page-right" />
+    <div className="learning-page-container">
+      {/* לוגואים ואלמנטים קבועים ברקע */}
+      <img src={logoBahad13} className="logo-bahad13-fixed" alt="בהד 13" />
+      <img src={tillBlackLogo} className="logo-till-fixed" alt="מדור טיל" />
+
+      {/* כביש + רכב */}
+      <div className="ground-area">
+        <img src={road} className="road-opening-page" />
+
+        <img src={gader} className="gader-open" />
+
+        <img src={bushLeft} className="bush-left-open" />
+        <img src={bushRight} className="bush-right-open" />
+
+        {/* <img
+          src={lightingPole}
+          className={`lighting-pole-left ${driveMode ? "pole-move-left" : ""}`}
+        /> */}
+
+        {/* <img
+          src={lightingPole}
+          className={`lighting-pole-right pole-move-right`}
+        /> */}
+
+      </div>
+
+      {/* עננים */}
+      <img src={BigCloud} className="big-cloud-opening-page-left" onClick={() => window.location.href = "https://madortill.github.io/traffic-learning-package/"} />
+      <img src={BigCloud} className="big-cloud-opening-page-right" />
       <img src={SmallCloud} className="small-cloud-opening-page-left" />
       <img src={SmallCloud} className="small-cloud-opening-page-right" />
 
-      <NavbarLearning
-        key={currentSlide}
-        title="זיהוי רכבים וסוגי נסיעות"
-        sections={sectionsLearning1} // אנחנו שולחים את זה כ-sections
-        currentSlide={currentSlide}
-        setCurrentSlide={setCurrentSlideFromNav}
-        maxVisitedSlide={maxVisited} // שם המשתנה שיועבר לנאבבר
-      />
 
-      {(slide.id == "3" || slide.type === "vehicleTypes") && (
-        <img src={sign} alt="" className="sign-photo" />
-      )}
-
-      {/* רקע הגראז' עם אנימציה לירידה/עלייה */}
-      <div
-        className={`garage-wrapper ${showGarage ? "slide-down" : "slide-up"}`}
-      >
-        <img src={garageSVG} className="garage-bg" alt="garage" />
+      {/* אזור התוכן המשתנה - Safe Area */}
+      <div className="main-content-wrapper">
+        <OpeningSlides data={slide} onVideoEnd={handleVideoFinished} />
       </div>
 
-      {/* הרכב */}
-      {slide.type !== "vehicleGame" && (
-        <div className="car-wrapper">
-          <img src={carFront} className="car-img" alt="car" />
-        </div>
-      )}
+      {/* מערכת כפתורי הניווט הקבועה */}
+      <div className="navigation-actions">
+        {/* חץ קדימה / המשך */}
+        <img
+          src={nextBtn}
+          onClick={canProceed ? nextSlide : null}
+          className={`nav-arrow-btn next ${!canProceed ? "btn-disabled" : ""}`}
+          alt="המשך"
+        />
 
-      {/* סלייד רגיל */}
-      {slide.type !== "question" && slide.type !== "vehicleGame" && (
-        <div className="slide-wrapper">
-          <div className="safe-area">{renderSlide()}</div>
-        </div>
-      )}
-
-      {/* כפתורי ניווט לסליידים רגילים */}
-      {!isOverlayOpen &&
-        slide.type !== "question" &&
-        slide.type !== "vehicleGame" && (
-          <div className="nav-buttons-container">
-            <img
-              src={isLastSlide ? chapterNextBtn : nextBtn}
-              onClick={canProceed ? nextSlide : null}
-              className={`btn-nav ${!canProceed ? "disabled" : ""}`}
-            />
-            {currentSlide > 0 && slide.type !== "question" && (
-              <img src={backBtn} onClick={prevSlide} className="btn-nav" />
-            )}
-          </div>
+        {/* חץ אחורה / חזור - יוצג רק מסלייד 2 ומעלה */}
+        {currentSlideIndex > 0 && (
+          <img
+            src={backBtn}
+            onClick={prevSlide}
+            className="nav-arrow-btn back"
+            alt="חזור"
+          />
         )}
-
-      {/* Overlay לשאלות */}
-      {slide.type === "question" && (
-        <div className="question-overlay-container">
-          {/* <div className="garage-wrapper">
-                        <img src={garageSVG} className="garage-bg" alt="garage" />
-                    </div> */}
-          {renderSlide()}
-        </div>
-      )}
-
-      {/* שאלות זיהוי רכבים */}
-      {slide.type === "vehicleGame" && (
-        <div className="vehicle-game-overlay">{renderSlide()}</div>
-      )}
-
-      <img src={tillWhiteLogo} className="till-logo-white-learning-pages" />
+      </div>
     </div>
   );
 }

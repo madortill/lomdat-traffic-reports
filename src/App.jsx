@@ -27,7 +27,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import MobileBlocker from "./components/MobileBlocker/MobileBlocker";
 import OpeningPage from "./pages/OpeningPage/OpeningPage";
-// import LearningPage from "./pages/LearningPage/LearningPage";
+import LearningPage from "./pages/LearningPage/LearningPage";
 // import LearningPage2 from "./pages/LearningPage2/LearningPage2";
 // import EndPage from "./pages/EndPage/EndPage";
 import "./css/App.css";
@@ -52,12 +52,14 @@ function App() {
   return (
       <Routes>
         <Route path="/" element={<OpeningPage />} />
-        {/* <Route
+        <Route
           path="/learning"
           element={
-            <LearningPage progress={ch1Progress} setProgress={setCh1Progress} />
+            // <LearningPage progress={ch1Progress} setProgress={setCh1Progress} />
+            <LearningPage />
+
           }
-        /> */}
+        />
         {/* <Route
           path="/learning2"
           element={

@@ -1,0 +1,23 @@
+[
+    {
+      "id": "1",
+      "type": "openingDrop",
+      "image": "beidatz-open.svg",
+      "requireUnlock": false
+    },
+    {
+      "id": "2",
+      "type": "billboardText",
+      "image": "billboard.svg",
+      "text": "דו''ח בית דין צבאי",
+      "typewriterEffect": true,
+      "requireUnlock": false
+    },
+    {
+      "id": "3",
+      "type": "billboardVideo",
+      "image": "billboard.svg",
+      "videoUrl": "assets/videos/intro.mp4",
+      "requireUnlock": true
+    }
+  ]
