@@ -1,0 +1,229 @@
+.report-slide-container {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    direction: rtl;
+    pointer-events: none;
+}
+
+.report-viewer {
+    position: relative;
+    width: min(62vw, 44rem);
+    height: min(80vh, 48rem);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: auto;
+}
+
+.report-page-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-page-paper {
+    position: relative;
+    width: auto;
+    height: 100%;
+
+    animation: reportPageEnter 0.35s ease forwards;
+}
+
+.report-page-image {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+
+    background-color: white;
+    box-shadow: 0 1rem 2.2rem rgba(0, 0, 0, 0.28);
+}
+
+/* שכבת השדות מעל הדו"ח */
+.report-fields-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+/* חצים בצדדים */
+.report-page-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.35);
+    color: white;
+
+    font-size: 3.1rem;
+    line-height: 1;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s, opacity 0.2s;
+    z-index: 4;
+}
+
+.report-page-arrow:hover {
+    transform: translateY(-50%) scale(1.08);
+    background-color: rgba(255, 255, 255, 0.48);
+}
+
+.report-page-arrow:active {
+    transform: translateY(-50%) scale(0.96);
+}
+
+/* בגלל RTL:
+   החץ הימני מחזיר אחורה, החץ השמאלי מתקדם */
+.report-page-arrow-right {
+    right: 21vw;
+}
+
+.report-page-arrow-left {
+    left: 21vw;
+}
+
+/* נקודות למטה */
+.report-page-dots {
+    position: fixed;
+    bottom: 4.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+
+    pointer-events: auto;
+    z-index: 5;
+}
+
+.report-page-dot {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+
+    border: none;
+    background-color: rgba(255, 255, 255, 0.92);
+
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s, opacity 0.2s;
+}
+
+.report-page-dot.active {
+    background-color: #4f73ff;
+    transform: scale(1.12);
+}
+
+.report-page-dot:hover {
+    transform: scale(1.18);
+}
+
+/* דוגמאות זמניות ל-inputs */
+.report-input,
+.report-textarea {
+    position: absolute;
+    z-index: 3;
+
+    border: 1px solid rgba(0, 36, 70, 0.35);
+    border-radius: 0.25rem;
+    background-color: rgba(255, 255, 255, 0.78);
+
+    color: #002446;
+    font-family: "Fredoka";
+    font-size: 0.85rem;
+
+    padding: 0.2rem 0.35rem;
+    outline: none;
+}
+
+.report-input:focus,
+.report-textarea:focus {
+    border-color: #4f73ff;
+    box-shadow: 0 0 0 2px rgba(79, 115, 255, 0.18);
+}
+
+.report-input-demo-name {
+    top: 17%;
+    right: 18%;
+    width: 22%;
+}
+
+.report-input-demo-id {
+    top: 17%;
+    right: 48%;
+    width: 18%;
+}
+
+.report-checkbox-demo {
+    position: absolute;
+    top: 68.5%;
+    right: 17.5%;
+
+    width: 1rem;
+    height: 1rem;
+
+    border: none;
+    background: transparent;
+    color: #002446;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.report-textarea-demo {
+    top: 31%;
+    right: 14%;
+    width: 72%;
+    height: 22%;
+    resize: none;
+}
+
+.report-input-demo-signature {
+    bottom: 13%;
+    right: 22%;
+    width: 28%;
+}
+
+/* אנימציית מעבר דף */
+@keyframes reportPageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(0.8rem) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

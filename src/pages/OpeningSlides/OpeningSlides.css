@@ -1,3 +1,10 @@
+/* .opening-slide-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
 .opening-slide-container {
     width: 100%;
     height: 100%;
@@ -17,7 +24,6 @@
     z-index: 9999;
 }
 
-/* אנימציית צניחה לסלייד 1 */
 .drop-animation-wrapper {
     animation: dropDown 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
@@ -26,6 +32,10 @@
     max-width: 80vw;
     max-height: 60vh;
     object-fit: contain;
+}
+
+.drop-animation-done {
+    animation: none;
 }
 
 @keyframes dropDown {
@@ -40,33 +50,12 @@
     }
 }
 
-/* @keyframes dropDown {
-    0% {
-        transform: translateY(-100vh);
-        opacity: 0;
-    }
-
-    25% {
-        transform: translateY(0);
-        opacity: 0;
-    }
-
-    50% {
-        transform: translateY(-50vh);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-} */
-
 /* עיצוב שלט החוצות */
 .billboard-wrapper {
-    position: relative;
-    width: 85vw;
-    max-width: 800px;
+    position: absolute;
+    /* width: 85rem; */
+    max-width: 70%;
+    bottom: 0;
 }
 
 .billboard-bg {
@@ -77,27 +66,336 @@
 /* התוכן שיושב *בתוך* השלט */
 .billboard-content {
     position: absolute;
-    /* המיקומים האלה באחוזים כדי שיתאימו בדיוק על השלט גם ברספונסיביות */
-    top: 15%;
-    left: 10%;
-    width: 80%;
+    /*המיקומים האלה באחוזים כדי שיתאימו בדיוק על השלט גם ברספונסיביות */
+    top: 18%;
+    left: 9%;
+    width: 82%;
     height: 60%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     direction: rtl;
 }
 
-.typewriter-text {
+/* .typewriter-text {
     font-size: 2rem;
     font-weight: 500;
     color: #002446;
     text-align: center;
+    direction: rtl;
+    unicode-bidi: plaintext;
+    align-items: center;
+    gap: 4px;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: #002446;
+    margin-inline-start: 4px;
+    animation: blinkCursor 0.8s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blinkCursor {
+    0%, 45% {
+        opacity: 1;
+    }
+
+    46%, 100% {
+        opacity: 0;
+    }
+} */
+
+/* פריסה פנימית של סלייד הטקסט בתוך השלט */
+.billboard-text-layout {
+    top: 14%;
+    left: 9%;
+    width: 82%;
+    height: 68%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    direction: rtl;
+    text-align: center;
+}
+
+/* כותרת */
+.billboard-title {
+    margin-top: 3vh;
+    color: #8D192E;
+    font-family: "Ido";
+    font-size: 2.35rem;
+    font-weight: 700;
+    line-height: 1.2;
+
+    opacity: 0;
+    transform: translateY(-1rem) scale(0.96);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.billboard-title.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* פס קטן מתחת לכותרת */
+.billboard-title-line {
+    width: 0;
+    height: 2px;
+    background-color: rgba(141, 25, 46, 0.45);
+    margin-top: 2vh;
+    margin-bottom: 2rem;
+    border-radius: 999px;
+
+    transition: width 0.55s ease;
+}
+
+.billboard-title-line.show {
+    width: 10rem;
+}
+
+/* גוף הטקסט שנכתב */
+.billboard-body-text {
+    width: 88%;
+    /* min-height: 11rem; */
+    margin: 0;
+
+    color: #002446;
+    font-family: "Fredoka";
+    font-size: 1.2vw;
+    font-weight: 400;
+    line-height: 2.5;
+
+    text-align: right;
+    white-space: pre-line;
+    direction: rtl;
+    unicode-bidi: plaintext;
+}
+
+/* הפס התחתון שמופיע אחרי סיום ההקלדה */
+.billboard-bottom-line {
+    width: 0;
+    height: 2px;
+    background-color: rgba(141, 25, 46, 0.22);
+    margin-top: 7vh;
+    border-radius: 999px;
+
+    transition: width 0.65s ease;
+}
+
+.billboard-bottom-line.show {
+    width: 34rem;
+    max-width: 75%;
+}
+
+/* סמן הקלדה */
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.15em;
+    background-color: #002446;
+    margin-inline-start: 4px;
+    animation: blinkCursor 0.8s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blinkCursor {
+    0%, 45% {
+        opacity: 1;
+    }
+
+    46%, 100% {
+        opacity: 0;
+    }
+}
+
+/* קונטיינר הנגן שיושב בתוך גבולות השלט */
+.custom-video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border-radius: 15px;
+    /* עיגלנו מעט פחות כדי שיתאים למסגרת הפנימית של השלט */
+    overflow: hidden;
 }
 
 .learning-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 1rem;
+
+    cursor: pointer;
 }
+
+/* העיצובים המקוריים והיפים שלך לנגן */
+.centerPlayButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    /* background-color: rgba(230, 7, 74, 0.9); */
+    background-color: #8d192ee0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 3;
+}
+
+.centerPlayButton:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: #8D192E;
+}
+
+.playIcon {
+    width: 0;
+    height: 0;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-left: 22px solid #fff;
+    margin-left: 6px;
+}
+
+.controlsBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    gap: 15px;
+    direction: ltr;
+    z-index: 2;
+}
+
+.playPauseBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.playIconSmall {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 14px solid #fff;
+}
+
+.pauseIcon {
+    width: 0.9rem;
+    height: 15px;
+    border-left: 4px solid #fff; 
+    border-right: 4px solid #fff;
+}
+
+.timelineContainer {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.timeLabel {
+    color: #fff;
+    font-family: "Fredoka";
+    font-size: 0.85rem;
+    /* font-weight: 600; */
+    user-select: none;
+}
+
+/* .timelineSlider {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    transition: height 0.1s;
+    direction: ltr;
+} */
+
+.timelineSlider {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    transition: height 0.1s;
+    direction: ltr;
+}
+
+.timelineSlider:hover {
+    height: 8px;
+}
+
+.timelineSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: transform 0.1s;
+}
+
+.timelineSlider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #dde5ff;
+}
+
+
+.timelineSlider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: transform 0.1s;
+}
+
+.timelineSlider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    background: #dde5ff;
+}
+
+.timelineSlider::-moz-range-track {
+    height: 6px;
+    border-radius: 3px;
+    background: transparent;
+}
+
+
+
+
+
+
+
+/* ============================================================================================================================================= */

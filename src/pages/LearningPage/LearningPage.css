@@ -32,10 +32,16 @@
     width: 100%;
     height: 100%;
     z-index: 10;
+    /* background-color: #741326; */
+}
+
+.main-content-wrapper-background {
+    /* background-color: #741326; */
+    background: radial-gradient(50% 50% at 50% 50%, #556584 8.65%, #002C62 100%);
 }
 
 /* קונטיינר החצים */
-.navigation-actions {
+/* .navigation-actions {
     position: absolute;
     bottom: 2rem;
     left: 50%;
@@ -43,10 +49,178 @@
     display: flex;
     gap: 2rem;
     z-index: 100;
-    /* מעל הכל */
+} */
+
+/* קונטיינר הכפתורים */
+/* .navigation-actions {
+    position: fixed;
+    display: flex;
+    gap: 1.2rem;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+} */
+.single-nav-action {
+    position: fixed;
+    z-index: 10000;
 }
 
-.nav-arrow-btn {
+/* מיקומים אפשריים */
+.nav-position-centerCenter {
+    top: 70%;
+    transform: rotate(0.64deg);
+    left: 42%;
+}
+.nav-position-bottomCenter {
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-position-bottomRight {
+    bottom: 2rem;
+    right: 3rem;
+}
+
+.nav-position-bottomLeft {
+    bottom: 3rem;
+    left: 4rem;
+}
+
+.navigation-centerBottom {
+    bottom: 21vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navigation-sideRight {
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column-reverse;
+}
+
+.navigation-sideLeft {
+    left: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column-reverse;
+}
+
+.nav-position-insideBillboardBottom {
+    bottom: 25vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-position-insideBillboardTopRight {
+    top: 21vh;
+    right: 22vw;
+}
+
+.nav-position-insideBillboardTopLeft {
+    top: 21vh;
+    left: 9vw;
+}
+
+.nav-position-insideBillboardRight {
+    top: 50%;
+    right: 8vw;
+    transform: translateY(-50%);
+}
+
+.nav-position-insideBillboardLeft {
+    top: 32vw;
+    left: 21vw;
+    transform: translateY(-50%);
+}
+
+/* כפתור הבא — תמיד טקסט */
+.nav-next-btn {
+    /* min-width: 9rem; */
+    /* height: 3.2rem; */
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+
+    background-color: #8D192E;
+    color: white;
+
+    font-family: "Fredoka";
+    font-size: 0.9rem;
+    font-weight: 400;
+
+    cursor: pointer;
+    box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.22);
+    transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s, background-color 0.2s;
+
+}
+
+.nav-next-btn:hover {
+    transform: scale(1.08);
+    background-color: #741326;
+    box-shadow: 0 0.45rem 1rem rgba(0, 0, 0, 0.28);
+}
+
+.nav-next-btn:active {
+    transform: scale(0.98);
+}
+
+/* חזור כתמונה */
+.nav-back-image-btn {
+    width: 3.5vw;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.nav-back-image-btn:hover {
+    transform: scale(1.08);
+}
+
+/* חזור כטקסט */
+.nav-back-text-btn {
+
+    border-radius: 0.5rem;
+
+    background-color: #214ABF;
+    color: white;
+
+    font-family: "Fredoka";
+
+    padding: 0.5rem 1.2rem;
+    border: none;
+ 
+    font-size: 0.9rem;
+    font-weight: 400;
+
+    cursor: pointer;
+    box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.22);
+    transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.nav-back-text-btn:hover {
+    transform: scale(1.04);
+    background-color: #3666e9;
+}
+
+.nav-back-text-btn:active {
+    transform: scale(0.98);
+}
+
+/* חסימה */
+.btn-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+    pointer-events: none;
+}
+
+.btn-disabled:hover {
+    transform: none;
+}
+
+/* .nav-arrow-btn {
     width: 3.5rem;
     height: auto;
     cursor: pointer;
@@ -55,7 +229,7 @@
 
 .nav-arrow-btn:hover {
     transform: scale(1.08);
-}
+} */
 
 /* עיצוב כפתור חסום (למשל כשהוידאו לא הסתיים) */
 .btn-disabled {
@@ -67,3 +241,25 @@
 .btn-disabled:hover {
     transform: none;
 }
+
+
+
+
+
+
+
+/* .nav-next-btn {
+    animation: navButtonEnter 0.45s ease forwards;
+} */
+
+/* @keyframes navButtonEnter {
+    from {
+        opacity: 0;
+        transform: translateY(0.7rem) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+} */

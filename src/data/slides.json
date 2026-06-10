@@ -1,23 +1,83 @@
 [
     {
-      "id": "1",
-      "type": "openingDrop",
-      "image": "beidatz-open.svg",
-      "requireUnlock": false
+        "id": "1",
+        "type": "openingDrop",
+        "image": "./beidatz-open.svg",
+        "requireUnlock": true,
+        "navigation": {
+            "hideNextUntilUnlocked": true,
+            "next": {
+                "show": true,
+                "label": "בואו נתחיל >",
+                "position": "insideBillboardBottom"
+            },
+            "back": {
+                "show": false
+            }
+        }
     },
     {
-      "id": "2",
-      "type": "billboardText",
-      "image": "billboard.svg",
-      "text": "דו''ח בית דין צבאי",
-      "typewriterEffect": true,
-      "requireUnlock": false
+        "id": "2",
+        "type": "billboardText",
+        "image": "./billboard.svg",
+        "title": "אירוע דו״ח בית דין צבאי",
+        "text": "ביום חמישי ה 11/02/26 בשעה 13:35 בוצעה מכמונת תעבורה בסמוך לשג צריפין.\nבמהלך המכמונת הבחינו השוטרים הצבאיים ברכב מסוג רב קנו בצבע כסוף ל״ז (436-66-224).\nנהג הרכב רסן אביב שמחוני מ/9484096 מיחידת 8200 בחיל המודיעין, השתמש בטלפון הנייד כאשר החזיק את הטלפון שלו בידו הימנית והשתמש בו 5 הקשות בזמן נהיגה כאשר הרכב בתנועה מלאה.",
+        "typewriterEffect": true,
+        "typewriterSpeed": 45,
+        "requireUnlock": true,
+        "navigation": {
+            "hideNextUntilUnlocked": true,
+            "next": {
+                "show": true,
+                "label": "לצפייה באירוע >",
+                "position": "insideBillboardBottom"
+            },
+            "back": {
+                "show": true,
+                "variant": "image",
+                "label": "חזור",
+                "position": "insideBillboardTopRight"
+            }
+        }
     },
     {
-      "id": "3",
-      "type": "billboardVideo",
-      "image": "billboard.svg",
-      "videoUrl": "assets/videos/intro.mp4",
-      "requireUnlock": true
+        "id": "3",
+        "type": "billboardVideo",
+        "image": "./billboard.svg",
+        "videoUrl": "./beidatz-video.mp4",
+        "requireUnlock": true,
+        "navigation": {
+            "hideNextUntilUnlocked": true,
+            "next": {
+                "show": true,
+                "label": "המשך >",
+                "position": "bottomLeft"
+            },
+            "back": {
+                "show": true,
+                "variant": "image",
+                "label": "חזור",
+                "position": "insideBillboardTopRight"
+            }
+        }
+    },
+    {
+        "id": "4",
+        "type": "reportForm",
+        "requireUnlock": false,
+        "navigation": {
+            "hideNextUntilUnlocked": false,
+            "next": {
+                "show": true,
+                "label": "לסיום הדו״ח >",
+                "position": "bottomLeft"
+            },
+            "back": {
+                "show": true,
+                "variant": "text",
+                "label": "< חזרה לאירוע",
+                "position": "bottomRight"
+            }
+        }
     }
-  ]
+]
