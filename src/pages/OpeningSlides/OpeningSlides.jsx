@@ -17,6 +17,9 @@ function OpeningSlides({ data, isCompleted, onUnlock }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
+  const themeClass = data?.theme ? `opening-theme-${data.theme}` : "";
+  const shouldAnimateDrop = data?.dropAnimation !== false && !isCompleted;
+
   useEffect(() => {
     if (data?.type !== "billboardText") return;
 
@@ -179,17 +182,45 @@ function OpeningSlides({ data, isCompleted, onUnlock }) {
 
   const progressPercent = duration ? (currentTime / duration) * 100 : 0;
 
+  useEffect(() => {
+    if (data?.type !== "openingDrop") return;
+    if (isCompleted) return;
+  
+    if (data?.dropAnimation === false) {
+      const timeout = setTimeout(() => {
+        onUnlock?.(data.id);
+      }, data?.unlockDelay || 400);
+  
+      return () => clearTimeout(timeout);
+    }
+  }, [data?.id, data?.type, data?.dropAnimation, data?.unlockDelay, isCompleted, onUnlock]);
+
   return (
-    <div className="opening-slide-container">
+    // <div className="opening-slide-container">
+    <div className={`opening-slide-container ${themeClass}`}>
       {/* {data?.type === "openingDrop" && (
         <div className="drop-animation-wrapper">
+          <img src={data.image} alt="פתיחה" className="dropping-image" />
+        </div>
+      )} */}
+      {/* {data?.type === "openingDrop" && (
+        <div
+          className={`drop-animation-wrapper ${
+            isCompleted ? "drop-animation-done" : ""
+          }`}
+          onAnimationEnd={() => {
+            if (!isCompleted) {
+              onUnlock?.(data.id);
+            }
+          }}
+        >
           <img src={data.image} alt="פתיחה" className="dropping-image" />
         </div>
       )} */}
       {data?.type === "openingDrop" && (
         <div
           className={`drop-animation-wrapper ${
-            isCompleted ? "drop-animation-done" : ""
+            shouldAnimateDrop ? "drop-animation-active" : "drop-animation-done"
           }`}
           onAnimationEnd={() => {
             if (!isCompleted) {

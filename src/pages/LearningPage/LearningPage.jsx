@@ -237,11 +237,11 @@ function LearningPage() {
   };
 
   return (
-    <div className="learning-page-container">
+    <div className={`learning-page-container ${slide.theme === "damash" ? "learning-page-container-damash" : ""}`}>
       <img src={logoBahad13} className="logo-bahad13-fixed" alt="בהד 13" />
       <img src={slide.type !== "reportForm" ? tillBlackLogo : tillWhiteLogo} className="logo-till-fixed" alt="מדור טיל" />
 
-      {slide.type !== "reportForm" && <div className="ground-area">
+      {slide.type !== "reportForm" && slide.theme !== "damash" && <div className="ground-area">
         <img src={road} className="road-opening-page" alt="" />
         <img src={gader} className="gader-open" alt="" />
         <img src={bushLeft} className="bush-left-open" alt="" />

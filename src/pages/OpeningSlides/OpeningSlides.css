@@ -24,9 +24,13 @@
     z-index: 9999;
 }
 
-.drop-animation-wrapper {
+/* .opening-theme-damash {
+    background: rgba(6, 27, 64, 0.28);
+} */
+
+/* .drop-animation-wrapper {
     animation: dropDown 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
+} */
 
 .dropping-image {
     max-width: 80vw;
@@ -34,8 +38,23 @@
     object-fit: contain;
 }
 
+/* .drop-animation-done {
+    animation: none;
+} */
+
+.drop-animation-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.drop-animation-active {
+    animation: dropDown 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
 .drop-animation-done {
     animation: none;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @keyframes dropDown {

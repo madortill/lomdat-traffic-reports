@@ -8,6 +8,18 @@
     align-items: center;
 }
 
+.learning-page-container-damash {
+    background-image: url("/damash.svg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    width: 100vw;
+    height: 100vh;
+    /* background-color: #002C62; */
+}
+
 /* לוגואים קבועים בפינות */
 .logo-bahad13-fixed {
     position: absolute;
