@@ -84,6 +84,19 @@
         }
     },
     {
+        "id": "4-success",
+        "type": "completionPopup",
+        "skipOnBack": true,
+        "theme": "report",
+        "backgroundSlideId": "4",
+        "title": "כל הכבוד מילאתם את הדו״ח בהצלחה!",
+        "subtitle": "בואו נמשיך לאירוע הבא...",
+        "buttonLabel": "יאללה!",
+        "navigation": {
+            "hidden": true
+        }
+    },
+    {
         "id": "5",
         "type": "openingDrop",
         "theme": "damash",
@@ -100,7 +113,7 @@
                 "show": true,
                 "variant": "image",
                 "label": "חזור",
-                "position": "insideBillboardTopRight"
+                "position": "insidNnotebookTopRight"
             }
         }
     },

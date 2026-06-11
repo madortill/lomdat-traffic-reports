@@ -10,7 +10,8 @@ import "./ReportFormSlide.css";
 // זמנית אפשר להשתמש באותה תמונה / placeholder
 import reportPlaceholder from "../../assets/SVG/report-placeholder.svg";
 
-function ReportFormSlide({ data }) {
+// function ReportFormSlide({ data }) {
+function ReportFormSlide({ data, isPreview = false }) {
   const storageKey = `report_form_current_page_${data?.id || "default"}`;
 
   const pages = useMemo(
@@ -77,7 +78,12 @@ function ReportFormSlide({ data }) {
   const isLastPage = currentPageIndex === pages.length - 1;
 
   return (
-    <div className="report-slide-container">
+    // <div className="report-slide-container">
+    <div
+      className={`report-slide-container ${
+        isPreview ? "report-slide-preview" : ""
+      }`}
+    >
       <div className="report-viewer">
         {!isFirstPage && (
           <button

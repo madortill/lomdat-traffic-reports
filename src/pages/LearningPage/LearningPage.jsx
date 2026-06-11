@@ -5,6 +5,7 @@ import "./LearningPage.css";
 
 import OpeningSlides from "../../pages/OpeningSlides/OpeningSlides";
 import ReportFormSlide from "../../pages/ReportFormSlide/ReportFormSlide";
+import CompletionPopupSlide from "../../components/CompletionPopupSlide/CompletionPopupSlide";
 
 import logoBahad13 from "../../assets/logo_shadow.svg";
 import tillBlackLogo from "../../assets/till_blacklogo_shadow.svg";
@@ -118,14 +119,14 @@ function LearningPage() {
 
   const navigationConfig = {
     hideNextUntilUnlocked: slide.navigation?.hideNextUntilUnlocked || false,
-  
+
     next: {
       show: true,
       label: "המשך",
       position: "bottomCenter",
       ...slide.navigation?.next,
     },
-  
+
     back: {
       show: currentSlideIndex > 0,
       variant: "image",
@@ -148,19 +149,25 @@ function LearningPage() {
   };
 
   const prevSlide = () => {
-    if (currentSlideIndex > 0) {
-      setCurrentSlideIndex((prev) => prev - 1);
+    if (currentSlideIndex <= 0) return;
+  
+    let targetIndex = currentSlideIndex - 1;
+  
+    while (targetIndex > 0 && slidesData[targetIndex]?.skipOnBack) {
+      targetIndex -= 1;
     }
+  
+    setCurrentSlideIndex(targetIndex);
   };
 
   const renderBackButton = () => {
     if (!navigationConfig.back.show || currentSlideIndex === 0) return null;
-  
+
     const wrapperClasses = [
       "single-nav-action",
       `nav-position-${navigationConfig.back.position}`,
     ].join(" ");
-  
+
     return (
       <div className={wrapperClasses}>
         {navigationConfig.back.variant === "text" ? (
@@ -175,7 +182,7 @@ function LearningPage() {
           <img
             src={backBtn}
             onClick={prevSlide}
-            className="nav-back-image-btn"
+            className={`nav-back-image-btn ${slide.type === "openingDrop" ? "nav-back-image-btn-notebook" : ""}`}
             alt={navigationConfig.back.label}
           />
         )}
@@ -185,16 +192,16 @@ function LearningPage() {
 
   const renderNextButton = () => {
     if (!navigationConfig.next.show) return null;
-  
+
     if (navigationConfig.hideNextUntilUnlocked && !canProceed) {
       return null;
     }
-  
+
     const wrapperClasses = [
       "single-nav-action",
       `nav-position-${navigationConfig.next.position}`,
     ].join(" ");
-  
+
     return (
       <div className={wrapperClasses}>
         <button
@@ -211,7 +218,7 @@ function LearningPage() {
 
   const renderNavigation = () => {
     if (slide.navigation?.hidden) return null;
-  
+
     return (
       <>
         {renderBackButton()}
@@ -224,7 +231,23 @@ function LearningPage() {
     switch (slide.type) {
       case "reportForm":
         return <ReportFormSlide data={slide} />;
-  
+
+      case "completionPopup": {
+        const backgroundSlide =
+          slidesData.find((item) => item.id === slide.backgroundSlideId) ||
+          slidesData[currentSlideIndex - 1];
+
+        return (
+          <>
+            <div className="popup-background-blur">
+              <ReportFormSlide data={backgroundSlide} isPreview />
+            </div>
+
+            <CompletionPopupSlide data={slide} onContinue={nextSlide} />
+          </>
+        );
+      }
+
       default:
         return (
           <OpeningSlides
@@ -236,22 +259,43 @@ function LearningPage() {
     }
   };
 
+  const isBlueBackgroundSlide =
+    slide.type === "reportForm" || slide.type === "completionPopup";
+
   return (
-    <div className={`learning-page-container ${slide.theme === "damash" ? "learning-page-container-damash" : ""}`}>
+    <div
+      className={`learning-page-container ${
+        slide.theme === "damash" ? "learning-page-container-damash" : ""
+      }`}
+    >
       <img src={logoBahad13} className="logo-bahad13-fixed" alt="בהד 13" />
-      <img src={slide.type !== "reportForm" ? tillBlackLogo : tillWhiteLogo} className="logo-till-fixed" alt="מדור טיל" />
+      <img
+        src={isBlueBackgroundSlide ? tillWhiteLogo : tillBlackLogo}
+        className="logo-till-fixed"
+        alt="מדור טיל"
+      />
 
-      {slide.type !== "reportForm" && slide.theme !== "damash" && <div className="ground-area">
-        <img src={road} className="road-opening-page" alt="" />
-        <img src={gader} className="gader-open" alt="" />
-        <img src={bushLeft} className="bush-left-open" alt="" />
-        <img src={bushRight} className="bush-right-open" alt="" />
+      {slide.type !== "reportForm" && slide.theme !== "damash" && (
+        <div className="ground-area">
+          <img src={road} className="road-opening-page" alt="" />
+          <img src={gader} className="gader-open" alt="" />
+          <img src={bushLeft} className="bush-left-open" alt="" />
+          <img src={bushRight} className="bush-right-open" alt="" />
 
-      <img src={BigCloud} className="big-cloud-opening-page-left" alt="" />
-      <img src={BigCloud} className="big-cloud-opening-page-right" alt="" />
-      <img src={SmallCloud} className="small-cloud-opening-page-left" alt="" />
-      <img src={SmallCloud} className="small-cloud-opening-page-right" alt="" />
-      </div>}
+          <img src={BigCloud} className="big-cloud-opening-page-left" alt="" />
+          <img src={BigCloud} className="big-cloud-opening-page-right" alt="" />
+          <img
+            src={SmallCloud}
+            className="small-cloud-opening-page-left"
+            alt=""
+          />
+          <img
+            src={SmallCloud}
+            className="small-cloud-opening-page-right"
+            alt=""
+          />
+        </div>
+      )}
 
       {/* <div className="main-content-wrapper">
         <OpeningSlides
@@ -260,7 +304,13 @@ function LearningPage() {
           onUnlock={handleSlideUnlocked}
         />
       </div> */}
-      <div className={`main-content-wrapper ${slide.type === "reportForm" ? "main-content-wrapper-background" : ""}`}>{renderSlide()}</div>
+      <div
+        className={`main-content-wrapper ${
+          isBlueBackgroundSlide ? "main-content-wrapper-background" : ""
+        }`}
+      >
+        {renderSlide()}
+      </div>
 
       {renderNavigation()}
     </div>
