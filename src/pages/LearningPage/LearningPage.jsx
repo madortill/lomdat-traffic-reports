@@ -4,7 +4,8 @@ import slidesData from "../../data/slides.json";
 import "./LearningPage.css";
 
 import OpeningSlides from "../../pages/OpeningSlides/OpeningSlides";
-import ReportFormSlide from "../../pages/ReportFormSlide/ReportFormSlide";
+// import ReportFormSlide from "../../pages/ReportFormSlide/ReportFormSlide";
+import ReportFillSlide from "../../pages/ReportFillSlide/ReportFillSlide";
 import CompletionPopupSlide from "../../components/CompletionPopupSlide/CompletionPopupSlide";
 
 import logoBahad13 from "../../assets/logo_shadow.svg";
@@ -150,13 +151,13 @@ function LearningPage() {
 
   const prevSlide = () => {
     if (currentSlideIndex <= 0) return;
-  
+
     let targetIndex = currentSlideIndex - 1;
-  
+
     while (targetIndex > 0 && slidesData[targetIndex]?.skipOnBack) {
       targetIndex -= 1;
     }
-  
+
     setCurrentSlideIndex(targetIndex);
   };
 
@@ -182,7 +183,9 @@ function LearningPage() {
           <img
             src={backBtn}
             onClick={prevSlide}
-            className={`nav-back-image-btn ${slide.type === "openingDrop" ? "nav-back-image-btn-notebook" : ""}`}
+            className={`nav-back-image-btn ${
+              slide.type === "openingDrop" ? "nav-back-image-btn-notebook" : ""
+            }`}
             alt={navigationConfig.back.label}
           />
         )}
@@ -229,8 +232,11 @@ function LearningPage() {
 
   const renderSlide = () => {
     switch (slide.type) {
+      // case "reportForm":
+      //   return <ReportFormSlide data={slide} />;
+
       case "reportForm":
-        return <ReportFormSlide data={slide} />;
+        return <ReportFillSlide data={slide} />;
 
       case "completionPopup": {
         const backgroundSlide =
@@ -240,7 +246,8 @@ function LearningPage() {
         return (
           <>
             <div className="popup-background-blur">
-              <ReportFormSlide data={backgroundSlide} isPreview />
+              {/* <ReportFormSlide data={backgroundSlide} isPreview /> */}
+              <ReportFillSlide data={backgroundSlide} isPreview />
             </div>
 
             <CompletionPopupSlide data={slide} onContinue={nextSlide} />

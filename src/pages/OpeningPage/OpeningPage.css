@@ -22,6 +22,13 @@ body {
     font-size: 3rem;
 }
 
+.opening-page-header-up {
+    font-weight: 650;
+    color: #002446;
+    font-size: 2.3rem;
+    margin-bottom: -3vh;
+}
+
 .start-btn-to-topics {
     background-color: #CB4B44;
     font-family: "Ido";

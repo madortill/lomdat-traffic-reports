@@ -4,15 +4,15 @@ import "./EndPage.css";
 
 import road from "../../assets/road.svg";
 import BigCloud from "../../assets/cloud-big.svg";
+import BigCloudBtn from "../../assets/cloud-big-btn.svg";
 import SmallCloud from "../../assets/cloud-small.svg";
 import lightingPole from "../../assets/LightingPole.svg";
-import car from "../../assets/car-on-the-side.svg";
+import car from "../../assets/car.svg";
 import logo from "../../assets/logo.png";
 import tillBlackLogo from "../../assets/till_blacklogo.svg";
 import bushLeft from "../../assets/bush-left.svg";
 import bushRight from "../../assets/bush-right.svg";
-import topic1 from "../../assets/car-plate-topic-1-end3.svg";
-import topic2 from "../../assets/car-plate-topic-2-end.svg";
+import gader from "../../assets/gader.svg";
 import aboutIcon from "../../assets/aboutIcon.svg";
 import mapal from "../../assets/keshet.svg";
 
@@ -56,6 +56,8 @@ function EndPage() {
       <div className="ground-area">
         <img src={road} className="road-opening-page" />
 
+        <img src={gader} className="gader-open" />
+
         <img
           src={lightingPole}
           className={`lighting-pole-left ${driveMode ? "pole-move-left" : ""}`}
@@ -77,10 +79,18 @@ function EndPage() {
         />
       </div>
 
-      <img
+      {/* <img
         src={BigCloud}
         alt="big cloud"
         className="big-cloud-opening-page-left"
+      /> */}
+      <img
+        src={BigCloudBtn}
+        className="big-cloud-opening-page-left"
+        onClick={() =>
+          (window.location.href =
+            "https://madortill.github.io/traffic-learning-package/")
+        }
       />
       <img
         src={BigCloud}
@@ -126,12 +136,12 @@ function EndPage() {
             <div className="about-section">
               <strong>מפתחת ראשית:</strong>
               <img src={mapal} className="about-dev-img" />
-              <span>טוראי קשת פרי</span>
+              <span>רב"ט קשת פרי</span>
             </div>
 
             <div className="about-section">
               <strong>גרפיקה:</strong>
-              <span>טוראי קשת פרי</span>
+              <span>רב"ט קשת פרי</span>
             </div>
 
             <div className="about-section">
@@ -142,12 +152,12 @@ function EndPage() {
 
             <div className="about-section">
               <strong>רמ״ד טי״ל:</strong>
-              <span>רס”מ עדן בן חמו</span>
+              <span>רס"מ קטיה מדבדב</span>
             </div>
 
             <div className="about-section">
               <strong>גרסה:</strong>
-              <span>מאי 2026</span>
+              <span>יוני 2026</span>
             </div>
 
             <div className="about-section memory-note">
@@ -167,12 +177,7 @@ function EndPage() {
 
         <div className="end-page-header">וואוו כל הכבוד!!</div>
 
-        <div className="end-opening-page-header">עכשיו אתם מומחים בנושאים:</div>
-
-        <div className="topics-opening-page-container">
-          <img src={topic1} className="topic" />
-          <img src={topic2} className="topic" />
-        </div>
+        <div className="end-opening-page-header">סיימתם את הלומדה :)</div>
 
         <button onClick={() => navigate("/")} className="start-btn-to-topics">
           לתחילת הלומדה

@@ -67,6 +67,7 @@
     {
         "id": "4",
         "type": "reportForm",
+        "reportKind": "beidatz",
         "requireUnlock": false,
         "navigation": {
             "hideNextUntilUnlocked": false,
@@ -162,6 +163,39 @@
                 "label": "חזור",
                 "position": "insideBillboardTopRight"
             }
+        }
+    },
+    {
+        "id": "8",
+        "type": "reportForm",
+        "reportKind": "damash",
+        "requireUnlock": false,
+        "navigation": {
+            "hideNextUntilUnlocked": false,
+            "next": {
+                "show": true,
+                "label": "לסיום הדו״ח >",
+                "position": "bottomLeft"
+            },
+            "back": {
+                "show": true,
+                "variant": "text",
+                "label": "< חזרה לאירוע",
+                "position": "bottomRight"
+            }
+        }
+    },
+    {
+        "id": "4-success",
+        "type": "completionPopup",
+        "skipOnBack": true,
+        "theme": "report",
+        "backgroundSlideId": "4",
+        "title": "כל הכבוד מילאתם את הדו״ח בהצלחה!",
+        "subtitle": "וואוו כבר סיימתם ללמוד את כל הדו”חות להיום!",
+        "buttonLabel": "יאללה לסיום!",
+        "navigation": {
+            "hidden": true
         }
     }
 ]

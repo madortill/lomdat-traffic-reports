@@ -1,0 +1,237 @@
+.report-fill-slide {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    direction: rtl;
+    pointer-events: auto;
+}
+
+.report-fill-preview {
+    pointer-events: none;
+}
+
+.report-fill-viewer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: auto;
+}
+
+.report-page-frame {
+    position: relative;
+
+    height: min(80vh, 50rem);
+    aspect-ratio: 1900 / 2657;
+
+    background: white;
+    box-shadow: 0 1rem 2.2rem rgba(0, 0, 0, 0.28);
+
+    animation: reportPageEnter 0.35s ease forwards;
+    pointer-events: auto;
+}
+
+.report-svg {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    pointer-events: auto;
+}
+
+/* חצים פנימיים רק כשיש כמה עמודים */
+.report-page-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.35);
+    color: white;
+
+    font-size: 3.1rem;
+    line-height: 1;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    z-index: 4;
+}
+
+.report-page-arrow:hover {
+    transform: translateY(-50%) scale(1.08);
+    background-color: rgba(255, 255, 255, 0.48);
+}
+
+.report-page-arrow-right {
+    right: 21vw;
+}
+
+.report-page-arrow-left {
+    left: 21vw;
+}
+
+.report-page-dots {
+    position: fixed;
+    bottom: 4.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 0.85rem;
+
+    z-index: 5;
+}
+
+.report-page-dot {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+
+    border: none;
+    background-color: rgba(255, 255, 255, 0.92);
+
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.report-page-dot.active {
+    background-color: #4f73ff;
+    transform: scale(1.12);
+}
+
+@keyframes reportPageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(0.8rem) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===================================================================================================== */
+/* שדות שנמצאים בתוך foreignObject של ה-SVG */
+
+.svg-input-host,
+.svg-checkbox-host,
+.svg-textarea-host {
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.svg-report-input {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    color: #002446;
+    font-family: "Fredoka";
+    font-size: 1.75rem;
+    text-align: center;
+    direction: rtl;
+
+    padding: 0;
+    pointer-events: auto;
+}
+
+.svg-report-input:focus {
+    background: rgba(255, 255, 255, 0.45);
+    outline: 2px solid rgba(33, 74, 191, 0.35);
+    border-radius: 0.25rem;
+}
+
+.svg-report-textarea {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    border: none;
+    outline: none;
+    resize: none;
+    background: transparent;
+
+    color: #002446;
+    font-family: "Fredoka";
+    font-size: 1.55rem;
+    line-height: 1.45;
+    direction: rtl;
+    text-align: right;
+
+    padding: 0.25rem;
+    pointer-events: auto;
+}
+
+.svg-report-textarea:focus {
+    background: rgba(255, 255, 255, 0.45);
+    outline: 2px solid rgba(33, 74, 191, 0.35);
+    border-radius: 0.25rem;
+}
+
+.svg-x-checkbox {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    color: #000;
+    font-family: "Fredoka";
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    padding: 0;
+    pointer-events: auto;
+}
+
+.svg-x-checkbox:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.svg-report-input-personal-number {
+    font-size: 2rem;
+    letter-spacing: 40%;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.664);
+}
+
+.svg-report-input-small {
+    font-size: 2rem;
+    text-align: right;
+    background-color: rgba(255, 255, 255, 0.664);
+    font-family: "Fredoka";
+}

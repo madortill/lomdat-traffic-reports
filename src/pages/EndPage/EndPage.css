@@ -1,7 +1,8 @@
 .end-opening-page-header {
     color: #002446;
-    font-size: clamp(1.5rem, 1vw + 0.7vh, 2rem);
+    font-size: clamp(1.5rem, 1vw + 0.8vh, 2.2rem);
     text-align: center;
+    font-weight: 500;
 }
 
 .end-page-header {

@@ -97,28 +97,28 @@ function OpeningPage() {
             <div className="about-section">
               <strong>מפתחת ראשית:</strong>
               <img src={mapal} className="about-dev-img" />
-              <span>טוראי קשת פרי</span>
+              <span>רב"ט קשת פרי</span>
             </div>
 
             <div className="about-section">
               <strong>גרפיקה:</strong>
-              <span>טוראי קשת פרי</span>
+              <span>רב"ט קשת פרי</span>
             </div>
 
             <div className="about-section">
               <strong>מומחי תוכן:</strong>
               <span>סגן עדן רוקח</span>
-              <span>סמל שיר אשר לוי</span>
+              <span>רב"ט שיר אשר לוי</span>
             </div>
 
             <div className="about-section">
               <strong>רמ״ד טי״ל:</strong>
-              <span>רס”מ עדן בן חמו</span>
+              <span>סמ"ר קטיה מדבדב</span>
             </div>
 
             <div className="about-section">
               <strong>גרסה:</strong>
-              <span>מרץ 2026</span>
+              <span>יוני 2026</span>
             </div>
           </div>
         )}
@@ -128,7 +128,9 @@ function OpeningPage() {
       <div className="opening-content">
         <img src={logo} className="logo-bahad13-opening-page" />
 
-        <h1 className="opening-page-header">ברוכים הבאים ללומדת תעבורה</h1>
+        <div className="opening-page-header-up">ברוכים הבאים</div>
+
+        <h1 className="opening-page-header">ללומדת דו"חות תעבורה</h1>
 
         {/* הכפתור נעלם בזמן נסיעה */}
         {!driveMode && (

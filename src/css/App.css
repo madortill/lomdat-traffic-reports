@@ -42,3 +42,8 @@ body {
 html {
     font-size: calc(1vh + 0.5vw);
 }
+
+::selection {
+    background-color: #ffcbc9;
+    color: #95193D;
+}
