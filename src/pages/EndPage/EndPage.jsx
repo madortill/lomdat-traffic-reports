@@ -113,26 +113,16 @@ function EndPage() {
         className="till-logo-black-opening-page"
       />
 
-      <div
-        className="about-container"
-        onMouseEnter={() => {
-          setClosing(false);
-          setAboutOpen(true);
-        }}
-        onMouseLeave={() => {
-          setClosing(true);
-          setTimeout(() => {
-            setAboutOpen(false);
-            setClosing(false);
-          }, 200);
-        }}
-      >
-        <img src={aboutIcon} className="about-btn" onClick={toggleAbout} />
+      {/* אודות */}
+      <div className="about-container" ref={popupRef}>
+        <img
+          src={aboutIcon}
+          className="about-btn"
+          onClick={() => setAboutOpen(!aboutOpen)}
+        />
 
         {aboutOpen && (
-          <div className={`about-popup ${closing ? "closing" : "open"}`}>
-            {/* <h3>אודות הלומדה</h3> */}
-
+          <div className="about-popup">
             <div className="about-section">
               <strong>מפתחת ראשית:</strong>
               <img src={mapal} className="about-dev-img" />
@@ -147,12 +137,12 @@ function EndPage() {
             <div className="about-section">
               <strong>מומחי תוכן:</strong>
               <span>סגן עדן רוקח</span>
-              <span>רב"ט שירה אשר לוי</span>
+              <span>סמל שיר אשר לוי</span>
             </div>
 
             <div className="about-section">
               <strong>רמ״ד טי״ל:</strong>
-              <span>רס"מ קטיה מדבדב</span>
+              <span>סמ"ר קטיה מדבדב</span>
             </div>
 
             <div className="about-section">
@@ -162,8 +152,7 @@ function EndPage() {
 
             <div className="about-section memory-note">
               <span>
-                הלומדה עוצבה בכתב ידה של סמ"ר אגם נעים ז"ל, פרמדיקית שנפלה בקרב
-                ברצועת עזה. הגופן באדיבות פרויקט ההנצחה "אות חיים".
+              הלומדה עוצבה בכתב ידו של סרן עידו ברוך ז"ל, מפקד צוות באגוז שנפל בקרב ברצועת עזה. הגופן באדיבות פרויקט ההנצחה "אות חיים".
               </span>
             </div>
           </div>

@@ -266,9 +266,9 @@ body {
     border-radius: 14px;
     border: 0.33vh solid #95193D;
 
-    width: clamp(150px, 6vw, 320px);
-
+    /* width: clamp(150px, 6vw, 320px); */
     max-width: 90vw;
+    width: 11rem;
 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -313,6 +313,10 @@ body {
     width: 10vh;
 }
 
-/* .about-dev-img{
-    width:clamp(50px,10vw,100px);
-} */
+.memory-note {
+    font-family: "Ido";
+    font-size: clamp(1rem, 1vw, 1.2rem);
+    /* color: #002446; */
+    color: black;
+    /* font-weight: 600; */
+}

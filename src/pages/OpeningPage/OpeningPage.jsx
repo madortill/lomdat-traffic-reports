@@ -76,7 +76,14 @@ function OpeningPage() {
       </div>
 
       {/* עננים */}
-      <img src={BigCloudBtn} className="big-cloud-opening-page-left" onClick={() => window.location.href = "https://madortill.github.io/traffic-learning-package/"} />
+      <img
+        src={BigCloudBtn}
+        className="big-cloud-opening-page-left"
+        onClick={() =>
+          (window.location.href =
+            "https://madortill.github.io/traffic-learning-package/")
+        }
+      />
       <img src={BigCloud} className="big-cloud-opening-page-right" />
       <img src={SmallCloud} className="small-cloud-opening-page-left" />
       <img src={SmallCloud} className="small-cloud-opening-page-right" />
@@ -108,7 +115,7 @@ function OpeningPage() {
             <div className="about-section">
               <strong>מומחי תוכן:</strong>
               <span>סגן עדן רוקח</span>
-              <span>רב"ט שיר אשר לוי</span>
+              <span>סמל שיר אשר לוי</span>
             </div>
 
             <div className="about-section">
@@ -119,6 +126,12 @@ function OpeningPage() {
             <div className="about-section">
               <strong>גרסה:</strong>
               <span>יוני 2026</span>
+            </div>
+
+            <div className="about-section memory-note">
+              <span>
+              הלומדה עוצבה בכתב ידו של סרן עידו ברוך ז"ל, מפקד צוות באגוז שנפל בקרב ברצועת עזה. הגופן באדיבות פרויקט ההנצחה "אות חיים".
+              </span>
             </div>
           </div>
         )}
