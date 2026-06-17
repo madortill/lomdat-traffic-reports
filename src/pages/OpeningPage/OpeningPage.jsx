@@ -130,7 +130,7 @@ function OpeningPage() {
 
         <div className="opening-page-header-up">ברוכים הבאים</div>
 
-        <h1 className="opening-page-header">ללומדת דו"חות תעבורה</h1>
+        <h1 className="opening-page-header">ללומדת כתיבת דו"חות</h1>
 
         {/* הכפתור נעלם בזמן נסיעה */}
         {!driveMode && (

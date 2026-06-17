@@ -1,9 +1,14 @@
 .event-details-menu {
     position: fixed;
-    top: 4.5rem;
-    right: 3.2rem;
+    top: 1rem;
+    right: 4.5rem;
     z-index: 100;
     direction: rtl;
+    width: 35vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .event-details-main-button {
@@ -55,10 +60,19 @@
     font-weight: 700;
 }
 
-.event-details-dropdown {
+.event-details-content {
     margin-top: 0.45rem;
-    padding: 0.45rem;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+
+    animation: eventDetailsContentEnter 0.18s ease forwards;
+}
+
+.event-details-dropdown {
+    padding: 0.45rem;
     width: 9rem;
 
     background: #ffffff;
@@ -112,7 +126,8 @@
     transition: background-color 0.15s, transform 0.15s;
 }
 
-.event-details-option:hover {
+.event-details-option:hover,
+.event-details-option.active {
     background-color: #ece0e0;
     transform: translateX(-0.15rem);
 }
@@ -123,15 +138,11 @@
     object-fit: contain;
 }
 
+/* עכשיו התמונה יושבת מתחת לתפריט, לא לפי העכבר */
 .event-details-preview {
-    position: fixed;
-    z-index: 1000;
-
-    transform: translate(-105%, -50%);
-
-    /* width: min(28vw, 22rem); */
     width: 20rem;
-    max-height: 52vh;
+    max-width: 35vw;
+    max-height: 50vh;
 
     pointer-events: none;
 
@@ -141,26 +152,38 @@
 
     box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.32);
 
-    animation: eventPreviewEnter 0.16s ease forwards;
+    animation: eventPreviewEnterStatic 0.18s ease forwards;
 }
 
 .event-details-preview img {
     display: block;
     width: 100%;
     height: auto;
-    max-height: 50vh;
+    max-height: 48vh;
     object-fit: contain;
     border-radius: 0.35rem;
 }
 
-@keyframes eventPreviewEnter {
+@keyframes eventDetailsContentEnter {
     from {
         opacity: 0;
-        transform: translate(-100%, -50%) scale(0.96);
+        transform: translateY(-0.4rem) scale(0.98);
     }
 
     to {
         opacity: 1;
-        transform: translate(-105%, -50%) scale(1);
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes eventPreviewEnterStatic {
+    from {
+        opacity: 0;
+        transform: translateY(-0.4rem) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }

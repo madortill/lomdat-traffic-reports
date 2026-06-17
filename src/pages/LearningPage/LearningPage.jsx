@@ -7,6 +7,7 @@ import OpeningSlides from "../../pages/OpeningSlides/OpeningSlides";
 // import ReportFormSlide from "../../pages/ReportFormSlide/ReportFormSlide";
 import ReportFillSlide from "../../pages/ReportFillSlide/ReportFillSlide";
 import CompletionPopupSlide from "../../components/CompletionPopupSlide/CompletionPopupSlide";
+import NavbarLearning from "../../components/NavbarLearning/NavbarLearning";
 
 import logoBahad13 from "../../assets/logo_shadow.svg";
 import tillBlackLogo from "../../assets/till_blacklogo_shadow.svg";
@@ -118,6 +119,25 @@ function LearningPage() {
 
   if (!slide) return null;
 
+  // const navigationConfig = {
+  //   hideNextUntilUnlocked: slide.navigation?.hideNextUntilUnlocked || false,
+
+  //   next: {
+  //     show: true,
+  //     label: "המשך",
+  //     position: "bottomCenter",
+  //     ...slide.navigation?.next,
+  //   },
+
+  //   back: {
+  //     show: currentSlideIndex > 0,
+  //     variant: "image",
+  //     label: "חזור",
+  //     position: "bottomCenter",
+  //     ...slide.navigation?.back,
+  //   },
+  // };
+
   const navigationConfig = {
     hideNextUntilUnlocked: slide.navigation?.hideNextUntilUnlocked || false,
 
@@ -133,6 +153,7 @@ function LearningPage() {
       variant: "image",
       label: "חזור",
       position: "bottomCenter",
+      hideUntilUnlocked: false,
       ...slide.navigation?.back,
     },
   };
@@ -162,6 +183,12 @@ function LearningPage() {
   };
 
   const renderBackButton = () => {
+    if (!navigationConfig.back.show) return null;
+
+    if (navigationConfig.back.hideUntilUnlocked && !canProceed) {
+      return null;
+    }
+
     if (!navigationConfig.back.show || currentSlideIndex === 0) return null;
 
     const wrapperClasses = [
@@ -250,7 +277,12 @@ function LearningPage() {
               <ReportFillSlide data={backgroundSlide} isPreview />
             </div>
 
-            <CompletionPopupSlide data={slide} onContinue={nextSlide} />
+            {/* <CompletionPopupSlide data={slide} onContinue={nextSlide} /> */}
+            <CompletionPopupSlide
+              data={slide}
+              onContinue={nextSlide}
+              onBack={prevSlide}
+            />
           </>
         );
       }
@@ -268,6 +300,50 @@ function LearningPage() {
 
   const isBlueBackgroundSlide =
     slide.type === "reportForm" || slide.type === "completionPopup";
+
+  const NAVBAR_SECTIONS = [
+    {
+      title: "אירוע דו״ח ביד''צ",
+      slideIndex: 0,
+    },
+    {
+      title: "מילוי דו״ח ביד''צ",
+      slideIndex: 4,
+    },
+    {
+      title: "אירוע דו״ח משמעת",
+      slideIndex: 6,
+    },
+    {
+      title: "מילוי דו״ח משמעת",
+      slideIndex: 10,
+    },
+  ];
+
+  const [maxVisitedSlide, setMaxVisitedSlide] = useState(() => {
+    const saved = sessionStorage.getItem("learning_max_visited_slide");
+    const parsed = Number(saved);
+
+    if (Number.isInteger(parsed) && parsed >= 0) {
+      return parsed;
+    }
+
+    return currentSlideIndex;
+  });
+
+  useEffect(() => {
+    setMaxVisitedSlide((prev) => {
+      const nextMax = Math.max(prev, currentSlideIndex);
+      sessionStorage.setItem("learning_max_visited_slide", String(nextMax));
+      return nextMax;
+    });
+  }, [currentSlideIndex]);
+
+  const setCurrentSlideFromNav = (targetIndex) => {
+    if (targetIndex > maxVisitedSlide) return;
+
+    setCurrentSlideIndex(targetIndex);
+  };
 
   return (
     <div
@@ -318,6 +394,13 @@ function LearningPage() {
       >
         {renderSlide()}
       </div>
+
+      <NavbarLearning
+        sections={NAVBAR_SECTIONS}
+        currentSlide={currentSlideIndex}
+        setCurrentSlide={setCurrentSlideFromNav}
+        maxVisitedSlide={maxVisitedSlide}
+      />
 
       {renderNavigation()}
     </div>

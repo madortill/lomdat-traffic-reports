@@ -33,11 +33,11 @@ const REPORTS_CONFIG = {
         label: "פרטי הנהג",
         image: "beidatz-driver.svg",
       },
-      {
-        id: "vehicle",
-        label: "פרטי הרכב",
-        image: "beidatz-vehicle.svg",
-      },
+      // {
+      //   id: "vehicle",
+      //   label: "פרטי הרכב",
+      //   image: "beidatz-vehicle.svg",
+      // },
       {
         id: "license",
         label: "פרטי הרישיון הצבאי",

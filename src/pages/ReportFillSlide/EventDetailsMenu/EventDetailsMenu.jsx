@@ -4,70 +4,67 @@ import "./EventDetailsMenu.css";
 function EventDetailsMenu({ items = [] }) {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
-  const [previewPosition, setPreviewPosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseEnter = (item, event) => {
+  const handleMouseEnter = (item) => {
     setHoveredItem(item);
-    setPreviewPosition({
-      x: event.clientX,
-      y: event.clientY,
-    });
-  };
-
-  const handleMouseMove = (event) => {
-    setPreviewPosition({
-      x: event.clientX,
-      y: event.clientY,
-    });
   };
 
   const handleMouseLeave = () => {
     setHoveredItem(null);
   };
 
-  return (
-    <>
-      <div className="event-details-menu">
-        <button
-          className={`event-details-main-button ${isOpen ? "open" : ""}`}
-          onClick={() => setIsOpen((prev) => !prev)}
-          type="button"
-        >
-          פרטי האירוע
-          <span className="event-details-icon">!</span>
-        </button>
+  const toggleMenu = () => {
+    setIsOpen((prev) => {
+      const nextOpen = !prev;
 
-        {isOpen && (
+      if (!nextOpen) {
+        setHoveredItem(null);
+      }
+
+      return nextOpen;
+    });
+  };
+
+  return (
+    <div className="event-details-menu">
+      <button
+        className={`event-details-main-button ${isOpen ? "open" : ""}`}
+        onClick={toggleMenu}
+        type="button"
+      >
+        פרטי האירוע
+        <span className="event-details-icon">!</span>
+      </button>
+
+      {isOpen && (
+        <div className="event-details-content">
           <div className="event-details-dropdown">
             {items.map((item) => (
               <button
                 key={item.id}
-                className="event-details-option"
+                className={`event-details-option ${
+                  hoveredItem?.id === item.id ? "active" : ""
+                }`}
                 type="button"
-                onMouseEnter={(event) => handleMouseEnter(item, event)}
-                onMouseMove={handleMouseMove}
+                onMouseEnter={() => handleMouseEnter(item)}
+                onFocus={() => handleMouseEnter(item)}
                 onMouseLeave={handleMouseLeave}
+                onBlur={handleMouseLeave}
               >
                 <span>{item.label}</span>
                 {item.icon && <img src={item.icon} alt="" />}
               </button>
             ))}
           </div>
-        )}
-      </div>
 
-      {hoveredItem && (
-        <div
-          className="event-details-preview"
-          style={{
-            top: previewPosition.y,
-            left: previewPosition.x,
-          }}
-        >
-          <img src={hoveredItem.image} alt={hoveredItem.label} />
+          {hoveredItem && (
+            <div className="event-details-preview">
+              <img src={hoveredItem.image} alt={hoveredItem.label} />
+            </div>
+          )}
         </div>
       )}
-    </>
+    </div>
   );
 }
 
