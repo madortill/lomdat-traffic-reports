@@ -8,6 +8,9 @@ import BeidatzReportPage2 from "./reportPages/BeidatzReportPage2";
 import BeidatzReportPage3 from "./reportPages/BeidatzReportPage3";
 import DamashReportPage1 from "./reportPages/DamashReportPage1";
 
+import ReportPageNextBtn from "../../assets/ReportPageNextBtn.svg";
+import ReportPagePrevBtn from "../../assets/ReportPagePrevBtn.svg";
+
 const REPORTS_CONFIG = {
   beidatz: {
     pages: [
@@ -138,38 +141,50 @@ function ReportFillSlide({ data, isPreview = false }) {
       className={`report-fill-slide ${isPreview ? "report-fill-preview" : ""}`}
     >
       {!isPreview && <EventDetailsMenu items={reportConfig.eventDetails} />}
-  
+
       <div className="report-fill-viewer">
         {hasMultiplePages && !isFirstPage && (
-          <button
+          // <button
+          //   className="report-page-arrow report-page-arrow-right"
+          //   onClick={goToPrevPage}
+          //   type="button"
+          //   aria-label="לעמוד הקודם"
+          // >
+          //   ‹
+          // </button>
+
+          <img
+            src={ReportPagePrevBtn}
             className="report-page-arrow report-page-arrow-right"
             onClick={goToPrevPage}
-            type="button"
-            aria-label="לעמוד הקודם"
-          >
-            ‹
-          </button>
+          />
         )}
-  
+
         <div className="report-page-frame" key={currentPage.id}>
           <CurrentReportPage
             formValues={formValues}
             updateField={updateField}
           />
         </div>
-  
+
         {hasMultiplePages && !isLastPage && (
-          <button
+          // <button
+          //   className="report-page-arrow report-page-arrow-left"
+          //   onClick={goToNextPage}
+          //   type="button"
+          //   aria-label="לעמוד הבא"
+          // >
+          //   ›
+          // </button>
+
+          <img
+            src={ReportPageNextBtn}
             className="report-page-arrow report-page-arrow-left"
             onClick={goToNextPage}
-            type="button"
-            aria-label="לעמוד הבא"
-          >
-            ›
-          </button>
+          />
         )}
       </div>
-  
+
       {hasMultiplePages && (
         <div className="report-page-dots">
           {pages.map((page, index) => (

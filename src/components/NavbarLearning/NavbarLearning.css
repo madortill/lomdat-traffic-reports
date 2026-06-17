@@ -16,12 +16,16 @@
     align-items: center;
     justify-content: center;
 
-    width: clamp(200px, 18vw, 300px);
-    height: clamp(42px, 4.5vh, 56px);
+    width: clamp(100px, 18vw, 300px);
+    height: clamp(30px, 4.5vh, 56px);
+
+    /* width: 15vw;
+    height: 4.5vh; */
 
     font-family: "Fredoka";
     font-weight: 600;
     font-size: clamp(14px, 1vw, 18px);
+    /* font-size: 1rem; */
 
     padding-left: 12%;
 
@@ -52,6 +56,7 @@
     color: white;
     font-weight: bold;
     font-size: clamp(12px, 1vw, 16px);
+    /* font-size: 1rem; */
 }
 
 .navbar-dropdown {

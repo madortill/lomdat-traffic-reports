@@ -1,7 +1,7 @@
 .event-details-menu {
     position: fixed;
     top: 1rem;
-    right: 4.5rem;
+    right: 5vw;
     z-index: 100;
     direction: rtl;
     width: 35vw;
@@ -34,6 +34,27 @@
     box-shadow: 0 0.25rem 0.6rem rgba(0, 0, 0, 0.18);
 
     transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+@media (max-width: 1630px) {
+    .event-details-menu {
+        right: 7vw;
+
+    }
+}
+
+@media (max-width: 1230px) {
+    .event-details-menu {
+        right: 9vw;
+
+    }
+}
+
+@media (max-width: 1000px) {
+    .event-details-menu {
+        right: 10vw;
+
+    }
 }
 
 .event-details-main-button:hover {

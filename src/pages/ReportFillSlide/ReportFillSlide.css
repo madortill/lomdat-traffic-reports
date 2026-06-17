@@ -61,17 +61,17 @@
     height: 3rem;
     border-radius: 50%;
 
-    border: 1px solid rgba(255, 255, 255, 0.75);
-    background-color: rgba(255, 255, 255, 0.35);
-    color: white;
+    /* border: 1px solid rgba(255, 255, 255, 0.75); */
+    /* background-color: rgba(255, 255, 255, 0.35); */
+    /* color: white; */
 
-    font-size: 3.1rem;
-    line-height: 1;
-    font-family: Arial, sans-serif;
+    /* font-size: 3.1rem; */
+    /* line-height: 1; */
+    /* font-family: Arial, sans-serif; */
 
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
 
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
@@ -80,20 +80,32 @@
 
 .report-page-arrow:hover {
     transform: translateY(-50%) scale(1.08);
-    background-color: rgba(255, 255, 255, 0.48);
+    /* background-color: rgba(255, 255, 255, 0.48); */
+    background-color: rgba(255, 255, 255, 0.35);
 }
 
 .report-page-arrow-right {
-    right: 21vw;
+    right: 27vw;
 }
 
 .report-page-arrow-left {
-    left: 21vw;
+    left: 27vw;
+}
+
+@media (max-width: 1100px) {
+    .report-page-arrow-right {
+        right: 18vw;
+
+    }
+
+    .report-page-arrow-left {
+        left: 18vw;
+    }
 }
 
 .report-page-dots {
     position: fixed;
-    bottom: 4.2rem;
+    bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
 
