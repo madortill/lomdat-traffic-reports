@@ -348,7 +348,7 @@ function LearningPage() {
   return (
     <div
       className={`learning-page-container ${
-        slide.theme === "damash" ? "learning-page-container-damash" : ""
+        slide.theme === "damash" ? "learning-page-container-damash" : "learning-page-container-beidatz"
       }`}
     >
       <img src={logoBahad13} className="logo-bahad13-fixed" alt="בהד 13" />
@@ -358,7 +358,7 @@ function LearningPage() {
         alt="מדור טיל"
       />
 
-      {slide.type !== "reportForm" && slide.theme !== "damash" && (
+      {/* {slide.type !== "reportForm" && slide.theme !== "damash" && (
         <div className="ground-area">
           <img src={road} className="road-opening-page" alt="" />
           <img src={gader} className="gader-open" alt="" />
@@ -378,15 +378,8 @@ function LearningPage() {
             alt=""
           />
         </div>
-      )}
+      )} */}
 
-      {/* <div className="main-content-wrapper">
-        <OpeningSlides
-          data={slide}
-          isCompleted={isSlideCompleted}
-          onUnlock={handleSlideUnlocked}
-        />
-      </div> */}
       <div
         className={`main-content-wrapper ${
           isBlueBackgroundSlide ? "main-content-wrapper-background" : ""

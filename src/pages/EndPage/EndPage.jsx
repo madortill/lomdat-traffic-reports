@@ -51,6 +51,29 @@ function EndPage() {
     };
   }, []);
 
+  const resetLearningSession = () => {
+    const keysToRemove = [
+      "learning_current_slide_index",
+      "learning_completed_slides",
+      "learning_max_visited_slide",
+    ];
+
+    keysToRemove.forEach((key) => {
+      sessionStorage.removeItem(key);
+    });
+
+    Object.keys(sessionStorage).forEach((key) => {
+      if (
+        key.startsWith("report_current_page_") ||
+        key.startsWith("report_values_")
+      ) {
+        sessionStorage.removeItem(key);
+      }
+    });
+
+    navigate("/");
+  };
+
   return (
     <div className="opening-page">
       <div className="ground-area">
@@ -152,7 +175,8 @@ function EndPage() {
 
             <div className="about-section memory-note">
               <span>
-              הלומדה עוצבה בכתב ידו של סרן עידו ברוך ז"ל, מפקד צוות באגוז שנפל בקרב ברצועת עזה. הגופן באדיבות פרויקט ההנצחה "אות חיים".
+                הלומדה עוצבה בכתב ידו של סרן עידו ברוך ז"ל, מפקד צוות באגוז שנפל
+                בקרב ברצועת עזה. הגופן באדיבות פרויקט ההנצחה "אות חיים".
               </span>
             </div>
           </div>
@@ -168,9 +192,25 @@ function EndPage() {
 
         <div className="end-opening-page-header">סיימתם את הלומדה :)</div>
 
-        <button onClick={() => navigate("/")} className="start-btn-to-topics">
+        {/* <button onClick={() => navigate("/")} className="start-btn-to-topics">
           לתחילת הלומדה
-        </button>
+        </button> */}
+
+        <div className="end-btns-flex-wrapper">
+          <button
+            onClick={() => navigate("/learning")}
+            className="back-btn-to-learning"
+          >
+            ‹ חזרה
+          </button>
+
+          <button
+            onClick={resetLearningSession}
+            className="start-btn-to-topics"
+          >
+            לתחילת הלומדה ›
+          </button>
+        </div>
       </div>
     </div>
   );

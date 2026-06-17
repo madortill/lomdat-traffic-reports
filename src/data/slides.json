@@ -166,7 +166,7 @@
         "type": "billboardVideo",
         "theme": "damash",
         "image": "./billboard.svg",
-        "videoUrl": "./damsh-video.mp4",
+        "videoUrl": "./damash-video-2.mp4",
         "requireUnlock": true,
         "navigation": {
             "hideNextUntilUnlocked": true,

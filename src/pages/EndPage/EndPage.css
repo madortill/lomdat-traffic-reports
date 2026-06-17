@@ -32,3 +32,36 @@
         transform: scale(1);
     }
 }
+
+.back-btn-to-learning {
+    /* background-color: #800101; */
+    background-color: #535286;
+    font-family: "Ido";
+    color: white;
+    border: none;
+    border-radius: 2vw;
+    cursor: pointer;
+    filter: drop-shadow(0 6px 6px rgba(0, 17, 73, 0.25));
+    /* font-size: clamp(1.2rem, 1vw + 0.8rem, 2rem); */
+    font-size: 1.7rem;
+    padding: clamp(0.1rem, 0.2vw, 0.3rem) clamp(1.5rem, 2vw, 2.5rem);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.back-btn-to-learning:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+}
+
+.back-btn-to-learning:active {
+    transform: translateY(0) scale(0.9);
+}
+
+.end-btns-flex-wrapper {
+    display: flex;
+    gap: 1rem;
+}
