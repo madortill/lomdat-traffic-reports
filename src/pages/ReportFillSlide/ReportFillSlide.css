@@ -247,3 +247,29 @@
     background-color: rgba(255, 255, 255, 0.664);
     font-family: "Fredoka";
 }
+
+.svg-report-select {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    color: #002446;
+    font-family: "Fredoka";
+    font-size: 180%;
+    text-align: center;
+    direction: rtl;
+
+    cursor: pointer;
+    padding: 0;
+    pointer-events: auto;
+}
+
+.svg-report-select:focus {
+    background: rgba(255, 255, 255, 0.55);
+    outline: 1px solid rgba(33, 74, 191, 0.35);
+    border-radius: 0.2rem;
+}
