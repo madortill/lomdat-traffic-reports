@@ -30,7 +30,7 @@
 .report-page-frame {
     position: relative;
 
-    height: min(80vh, 50rem);
+    height: min(89vh, 56rem);
     aspect-ratio: 1900 / 2657;
 
     background: white;
@@ -51,7 +51,10 @@
     pointer-events: auto;
 }
 
-/* חצים פנימיים רק כשיש כמה עמודים */
+/* ======================================================= */
+/* חצים בין עמודי הדו״ח */
+/* ======================================================= */
+
 .report-page-arrow {
     position: fixed;
     top: 50%;
@@ -61,17 +64,8 @@
     height: 3rem;
     border-radius: 50%;
 
-    /* border: 1px solid rgba(255, 255, 255, 0.75); */
-    /* background-color: rgba(255, 255, 255, 0.35); */
-    /* color: white; */
-
-    /* font-size: 3.1rem; */
-    /* line-height: 1; */
-    /* font-family: Arial, sans-serif; */
-
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+    border: none;
+    background-color: transparent;
 
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
@@ -80,7 +74,6 @@
 
 .report-page-arrow:hover {
     transform: translateY(-50%) scale(1.08);
-    /* background-color: rgba(255, 255, 255, 0.48); */
     background-color: rgba(255, 255, 255, 0.35);
 }
 
@@ -95,13 +88,16 @@
 @media (max-width: 1100px) {
     .report-page-arrow-right {
         right: 18vw;
-
     }
 
     .report-page-arrow-left {
         left: 18vw;
     }
 }
+
+/* ======================================================= */
+/* נקודות מעבר בין עמודים */
+/* ======================================================= */
 
 .report-page-dots {
     position: fixed;
@@ -144,81 +140,207 @@
     }
 }
 
-/* ===================================================================================================== */
-/* שדות שנמצאים בתוך foreignObject של ה-SVG */
+/* ======================================================= */
+/* Hosts בתוך foreignObject */
+/* ======================================================= */
 
 .svg-input-host,
 .svg-checkbox-host,
-.svg-textarea-host {
+.svg-textarea-host,
+.svg-select-host {
     width: 100%;
     height: 100%;
     pointer-events: auto;
 }
+
+/* ======================================================= */
+/* אינפוטים בתוך SVG */
+/* ======================================================= */
 
 .svg-report-input {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 
-    border: none;
+    border: 5px solid rgba(2, 26, 100, 0.28);
     outline: none;
-    background: transparent;
 
-    color: #002446;
-    font-family: "Fredoka";
-    font-size: 1.75rem;
+    background: rgba(255, 255, 255, 0.856);
+    /* color: #002446; */
+    color: #000;
+
+    font-family: "Fredoka", Arial, sans-serif;
+    font-size: 32px;
+    line-height: 1;
+
     text-align: center;
     direction: rtl;
 
-    padding: 0;
+    padding: 0 6px;
+    border-radius: 6px;
+
     pointer-events: auto;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.svg-report-input:hover {
+    background: rgba(255, 247, 205, 0.78);
+    border-color: rgba(56, 82, 163, 0.65);
+    box-shadow: 0 0 0 2px rgba(56, 82, 163, 0.12);
 }
 
 .svg-report-input:focus {
-    background: rgba(255, 255, 255, 0.45);
-    outline: 2px solid rgba(33, 74, 191, 0.35);
-    border-radius: 0.25rem;
+    background: rgba(255, 255, 255, 0.94);
+    border-color: #3852A3;
+    box-shadow:
+        0 0 0 3px rgba(56, 82, 163, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.12);
 }
+
+/* שדות טקסט קטנים */
+.svg-report-input-small {
+    font-size: 33px;
+}
+
+/* מספר אישי / תעודת זהות / שדות מספריים ארוכים */
+.svg-report-input-personal-number {
+    font-size: 33px;
+    letter-spacing: 1px;
+}
+
+/* שדות ממש צפופים */
+.svg-report-input-tiny {
+    font-size: 28px;
+}
+
+/* ======================================================= */
+/* Textarea בתוך SVG */
+/* ======================================================= */
 
 .svg-report-textarea {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 
-    border: none;
+    border: 5px solid rgba(3, 29, 107, 0.28);
     outline: none;
     resize: none;
-    background: transparent;
 
-    color: #002446;
-    font-family: "Fredoka";
-    font-size: 1.55rem;
-    line-height: 1.45;
+    background: rgba(255, 255, 255, 0.877);
+    /* color: #002446; */
+    color: #000;
+
+    font-family: "Fredoka", Arial, sans-serif;
+    font-size: 34px;
+    line-height: 1.35;
+
     direction: rtl;
     text-align: right;
 
-    padding: 0.25rem;
+    padding: 8px 10px;
+    border-radius: 6px;
+
     pointer-events: auto;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.svg-report-textarea:hover {
+    background: rgba(255, 247, 205, 0.78);
+    border-color: rgba(56, 82, 163, 0.65);
 }
 
 .svg-report-textarea:focus {
-    background: rgba(255, 255, 255, 0.45);
-    outline: 2px solid rgba(33, 74, 191, 0.35);
-    border-radius: 0.25rem;
+    background: rgba(255, 255, 255, 0.94);
+    border-color: #3852A3;
+    box-shadow:
+        0 0 0 3px rgba(56, 82, 163, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.12);
 }
+
+/* ======================================================= */
+/* Select / Dropdown בתוך SVG */
+/* ======================================================= */
+
+.svg-report-select {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    border: 5px solid rgba(56, 82, 163, 0.28);
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.904);
+    /* color: #002446; */
+    color: #000;
+
+    font-family: "Fredoka", Arial, sans-serif;
+    font-size: 32px;
+    line-height: 1;
+
+    text-align: center;
+    direction: rtl;
+
+    cursor: pointer;
+    padding: 0 4px;
+    border-radius: 6px;
+
+    pointer-events: auto;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.svg-report-select:hover {
+    background: rgba(255, 247, 205, 0.82);
+    border-color: rgba(56, 82, 163, 0.65);
+}
+
+.svg-report-select:focus {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: #3852A3;
+    box-shadow:
+        0 0 0 3px rgba(56, 82, 163, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Selectים קטנים כמו שעה/דקות */
+/* .svg-report-select-time {
+    font-size: 22px;
+} */
+
+/* Selectים צפופים ממש */
+.svg-report-select-tiny {
+    font-size: 18px;
+}
+
+/* ======================================================= */
+/* כפתורי X בתוך SVG */
+/* ======================================================= */
 
 .svg-x-checkbox {
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
 
-    border: none;
+    border: 5px solid rgba(56, 82, 163, 0.35);
     outline: none;
-    background: transparent;
 
+    background: rgba(255, 255, 255, 0.692);
     color: #000;
-    font-family: "Fredoka";
-    font-size: 3.5rem;
-    font-weight: 400;
+
+    font-family: Arial, sans-serif;
+    font-size: 45px;
+    font-weight: 700;
     line-height: 1;
 
     display: flex;
@@ -227,49 +349,124 @@
 
     cursor: pointer;
     padding: 0;
+    border-radius: 6px;
+
     pointer-events: auto;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
 }
 
 .svg-x-checkbox:hover {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 247, 205, 0.86);
+    border-color: rgba(56, 82, 163, 0.75);
+    box-shadow: 0 0 0 2px rgba(56, 82, 163, 0.18);
 }
 
-.svg-report-input-personal-number {
-    font-size: 2rem;
-    letter-spacing: 40%;
-    text-align: left;
-    background-color: rgba(255, 255, 255, 0.664);
+.svg-x-checkbox:focus-visible {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: #3852A3;
+    box-shadow:
+        0 0 0 3px rgba(56, 82, 163, 0.28),
+        0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
-.svg-report-input-small {
-    font-size: 2rem;
-    text-align: right;
-    background-color: rgba(255, 255, 255, 0.664);
-    font-family: "Fredoka";
-}
+
+
+/* ======================================================= */
+/* התיקון לדרופדאון בתוך SVG */
+/* ======================================================= */
 
 .svg-report-select {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 
-    border: none;
+    border: 5px solid rgba(56, 82, 163, 0.28);
     outline: none;
-    background: transparent;
 
-    color: #002446;
-    font-family: "Fredoka";
-    font-size: 180%;
+    background: rgba(255, 255, 255, 0.904);
+    /* color: #002446; */
+    color: #000;
+
+    font-family: "Fredoka", Arial, sans-serif;
+    /* 1. הטקסט הראשי שמוצג בטופס נשאר גדול ויפה */
+    font-size: 32px; 
+    line-height: 1;
+
     text-align: center;
     direction: rtl;
 
     cursor: pointer;
-    padding: 0;
+    padding: 0 4px;
+    border-radius: 6px;
     pointer-events: auto;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
 }
 
-.svg-report-select:focus {
-    background: rgba(255, 255, 255, 0.55);
-    outline: 1px solid rgba(33, 74, 191, 0.35);
-    border-radius: 0.2rem;
+/* 2. התיקון הקריטי: מחזירים רק את האפשרויות שבתוך התפריט לגודל קטן */
+.svg-report-select option {
+    font-size: 14px !important;
+    background-color: #ffffff; /* מונע שקיפויות מוזרות בדפדפנים מסוימים */
+    /* color: #002446; */
+    color: #000;
+}
+
+.sign-input {
+    background-color: none;
+    border: 5px solid rgba(56, 82, 163, 0.28);
+
+}
+
+.sign-input:hover {
+    background: rgba(255, 247, 205, 0.86);
+    border-color: rgba(56, 82, 163, 0.75);
+    box-shadow: 0 0 0 2px rgba(56, 82, 163, 0.18);
+}
+
+
+/* ======================================================= */
+/* קלאס ייעודי לחתימה בתוך SVG */
+/* ======================================================= */
+
+.svg-sign-clickable {
+    /* עיצוב התחלתי - המלבן מציג מסגרת ורקע בהיר */
+    fill: rgba(56, 82, 163, 0.05);
+    stroke: rgba(56, 82, 163, 0.28);
+    stroke-width: 5px;
+    rx: 6px; /* מעגל פינות ב-SVG */
+    ry: 6px;
+
+    cursor: pointer;
+    pointer-events: auto;
+    
+    transition: 
+        fill 0.18s ease, 
+        stroke-color 0.18s ease, 
+        filter 0.18s ease;
+}
+
+/* אפקט הובר כשעומדים על אזור החתימה */
+.svg-sign-clickable:hover {
+    fill: rgba(255, 247, 205, 0.82);
+    stroke: rgba(56, 82, 163, 0.65);
+}
+
+/* מצב מיוחד כאשר החתימה כבר קיימת - מעלימים את הרקע והבורדר */
+.svg-sign-clickable.is-signed {
+    fill: transparent;
+    stroke: transparent;
+}
+
+/* עיצוב תמונת החתימה עצמה */
+.svg-sign-image {
+    pointer-events: none;
+    opacity: 1;
+    filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.18));
 }
