@@ -470,3 +470,82 @@
     opacity: 1;
     filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.18));
 }
+
+/* ======================================================= */
+/* בדיקה SVG */
+/* ======================================================= */
+
+/* מצבי בדיקה פסטליים לשדות בתוך ה-SVG */
+.svg-report-input.validation-correct,
+.svg-report-select.validation-correct,
+.svg-x-checkbox.validation-correct,
+.svg-sign-clickable.validation-correct {
+    background-color: #e2f5e7 !important; /* ירוק פסטל */
+    border-color: #a3cfbb !important;
+}
+
+.svg-report-input.validation-incorrect,
+.svg-report-select.validation-incorrect,
+.svg-x-checkbox.validation-incorrect,
+.svg-sign-clickable.validation-incorrect {
+    background-color: #fce8e6 !important; /* אדום פסטל */
+    border-color: #f5c2c7 !important;
+}
+
+.svg-report-input.validation-skipped,
+.svg-report-select.validation-skipped,
+.svg-x-checkbox.validation-skipped,
+.svg-sign-clickable.validation-skipped {
+    background-color: #f0f4f8 !important; /* תכלת-אפור בהיר (לא נבדק) */
+    border-color: #d0d7de !important;
+}
+
+/* קונטיינר הפידבק והכפתור בתחתית */
+.validation-footer-container {
+    position: fixed;
+    bottom: 3rem;
+    left: 12.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    z-index: 30;
+  }
+  
+  /* טקסט מונה הבדיקות */
+  .validation-count-text {
+    font-family: "Fredoka", Arial, sans-serif;
+    font-size: 15px;
+    color: #cfcece;
+  }
+  
+  /* כפתור הבדיקה הראשי */
+  .validation-submit-btn {
+    padding: 0.6rem 1.6rem;
+    font-family: "Fredoka", Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    transition: all 0.2s ease;
+    
+    /* ברירת מחדל כשהכפתור מאופשר ומלא */
+    background-color: #4f73ff;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(79, 115, 255, 0.35);
+  }
+  
+  /* אפקט ריחופ קל כשהכפתור פעיל */
+  .validation-submit-btn:not(:disabled):hover {
+    background-color: #3b5cd6;
+    transform: translateY(-1px);
+  }
+  
+  /* מצב שבו הכפתור חסום (הטופס לא מלא) */
+  .validation-submit-btn:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }

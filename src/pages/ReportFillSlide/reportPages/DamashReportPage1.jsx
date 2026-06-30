@@ -3,8 +3,12 @@ import damashReportImage from "../../../assets/דוח-דמש.png";
 import noasHatima from "../../../../public/Noas-hatima.svg";
 import ronisHatima from "../../../../public/Ronis-hatima.svg";
 
-function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
-
+// function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
+function DamashReportPage1({
+  formValues,
+  updateField,
+  validationResults = {},
+}) {
   const renderNumberOptions = (from, to) => {
     return Array.from({ length: to - from + 1 }, (_, index) => {
       const value = from + index;
@@ -73,53 +77,29 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
           />
 
           {/* פרטי הנאשם - כפתורי סימון איקס */}
+
+          {/* אופציה 1 */}
           <rect
             className="cls-1"
             x="995.41"
             y="172.14"
             width="40.04"
             height="40.04"
+            style={{ pointerEvents: "none" }}
           />
-
-          <rect
-            className="cls-1"
-            x="869.41"
-            y="172.14"
-            width="40.04"
-            height="40.04"
-          />
-
-          <rect
-            className="cls-1"
-            x="740.49"
-            y="172.14"
-            width="40.04"
-            height="40.04"
-          />
-
-          <rect
-            className="cls-1"
-            x="595.9"
-            y="172.14"
-            width="40.04"
-            height="40.04"
-          />
-
-          <rect
-            className="cls-1"
-            x="432.72"
-            y="172.14"
-            width="40.04"
-            height="40.04"
-          />
-
           <foreignObject x="995.41" y="172.14" width="40.04" height="40.04">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.selectedViolation === "correct"
+                    ? "validation-correct"
+                    : validationResults.selectedViolation === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -133,13 +113,28 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             </div>
           </foreignObject>
 
+          {/* אופציה 2 */}
+          <rect
+            className="cls-1"
+            x="869.41"
+            y="172.14"
+            width="40.04"
+            height="40.04"
+            style={{ pointerEvents: "none" }}
+          />
           <foreignObject x="869.41" y="172.14" width="40.04" height="40.04">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.selectedViolation === "correct"
+                    ? "validation-correct"
+                    : validationResults.selectedViolation === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -153,13 +148,28 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             </div>
           </foreignObject>
 
+          {/* אופציה 3 */}
+          <rect
+            className="cls-1"
+            x="740.49"
+            y="172.14"
+            width="40.04"
+            height="40.04"
+            style={{ pointerEvents: "none" }}
+          />
           <foreignObject x="740.49" y="172.14" width="40.04" height="40.04">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.selectedViolation === "correct"
+                    ? "validation-correct"
+                    : validationResults.selectedViolation === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -173,13 +183,28 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             </div>
           </foreignObject>
 
+          {/* אופציה 4 */}
+          <rect
+            className="cls-1"
+            x="595.9"
+            y="172.14"
+            width="40.04"
+            height="40.04"
+            style={{ pointerEvents: "none" }}
+          />
           <foreignObject x="595.9" y="172.14" width="40.04" height="40.04">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.selectedViolation === "correct"
+                    ? "validation-correct"
+                    : validationResults.selectedViolation === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -193,13 +218,28 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             </div>
           </foreignObject>
 
+          {/* אופציה 5 */}
+          <rect
+            className="cls-1"
+            x="432.72"
+            y="172.14"
+            width="40.04"
+            height="40.04"
+            style={{ pointerEvents: "none" }}
+          />
           <foreignObject x="432.72" y="172.14" width="40.04" height="40.04">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.selectedViolation === "correct"
+                    ? "validation-correct"
+                    : validationResults.selectedViolation === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -220,15 +260,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="248.12"
             width="277.89"
             height="34.5"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="1143.39" y="248.12" width="277.89" height="34.5">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-personal-number"
+                className={`svg-report-input svg-report-input-personal-number ${
+                  validationResults.personalNumber === "correct"
+                    ? "validation-correct"
+                    : validationResults.personalNumber === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.personalNumber || ""}
@@ -247,15 +293,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="252.03"
             width="142.43"
             height="30.59"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="987.65" y="252.03" width="142.43" height="30.59">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-small"
+                className={`svg-report-input svg-report-input-small ${
+                  validationResults.rank === "correct"
+                    ? "validation-correct"
+                    : validationResults.rank === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 value={formValues.rank || ""}
                 onChange={(e) => updateField("rank", e.target.value)}
@@ -270,15 +322,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="250.07"
             width="231.65"
             height="30.59"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="744.26" y="250.07" width="231.65" height="30.59">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-small"
+                className={`svg-report-input svg-report-input-small ${
+                  validationResults.lastName === "correct"
+                    ? "validation-correct"
+                    : validationResults.lastName === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 value={formValues.lastName || ""}
                 onChange={(e) => updateField("lastName", e.target.value)}
@@ -293,15 +351,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="250.07"
             width="203.47"
             height="30.59"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="529.05" y="250.07" width="203.47" height="30.59">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-small"
+                className={`svg-report-input svg-report-input-small ${
+                  validationResults.firstName === "correct"
+                    ? "validation-correct"
+                    : validationResults.firstName === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 value={formValues.firstName || ""}
                 onChange={(e) => updateField("firstName", e.target.value)}
@@ -316,15 +380,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="250.07"
             width="171.39"
             height="30.59"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="346.7" y="250.07" width="171.39" height="30.59">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-small"
+                className={`svg-report-input svg-report-input-small ${
+                  validationResults.corps === "correct"
+                    ? "validation-correct"
+                    : validationResults.corps === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 value={formValues.corps || ""}
                 onChange={(e) => updateField("corps", e.target.value)}
@@ -339,15 +409,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="250.07"
             width="212.87"
             height="30.59"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="127.57" y="250.07" width="212.87" height="30.59">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-small"
+                className={`svg-report-input svg-report-input-small ${
+                  validationResults.unit === "correct"
+                    ? "validation-correct"
+                    : validationResults.unit === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.unit || ""}
@@ -366,15 +442,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="306.42"
             width="574.43"
             height="33.65"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="850.57" y="306.42" width="574.43" height="33.65">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-small"
+                className={`svg-report-input svg-report-input-small ${
+                  validationResults.address === "correct"
+                    ? "validation-correct"
+                    : validationResults.address === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 value={formValues.address || ""}
                 onChange={(e) => updateField("address", e.target.value)}
@@ -389,15 +471,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="306.42"
             width="360.65"
             height="33.65"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="473.48" y="306.42" width="360.65" height="33.65">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-personal-number"
+                className={`svg-report-input svg-report-input-personal-number ${
+                  validationResults.idNumber === "correct"
+                    ? "validation-correct"
+                    : validationResults.idNumber === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.idNumber || ""}
@@ -416,15 +504,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="309.55"
             width="334.04"
             height="30.52"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="127.57" y="306.42" width="334.04" height="33.65">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-small"
+                className={`svg-report-input svg-report-input-small ${
+                  validationResults.phoneNumber === "correct"
+                    ? "validation-correct"
+                    : validationResults.phoneNumber === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.phoneNumber || ""}
@@ -437,7 +531,6 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
           </foreignObject>
 
           {/* תאריך - דרופדאון מספרים */}
-
           <rect
             className="cls-1"
             x="619.44"
@@ -446,7 +539,6 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             height="49.57"
             style={{ pointerEvents: "none" }}
           />
-
           <rect
             className="cls-1"
             x="727.44"
@@ -455,7 +547,6 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             height="49.57"
             style={{ pointerEvents: "none" }}
           />
-
           <rect
             className="cls-1"
             x="835.96"
@@ -472,7 +563,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-input-host"
             >
               <select
-                className="svg-report-select"
+                className={`svg-report-select ${
+                  validationResults.eventDay === "correct"
+                    ? "validation-correct"
+                    : validationResults.eventDay === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 value={formValues.eventDay || ""}
                 onChange={(e) => updateField("eventDay", e.target.value)}
               >
@@ -489,7 +586,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-input-host"
             >
               <select
-                className="svg-report-select"
+                className={`svg-report-select ${
+                  validationResults.eventMonth === "correct"
+                    ? "validation-correct"
+                    : validationResults.eventMonth === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 value={formValues.eventMonth || ""}
                 onChange={(e) => updateField("eventMonth", e.target.value)}
               >
@@ -506,7 +609,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-input-host"
             >
               <select
-                className="svg-report-select"
+                className={`svg-report-select ${
+                  validationResults.eventYear === "correct"
+                    ? "validation-correct"
+                    : validationResults.eventYear === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 value={formValues.eventYear || ""}
                 onChange={(e) => updateField("eventYear", e.target.value)}
               >
@@ -523,15 +632,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="396.81"
             width="133.57"
             height="64.17"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="457.7" y="396.81" width="133.57" height="64.17">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <select
-                className="svg-report-select"
+                className={`svg-report-select ${
+                  validationResults.weekDay === "correct"
+                    ? "validation-correct"
+                    : validationResults.weekDay === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 value={formValues.weekDay || ""}
                 onChange={(e) => updateField("weekDay", e.target.value)}
               >
@@ -548,23 +663,31 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="396.81"
             width="99.13"
             height="49.57"
+            style={{ pointerEvents: "none" }}
           />
-
           <rect
             className="cls-1"
             x="145.17"
             y="396.81"
             width="99.13"
             height="49.57"
+            style={{ pointerEvents: "none" }}
           />
 
+          {/* דקה */}
           <foreignObject x="279.78" y="396.81" width="99.13" height="49.57">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <select
-                className="svg-report-select svg-report-select-time"
+                className={`svg-report-select svg-report-select-time ${
+                  validationResults.eventMinute === "correct"
+                    ? "validation-correct"
+                    : validationResults.eventMinute === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 value={formValues.eventMinute || ""}
                 onChange={(e) => updateField("eventMinute", e.target.value)}
               >
@@ -574,13 +697,20 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             </div>
           </foreignObject>
 
+          {/* שעה */}
           <foreignObject x="145.17" y="396.81" width="99.13" height="49.57">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <select
-                className="svg-report-select svg-report-select-time"
+                className={`svg-report-select svg-report-select-time ${
+                  validationResults.eventHour === "correct"
+                    ? "validation-correct"
+                    : validationResults.eventHour === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 value={formValues.eventHour || ""}
                 onChange={(e) => updateField("eventHour", e.target.value)}
               >
@@ -605,7 +735,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-textarea-host"
             >
               <textarea
-                className="svg-report-textarea"
+                className={`svg-report-textarea ${
+                  validationResults.offenseDescription === "correct"
+                    ? "validation-correct"
+                    : validationResults.offenseDescription === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 placeholder="פירוט תיאור העבירה..."
                 value={formValues.offenseDescription || ""}
                 onChange={(e) =>
@@ -630,7 +766,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-textarea-host"
             >
               <textarea
-                className="svg-report-textarea"
+                className={`svg-report-textarea ${
+                  validationResults.circumstances === "correct"
+                    ? "validation-correct"
+                    : validationResults.circumstances === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 placeholder="פירוט הנסיבות..."
                 value={formValues.circumstances || ""}
                 onChange={(e) => updateField("circumstances", e.target.value)}
@@ -653,7 +795,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-textarea-host"
             >
               <textarea
-                className="svg-report-textarea"
+                className={`svg-report-textarea ${
+                  validationResults.recipientResponse === "correct"
+                    ? "validation-correct"
+                    : validationResults.recipientResponse === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 placeholder="דברי מקבל הדו״ח..."
                 value={formValues.recipientResponse || ""}
                 onChange={(e) =>
@@ -671,9 +819,15 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               y="2150.03"
               width="192.74"
               height="70.38"
-              /* ה-Class משתנה דינמית בשביל להעלים את המסגרת כשיש חתימה */
+              /* ה-Class משתנה דינמית בשביל להעלים את המסגרת כשיש חתימה או להציג ולידציה */
               className={`svg-sign-clickable ${
                 formValues.isSigned ? "is-signed" : ""
+              } ${
+                validationResults.isSigned === "correct"
+                  ? "validation-correct"
+                  : validationResults.isSigned === "incorrect"
+                  ? "validation-incorrect"
+                  : ""
               }`}
               onClick={() => updateField("isSigned", true)}
             />
@@ -709,7 +863,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnit === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnit === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -738,7 +898,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnit === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnit === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -767,7 +933,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnit === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnit === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -790,7 +962,6 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             height="40.04"
             style={{ pointerEvents: "none" }}
           />
-
           {formValues.policeUnit === "unit3" && (
             <foreignObject x="248.02" y="1756.53" width="130.83" height="40.04">
               <div
@@ -799,7 +970,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               >
                 <input
                   type="text"
-                  className="svg-report-input svg-report-input-tiny"
+                  className={`svg-report-input svg-report-input-tiny ${
+                    validationResults.policeUnitOtherDetails === "correct"
+                      ? "validation-correct"
+                      : validationResults.policeUnitOtherDetails === "incorrect"
+                      ? "validation-incorrect"
+                      : ""
+                  }`}
                   placeholder="פירוט..."
                   value={formValues.policeUnitOtherDetails || ""}
                   onChange={(e) =>
@@ -825,7 +1002,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnit === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnit === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -854,7 +1037,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnit === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnit === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -869,7 +1058,6 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
           </foreignObject>
 
           {/* דרך מסירה - בחירה של איקס */}
-
           {/* אפשרות 1 */}
           <rect
             className="cls-1"
@@ -885,7 +1073,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.deliveryMethod === "correct"
+                    ? "validation-correct"
+                    : validationResults.deliveryMethod === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -914,7 +1108,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.deliveryMethod === "correct"
+                    ? "validation-correct"
+                    : validationResults.deliveryMethod === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -935,15 +1135,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             y="1776.56"
             width="182.48"
             height="40.04"
+            style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="975.85" y="1776.56" width="182.48" height="40.04">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className="svg-report-input svg-report-input-small"
+                className={`svg-report-input svg-report-input-small ${
+                  validationResults.base === "correct"
+                    ? "validation-correct"
+                    : validationResults.base === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="text"
                 value={formValues.base || ""}
                 onChange={(e) => updateField("base", e.target.value)}
@@ -968,7 +1174,14 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             >
               <input
                 type="text"
-                className="svg-report-input svg-report-input-personal-number"
+                className={`svg-report-input svg-report-input-personal-number ${
+                  validationResults.witnessOfficerPersonalNumber === "correct"
+                    ? "validation-correct"
+                    : validationResults.witnessOfficerPersonalNumber ===
+                      "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 placeholder="מספר אישי..."
                 value={formValues.witnessOfficerPersonalNumber || ""}
                 onChange={(e) =>
@@ -978,7 +1191,7 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             </div>
           </foreignObject>
 
-          {/* דרגה - השוטר (Dropdown) */}
+          {/* דרגה - השוטר טקסט */}
           <rect
             className="cls-1"
             x="695.02"
@@ -987,7 +1200,6 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             height="37.38"
             style={{ pointerEvents: "none" }}
           />
-
           <foreignObject x="695.02" y="2046.9" width="161.87" height="37.38">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
@@ -995,7 +1207,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             >
               <input
                 type="text"
-                className="svg-report-input svg-report-input-tiny"
+                className={`svg-report-input svg-report-input-tiny ${
+                  validationResults.witnessOfficerRank === "correct"
+                    ? "validation-correct"
+                    : validationResults.witnessOfficerRank === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 placeholder="דרגה..."
                 value={formValues.witnessOfficerRank || ""}
                 onChange={(e) =>
@@ -1004,28 +1222,6 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               />
             </div>
           </foreignObject>
-
-          {/* <foreignObject x="695.02" y="2046.9" width="161.87" height="37.38">
-            <div
-              xmlns="http://www.w3.org/1999/xhtml"
-              className="svg-select-host"
-            >
-              <select
-                className="svg-report-select svg-report-select-tiny"
-                value={formValues.witnessOfficerRank || ""}
-                onChange={(e) =>
-                  updateField("witnessOfficerRank", e.target.value)
-                }
-              >
-                <option value="">דרגה...</option>
-                <option value="רסל">רס"ל</option>
-                <option value="רסם">רס"מ</option>
-                <option value="רסב">רס"ב</option>
-                <option value="מפקח">מפקח</option>
-                <option value="פקד">פקד</option>
-              </select>
-            </div>
-          </foreignObject> */}
 
           {/* שם פרטי - השוטר */}
           <rect
@@ -1043,7 +1239,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             >
               <input
                 type="text"
-                className="svg-report-input svg-report-input-tiny"
+                className={`svg-report-input svg-report-input-tiny ${
+                  validationResults.witnessOfficerFirstName === "correct"
+                    ? "validation-correct"
+                    : validationResults.witnessOfficerFirstName === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 placeholder="שם פרטי..."
                 value={formValues.witnessOfficerFirstName || ""}
                 onChange={(e) =>
@@ -1069,7 +1271,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             >
               <input
                 type="text"
-                className="svg-report-input svg-report-input-tiny"
+                className={`svg-report-input svg-report-input-tiny ${
+                  validationResults.witnessOfficerFamilyName === "correct"
+                    ? "validation-correct"
+                    : validationResults.witnessOfficerFamilyName === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 placeholder="שם משפחה..."
                 value={formValues.witnessOfficerFamilyName || ""}
                 onChange={(e) =>
@@ -1086,18 +1294,21 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               y="2046.82"
               width="143.22"
               height="36.26"
-              /* משתמש בקלאס ה-CSS הייעודי שכתבנו לחתימות */
               className={`svg-sign-clickable ${
                 formValues.isOfficerWitnessSigned ? "is-signed" : ""
+              } ${
+                validationResults.isOfficerWitnessSigned === "correct"
+                  ? "validation-correct"
+                  : validationResults.isOfficerWitnessSigned === "incorrect"
+                  ? "validation-incorrect"
+                  : ""
               }`}
               onClick={() => updateField("isOfficerWitnessSigned", true)}
             />
 
             {formValues.isOfficerWitnessSigned && (
               <image
-                href={
-                  ronisHatima
-                } /* משתמש באותה חתימה, או קובץ חתימה אחר אם יש */
+                href={ronisHatima}
                 xlinkHref={ronisHatima}
                 x="129.72"
                 y="2046.82"
@@ -1109,7 +1320,7 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
             )}
           </g>
 
-          {/* יחידות השיטור - בחירת איקס) */}
+          {/* יחידות השיטור - בחירת איקס */}
           {/* אפשרות 1 */}
           <rect
             className="cls-1"
@@ -1125,7 +1336,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnitSection === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnitSection === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1156,7 +1373,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnitSection === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnitSection === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1187,7 +1410,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnitSection === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnitSection === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1218,7 +1447,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnitSection === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnitSection === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1249,7 +1484,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnitSection === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnitSection === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1280,7 +1521,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.policeUnitSection === "correct"
+                    ? "validation-correct"
+                    : validationResults.policeUnitSection === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1315,7 +1562,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.offenseLocationType === "correct"
+                    ? "validation-correct"
+                    : validationResults.offenseLocationType === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1352,7 +1605,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc1Field1 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc1Field1 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc1Field1 || ""}
                     onChange={(e) => updateField("loc1Field1", e.target.value)}
@@ -1380,7 +1639,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc1Field2 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc1Field2 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc1Field2 || ""}
                     onChange={(e) => updateField("loc1Field2", e.target.value)}
@@ -1403,7 +1668,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc1Field3 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc1Field3 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc1Field3 || ""}
                     onChange={(e) => updateField("loc1Field3", e.target.value)}
@@ -1426,7 +1697,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc1Field4 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc1Field4 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc1Field4 || ""}
                     onChange={(e) => updateField("loc1Field4", e.target.value)}
@@ -1453,7 +1730,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.offenseLocationType === "correct"
+                    ? "validation-correct"
+                    : validationResults.offenseLocationType === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1490,7 +1773,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc2Field1 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc2Field1 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc2Field1 || ""}
                     onChange={(e) => updateField("loc2Field1", e.target.value)}
@@ -1518,7 +1807,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc2Field2 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc2Field2 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc2Field2 || ""}
                     onChange={(e) => updateField("loc2Field2", e.target.value)}
@@ -1541,7 +1836,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc2Field3 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc2Field3 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc2Field3 || ""}
                     onChange={(e) => updateField("loc2Field3", e.target.value)}
@@ -1564,7 +1865,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc2Field4 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc2Field4 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc2Field4 || ""}
                     onChange={(e) => updateField("loc2Field4", e.target.value)}
@@ -1591,7 +1898,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.offenseLocationType === "correct"
+                    ? "validation-correct"
+                    : validationResults.offenseLocationType === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1628,7 +1941,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc3Field1 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc3Field1 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc3Field1 || ""}
                     onChange={(e) => updateField("loc3Field1", e.target.value)}
@@ -1656,7 +1975,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc3Field2 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc3Field2 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc3Field2 || ""}
                     onChange={(e) => updateField("loc3Field2", e.target.value)}
@@ -1684,7 +2009,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc3Field3 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc3Field3 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc3Field3 || ""}
                     onChange={(e) => updateField("loc3Field3", e.target.value)}
@@ -1711,7 +2042,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.offenseLocationType === "correct"
+                    ? "validation-correct"
+                    : validationResults.offenseLocationType === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1748,7 +2085,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc4Field1 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc4Field1 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc4Field1 || ""}
                     onChange={(e) => updateField("loc4Field1", e.target.value)}
@@ -1775,7 +2118,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
               className="svg-checkbox-host"
             >
               <button
-                className="svg-x-checkbox"
+                className={`svg-x-checkbox ${
+                  validationResults.offenseLocationType === "correct"
+                    ? "validation-correct"
+                    : validationResults.offenseLocationType === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1812,7 +2161,13 @@ function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
                 >
                   <input
                     type="text"
-                    className="svg-report-input svg-report-input-tiny"
+                    className={`svg-report-input svg-report-input-tiny ${
+                      validationResults.loc5Field1 === "correct"
+                        ? "validation-correct"
+                        : validationResults.loc5Field1 === "incorrect"
+                        ? "validation-incorrect"
+                        : ""
+                    }`}
                     placeholder="..."
                     value={formValues.loc5Field1 || ""}
                     onChange={(e) => updateField("loc5Field1", e.target.value)}
