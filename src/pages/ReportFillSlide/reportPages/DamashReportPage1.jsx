@@ -107,6 +107,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option1" ? "" : "option1"
                   )
                 }
+                disabled={validationResults.selectedViolation === "correct"}
               >
                 {formValues.selectedViolation === "option1" ? "×" : ""}
               </button>
@@ -142,6 +143,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option2" ? "" : "option2"
                   )
                 }
+                disabled={validationResults.selectedViolation === "correct"}
               >
                 {formValues.selectedViolation === "option2" ? "×" : ""}
               </button>
@@ -177,6 +179,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option3" ? "" : "option3"
                   )
                 }
+                disabled={validationResults.selectedViolation === "correct"}
               >
                 {formValues.selectedViolation === "option3" ? "×" : ""}
               </button>
@@ -212,6 +215,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option4" ? "" : "option4"
                   )
                 }
+                disabled={validationResults.selectedViolation === "correct"}
               >
                 {formValues.selectedViolation === "option4" ? "×" : ""}
               </button>
@@ -247,6 +251,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option5" ? "" : "option5"
                   )
                 }
+                disabled={validationResults.selectedViolation === "correct"}
               >
                 {formValues.selectedViolation === "option5" ? "×" : ""}
               </button>
@@ -282,6 +287,7 @@ function DamashReportPage1({
                   const onlyNumbers = e.target.value.replace(/\D/g, "");
                   updateField("personalNumber", onlyNumbers);
                 }}
+                disabled={validationResults.personalNumber === "correct"}
               />
             </div>
           </foreignObject>
@@ -311,6 +317,7 @@ function DamashReportPage1({
                 type="text"
                 value={formValues.rank || ""}
                 onChange={(e) => updateField("rank", e.target.value)}
+                disabled={validationResults.rank === "correct"}
               />
             </div>
           </foreignObject>
@@ -340,6 +347,7 @@ function DamashReportPage1({
                 type="text"
                 value={formValues.lastName || ""}
                 onChange={(e) => updateField("lastName", e.target.value)}
+                disabled={validationResults.lastName === "correct"}
               />
             </div>
           </foreignObject>
@@ -369,6 +377,7 @@ function DamashReportPage1({
                 type="text"
                 value={formValues.firstName || ""}
                 onChange={(e) => updateField("firstName", e.target.value)}
+                disabled={validationResults.firstName === "correct"}
               />
             </div>
           </foreignObject>
@@ -398,6 +407,7 @@ function DamashReportPage1({
                 type="text"
                 value={formValues.corps || ""}
                 onChange={(e) => updateField("corps", e.target.value)}
+                disabled={validationResults.corps === "correct"}
               />
             </div>
           </foreignObject>
@@ -431,6 +441,7 @@ function DamashReportPage1({
                   const onlyNumbers = e.target.value.replace(/\D/g, "");
                   updateField("unit", onlyNumbers);
                 }}
+                disabled={validationResults.unit === "correct"}
               />
             </div>
           </foreignObject>
@@ -460,6 +471,7 @@ function DamashReportPage1({
                 type="text"
                 value={formValues.address || ""}
                 onChange={(e) => updateField("address", e.target.value)}
+                disabled={validationResults.address === "correct"}
               />
             </div>
           </foreignObject>
@@ -493,6 +505,7 @@ function DamashReportPage1({
                   const onlyNumbers = e.target.value.replace(/\D/g, "");
                   updateField("idNumber", onlyNumbers);
                 }}
+                disabled={validationResults.idNumber === "correct"}
               />
             </div>
           </foreignObject>
@@ -526,6 +539,7 @@ function DamashReportPage1({
                   const onlyNumbers = e.target.value.replace(/\D/g, "");
                   updateField("phoneNumber", onlyNumbers);
                 }}
+                disabled={validationResults.phoneNumber === "correct"}
               />
             </div>
           </foreignObject>
@@ -572,6 +586,7 @@ function DamashReportPage1({
                 }`}
                 value={formValues.eventDay || ""}
                 onChange={(e) => updateField("eventDay", e.target.value)}
+                disabled={validationResults.eventDay === "correct"}
               >
                 <option value="">יום</option>
                 {renderNumberOptions(1, 31)}
@@ -595,6 +610,7 @@ function DamashReportPage1({
                 }`}
                 value={formValues.eventMonth || ""}
                 onChange={(e) => updateField("eventMonth", e.target.value)}
+                disabled={validationResults.eventMonth === "correct"}
               >
                 <option value="">חודש</option>
                 {renderNumberOptions(1, 12)}
@@ -618,6 +634,7 @@ function DamashReportPage1({
                 }`}
                 value={formValues.eventYear || ""}
                 onChange={(e) => updateField("eventYear", e.target.value)}
+                disabled={validationResults.eventYear === "correct"}
               >
                 <option value="">שנה</option>
                 {renderNumberOptions(2020, 2026)}
@@ -649,6 +666,7 @@ function DamashReportPage1({
                 }`}
                 value={formValues.weekDay || ""}
                 onChange={(e) => updateField("weekDay", e.target.value)}
+                disabled={validationResults.weekDay === "correct"}
               >
                 <option value="">יום</option>
                 {renderOptions(weekDays)}
@@ -690,6 +708,7 @@ function DamashReportPage1({
                 }`}
                 value={formValues.eventMinute || ""}
                 onChange={(e) => updateField("eventMinute", e.target.value)}
+                disabled={validationResults.eventMinute === "correct"}
               >
                 <option value="">דקה</option>
                 {renderOptions(minuteOptions)}
@@ -713,6 +732,7 @@ function DamashReportPage1({
                 }`}
                 value={formValues.eventHour || ""}
                 onChange={(e) => updateField("eventHour", e.target.value)}
+                disabled={validationResults.eventHour === "correct"}
               >
                 <option value="">שעה</option>
                 {renderOptions(hourOptions)}
@@ -747,6 +767,7 @@ function DamashReportPage1({
                 onChange={(e) =>
                   updateField("offenseDescription", e.target.value)
                 }
+                // disabled={validationResults.offenseDescription === "correct"}
               />
             </div>
           </foreignObject>
@@ -877,6 +898,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit1" ? "" : "unit1"
                   )
                 }
+                disabled={validationResults.policeUnit === "correct"}
               >
                 {formValues.policeUnit === "unit1" ? "×" : ""}
               </button>
@@ -912,6 +934,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit2" ? "" : "unit2"
                   )
                 }
+                disabled={validationResults.policeUnit === "correct"}
               >
                 {formValues.policeUnit === "unit2" ? "×" : ""}
               </button>
@@ -947,6 +970,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit3" ? "" : "unit3"
                   )
                 }
+                disabled={validationResults.policeUnit === "correct"}
               >
                 {formValues.policeUnit === "unit3" ? "×" : ""}
               </button>
@@ -982,6 +1006,9 @@ function DamashReportPage1({
                   onChange={(e) =>
                     updateField("policeUnitOtherDetails", e.target.value)
                   }
+                  disabled={
+                    validationResults.policeUnitOtherDetails === "correct"
+                  }
                 />
               </div>
             </foreignObject>
@@ -1016,6 +1043,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit4" ? "" : "unit4"
                   )
                 }
+                disabled={validationResults.policeUnit === "correct"}
               >
                 {formValues.policeUnit === "unit4" ? "×" : ""}
               </button>
@@ -1051,6 +1079,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit5" ? "" : "unit5"
                   )
                 }
+                disabled={validationResults.policeUnit === "correct"}
               >
                 {formValues.policeUnit === "unit5" ? "×" : ""}
               </button>
@@ -1087,6 +1116,7 @@ function DamashReportPage1({
                     formValues.deliveryMethod === "method1" ? "" : "method1"
                   )
                 }
+                disabled={validationResults.deliveryMethod === "correct"}
               >
                 {formValues.deliveryMethod === "method1" ? "×" : ""}
               </button>
@@ -1122,6 +1152,7 @@ function DamashReportPage1({
                     formValues.deliveryMethod === "method2" ? "" : "method2"
                   )
                 }
+                disabled={validationResults.deliveryMethod === "correct"}
               >
                 {formValues.deliveryMethod === "method2" ? "×" : ""}
               </button>
@@ -1153,6 +1184,7 @@ function DamashReportPage1({
                 type="text"
                 value={formValues.base || ""}
                 onChange={(e) => updateField("base", e.target.value)}
+                disabled={validationResults.base === "correct"}
               />
             </div>
           </foreignObject>
@@ -1187,6 +1219,9 @@ function DamashReportPage1({
                 onChange={(e) =>
                   updateField("witnessOfficerPersonalNumber", e.target.value)
                 }
+                disabled={
+                  validationResults.witnessOfficerPersonalNumber === "correct"
+                }
               />
             </div>
           </foreignObject>
@@ -1219,6 +1254,7 @@ function DamashReportPage1({
                 onChange={(e) =>
                   updateField("witnessOfficerRank", e.target.value)
                 }
+                disabled={validationResults.witnessOfficerRank === "correct"}
               />
             </div>
           </foreignObject>
@@ -1251,6 +1287,9 @@ function DamashReportPage1({
                 onChange={(e) =>
                   updateField("witnessOfficerFirstName", e.target.value)
                 }
+                disabled={
+                  validationResults.witnessOfficerFirstName === "correct"
+                }
               />
             </div>
           </foreignObject>
@@ -1282,6 +1321,9 @@ function DamashReportPage1({
                 value={formValues.witnessOfficerFamilyName || ""}
                 onChange={(e) =>
                   updateField("witnessOfficerFamilyName", e.target.value)
+                }
+                disabled={
+                  validationResults.witnessOfficerFamilyName === "correct"
                 }
               />
             </div>
@@ -1352,6 +1394,7 @@ function DamashReportPage1({
                       : "section1"
                   )
                 }
+                disabled={validationResults.policeUnitSection === "correct"}
               >
                 {formValues.policeUnitSection === "section1" ? "×" : ""}
               </button>
@@ -1389,6 +1432,7 @@ function DamashReportPage1({
                       : "section2"
                   )
                 }
+                disabled={validationResults.policeUnitSection === "correct"}
               >
                 {formValues.policeUnitSection === "section2" ? "×" : ""}
               </button>
@@ -1426,6 +1470,7 @@ function DamashReportPage1({
                       : "section3"
                   )
                 }
+                disabled={validationResults.policeUnitSection === "correct"}
               >
                 {formValues.policeUnitSection === "section3" ? "×" : ""}
               </button>
@@ -1463,6 +1508,7 @@ function DamashReportPage1({
                       : "section4"
                   )
                 }
+                disabled={validationResults.policeUnitSection === "correct"}
               >
                 {formValues.policeUnitSection === "section4" ? "×" : ""}
               </button>
@@ -1500,6 +1546,7 @@ function DamashReportPage1({
                       : "section5"
                   )
                 }
+                disabled={validationResults.policeUnitSection === "correct"}
               >
                 {formValues.policeUnitSection === "section5" ? "×" : ""}
               </button>
@@ -1537,6 +1584,7 @@ function DamashReportPage1({
                       : "section6"
                   )
                 }
+                disabled={validationResults.policeUnitSection === "correct"}
               >
                 {formValues.policeUnitSection === "section6" ? "×" : ""}
               </button>
@@ -1576,6 +1624,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc1" ? "" : "loc1"
                   )
                 }
+                disabled={validationResults.offenseLocationType === "correct"}
               >
                 {formValues.offenseLocationType === "loc1" ? "×" : ""}
               </button>
@@ -1615,6 +1664,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc1Field1 || ""}
                     onChange={(e) => updateField("loc1Field1", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -1649,6 +1701,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc1Field2 || ""}
                     onChange={(e) => updateField("loc1Field2", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -1678,6 +1733,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc1Field3 || ""}
                     onChange={(e) => updateField("loc1Field3", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -1707,6 +1765,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc1Field4 || ""}
                     onChange={(e) => updateField("loc1Field4", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -1744,6 +1805,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc2" ? "" : "loc2"
                   )
                 }
+                disabled={validationResults.offenseLocationType === "correct"}
               >
                 {formValues.offenseLocationType === "loc2" ? "×" : ""}
               </button>
@@ -1783,6 +1845,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc2Field1 || ""}
                     onChange={(e) => updateField("loc2Field1", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -1817,6 +1882,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc2Field2 || ""}
                     onChange={(e) => updateField("loc2Field2", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -1846,6 +1914,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc2Field3 || ""}
                     onChange={(e) => updateField("loc2Field3", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -1875,6 +1946,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc2Field4 || ""}
                     onChange={(e) => updateField("loc2Field4", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -1912,6 +1986,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc3" ? "" : "loc3"
                   )
                 }
+                disabled={validationResults.offenseLocationType === "correct"}
               >
                 {formValues.offenseLocationType === "loc3" ? "×" : ""}
               </button>
@@ -1951,6 +2026,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc3Field1 || ""}
                     onChange={(e) => updateField("loc3Field1", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -1985,6 +2063,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc3Field2 || ""}
                     onChange={(e) => updateField("loc3Field2", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -2019,6 +2100,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc3Field3 || ""}
                     onChange={(e) => updateField("loc3Field3", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -2056,6 +2140,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc4" ? "" : "loc4"
                   )
                 }
+                disabled={validationResults.offenseLocationType === "correct"}
               >
                 {formValues.offenseLocationType === "loc4" ? "×" : ""}
               </button>
@@ -2095,6 +2180,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc4Field1 || ""}
                     onChange={(e) => updateField("loc4Field1", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>
@@ -2132,6 +2220,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc5" ? "" : "loc5"
                   )
                 }
+                disabled={validationResults.offenseLocationType === "correct"}
               >
                 {formValues.offenseLocationType === "loc5" ? "×" : ""}
               </button>
@@ -2171,6 +2260,9 @@ function DamashReportPage1({
                     placeholder="..."
                     value={formValues.loc5Field1 || ""}
                     onChange={(e) => updateField("loc5Field1", e.target.value)}
+                    disabled={
+                      validationResults.offenseLocationType === "correct"
+                    }
                   />
                 </div>
               </foreignObject>

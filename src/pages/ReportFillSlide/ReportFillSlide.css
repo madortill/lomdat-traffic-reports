@@ -101,7 +101,7 @@
 
 .report-page-dots {
     position: fixed;
-    bottom: 3rem;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
 
@@ -201,15 +201,19 @@
         0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
+/* מספר אישי / תעודת זהות / שדות מספריים ארוכים */
+.svg-report-input-personal-number {
+    font-size: 33px;
+    letter-spacing: 1px;
+}
+
 /* שדות טקסט קטנים */
 .svg-report-input-small {
     font-size: 33px;
 }
 
-/* מספר אישי / תעודת זהות / שדות מספריים ארוכים */
-.svg-report-input-personal-number {
-    font-size: 33px;
-    letter-spacing: 1px;
+.svg-report-input-small-beidatz {
+    font-size: 40px;
 }
 
 /* שדות ממש צפופים */
@@ -482,6 +486,7 @@
 .svg-sign-clickable.validation-correct {
     background-color: #e2f5e7 !important; /* ירוק פסטל */
     border-color: #a3cfbb !important;
+    cursor:default;
 }
 
 .svg-report-input.validation-incorrect,
@@ -548,4 +553,39 @@
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
+  }
+
+  /* עטיפה לכפתור כדי שהמיקום היחסי יעבוד */
+.validation-btn-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* עיצוב כפתור הבדיקה כשהוא מושלם */
+  .validation-submit-btn.all-correct {
+    background-color: #e2f0d9 !important; /* צבע רקע ירוק בהיר מאוד ועדין */
+    color: #385723 !important; /* טקסט ירוק כהה */
+    border: 1px solid #385723 !important;
+    cursor: not-allowed;
+    opacity: 0.9;
+  }
+  
+  /* ה-Badge העגול עם ה-וי הלבן בפינה הימנית העליונה */
+  .success-badge-checkmark {
+    position: absolute;
+    top: -10px; /* מושך את העיגול קצת למעלה מהכפתור */
+    right: -10px; /* מושך את העיגול ימינה מעבר לגבולות הכפתור */
+    width: 22px;
+    height: 22px;
+    background-color: #2e7d32; /* ירוק חזק וברור */
+    color: white;
+    border-radius: 50%; /* הופך את זה לעיגול מושלם */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* צל קטן כדי לתת לזה עומק */
+    z-index: 10;
+    pointer-events: none; /* שלא יפריע פיזית לקליקים */
   }
