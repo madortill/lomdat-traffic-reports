@@ -4,6 +4,7 @@ import FamilyName from "../../../assets/אשר-לוי.png";
 import FirstName from "../../../assets/שיר.png";
 import shirsHatima from "../../../assets/shirs-hatima.png";
 import beidatzPaper from "../../../assets/בידצ1.jpg";
+import danisHatima from "../../../assets/danis-hatima.png";
 
 function BeidatzReportPage1({
   formValues,
@@ -1484,7 +1485,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc1Field1 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc1Field1 === "incorrect"
@@ -1521,7 +1522,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc1Field2 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc1Field2 === "incorrect"
@@ -1558,7 +1559,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc1Field3 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc1Field3 === "incorrect"
@@ -1590,7 +1591,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc1Field4 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc1Field4 === "incorrect"
@@ -1675,7 +1676,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc2Field1 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc2Field1 === "incorrect"
@@ -1712,7 +1713,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc2Field2 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc2Field2 === "incorrect"
@@ -1749,7 +1750,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc2Field3 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc2Field3 === "incorrect"
@@ -1786,7 +1787,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc2Field4 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc2Field4 === "incorrect"
@@ -1865,7 +1866,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc3Field1 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc3Field1 === "incorrect"
@@ -1897,7 +1898,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc3Field2 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc3Field2 === "incorrect"
@@ -1934,7 +1935,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc3Field3 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc3Field3 === "incorrect"
@@ -2016,7 +2017,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc4Field1 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc4Field1 === "incorrect"
@@ -2098,7 +2099,7 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-tiny ${
+                    className={`svg-report-input svg-report-input-small-beidatz ${
                       validationResults.beidatzLoc5Field1 === "correct"
                         ? "validation-correct"
                         : validationResults.beidatzLoc5Field1 === "incorrect"
@@ -2125,14 +2126,62 @@ function BeidatzReportPage1({
             height="51.93"
           />
 
-{/* מספר אישי השוטר - טקסט מספרים */}
-<rect
+          <foreignObject x="1333.59" y="1840.11" width="257.45" height="51.93">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${
+                  validationResults.beidatzBase === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzBase === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                type="text"
+                value={formValues.beidatzBase || ""}
+                onChange={(e) => updateField("beidatzBase", e.target.value)}
+                disabled={validationResults.beidatzBase === "correct"}
+              />
+            </div>
+          </foreignObject>
+
+          {/* מספר אישי השוטר - טקסט מספרים */}
+          <rect
             className="cls-1"
             x="1170.28"
             y="2046.54"
             width="332.61"
             height="51.93"
           />
+
+          <foreignObject x="1170.28" y="2046.549" width="332.61" height="51.93">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                type="text"
+                className={`svg-report-input svg-report-input-personal-number svg-report-input-small-beidatz ${
+                  validationResults.beidatzOfficerPersonalNumber === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzOfficerPersonalNumber ===
+                      "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                placeholder="מספר אישי..."
+                value={formValues.beidatzOfficerPersonalNumber || ""}
+                onChange={(e) =>
+                  updateField("beidatzOfficerPersonalNumber", e.target.value)
+                }
+                disabled={
+                  validationResults.beidatzOfficerPersonalNumber === "correct"
+                }
+              />
+            </div>
+          </foreignObject>
 
           {/* דרגה השוטר - טקסט */}
           <rect
@@ -2143,6 +2192,30 @@ function BeidatzReportPage1({
             height="51.93"
           />
 
+          <foreignObject x="847.07" y="2046.54" width="313.61" height="51.93">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                type="text"
+                className={`svg-report-input svg-report-input-small-beidatz ${
+                  validationResults.beidatzOfficerRank === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzOfficerRank === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                placeholder="דרגה..."
+                value={formValues.beidatzOfficerRank || ""}
+                onChange={(e) =>
+                  updateField("beidatzOfficerRank", e.target.value)
+                }
+                disabled={validationResults.beidatzOfficerRank === "correct"}
+              />
+            </div>
+          </foreignObject>
+
           {/* שם משפחה השוטר - טקסט */}
           <rect
             className="cls-1"
@@ -2151,6 +2224,32 @@ function BeidatzReportPage1({
             width="284.65"
             height="51.93"
           />
+
+          <foreignObject x="553.2" y="2046.54" width="284.65" height="51.93">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                type="text"
+                className={`svg-report-input svg-report-input-small-beidatz ${
+                  validationResults.beidatzOfficerFamilyName === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzOfficerFamilyName === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                placeholder="שם משפחה..."
+                value={formValues.beidatzOfficerFamilyName || ""}
+                onChange={(e) =>
+                  updateField("beidatzOfficerFamilyName", e.target.value)
+                }
+                disabled={
+                  validationResults.beidatzOfficerFamilyName === "correct"
+                }
+              />
+            </div>
+          </foreignObject>
 
           {/* שם פרטי השוטר - הטקסט */}
           <rect
@@ -2161,76 +2260,381 @@ function BeidatzReportPage1({
             height="51.93"
           />
 
+          <foreignObject x="355.98" y="2045.54" width="192.26" height="51.93">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                type="text"
+                className={`svg-report-input svg-report-input-small-beidatz ${
+                  validationResults.beidatzOfficerFirstName === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzOfficerFirstName === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                placeholder="שם פרטי..."
+                value={formValues.beidatzOfficerFirstName || ""}
+                onChange={(e) =>
+                  updateField("beidatzOfficerFirstName", e.target.value)
+                }
+                disabled={
+                  validationResults.beidatzOfficerFirstName === "correct"
+                }
+              />
+            </div>
+          </foreignObject>
+
           {/* חתימה השוטר - תמונה */}
-          <rect
-            className="cls-1"
-            x="145.85"
-            y="2044.54"
-            width="204"
-            height="51.93"
-          />
+          <g>
+            <rect
+              x="145.85"
+              y="2044.54"
+              width="204"
+              height="51.93"
+              className={`cls-1 svg-sign-clickable ${
+                formValues.isOfficerWitnessSignedBeidatz ? "is-signed" : ""
+              } ${
+                validationResults.isOfficerWitnessSignedBeidatz === "correct"
+                  ? "validation-correct"
+                  : validationResults.isOfficerWitnessSignedBeidatz ===
+                    "incorrect"
+                  ? "validation-incorrect"
+                  : ""
+              }`}
+              onClick={() => updateField("isOfficerWitnessSignedBeidatz", true)}
+            />
 
-          {/* ======================================================================================== */}
+            {formValues.isOfficerWitnessSignedBeidatz && (
+              <image
+                href={danisHatima}
+                xlinkHref={danisHatima}
+                // משחקים עם המיקום והגודל של התמונה כדי לתת לה "לנשום" מחוץ ל-rect
+                x="135.85"
+                y="2030.54"
+                width="225"
+                height="80"
+                // שומר על הפרופורציות המקוריות של החתימה, ומגדיל אותה למקסימום האפשרי בתוך הריבוע הוירטואלי החדש
+                preserveAspectRatio="xMidYMid meet"
+                style={{ pointerEvents: "none" }}
+                className="svg-sign-image"
+              />
+            )}
+          </g>
 
-          <rect
-            className="cls-1"
-            x="1116.18"
-            y="862.5"
-            width="410.12"
-            height="67.33"
-          />
-          <rect
-            className="cls-1"
-            x="1246.49"
-            y="970.63"
-            width="435.82"
-            height="51.93"
-          />
+          {/* === מספר רישיון - טקסט מספרים === */}
+<rect
+  className="cls-1"
+  x="1116.18"
+  y="862.5"
+  width="410.12"
+  height="67.33"
+  style={{ pointerEvents: "none" }}
+/>
+<foreignObject x="1116.18" y="862.5" width="410.12" height="67.33">
+  <div xmlns="http://www.w3.org/1999/xhtml" className="svg-input-host">
+    <input
+      type="text"
+      inputMode="numeric"
+      pattern="[0-9]*"
+      className={`svg-report-input svg-report-input-small-beidatz ${
+        validationResults.beidatzLicenseNumber === "correct"
+          ? "validation-correct"
+          : validationResults.beidatzLicenseNumber === "incorrect"
+          ? "validation-incorrect"
+          : ""
+      }`}
+      placeholder="מספר רישיון..."
+      value={formValues.beidatzLicenseNumber || ""}
+      // מאפשר הקלדת ספרות בלבד
+      onChange={(e) => updateField("beidatzLicenseNumber", e.target.value.replace(/\D/g, ""))}
+      disabled={validationResults.beidatzLicenseNumber === "correct"}
+    />
+  </div>
+</foreignObject>
 
-          <rect
-            className="cls-1"
-            x="341.58"
-            y="949.24"
-            width="352.95"
-            height="76.24"
-          />
-
-          <rect
-            className="cls-1"
-            x="488.32"
-            y="855.33"
-            width="188.21"
-            height="76.24"
-          />
-          <rect
-            className="cls-1"
-            x="148.66"
-            y="855.33"
-            width="230.86"
-            height="76.24"
-          />
-          <rect
-            className="cls-1"
-            x="148.66"
-            y="955.5"
-            width="100.06"
-            height="69.98"
-          />
+          {/* === רישיון בתוקף? - סימון בעיגול (כן/לא) === */}
+          {/* אופציה: כן */}
           <rect
             className="cls-1"
             x="955.91"
             y="880.33"
             width="45.39"
             height="39.13"
+            style={{ pointerEvents: "none", opacity: 0 }}
           />
+          <foreignObject x="935.91" y="865.33" width="100" height="70">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-checkbox-host"
+              style={{ width: "100%", height: "100%" }}
+            >
+              <button
+                className={`svg-circle-checkbox ${
+                  validationResults.beidatzIsLicenseValid === "correct"
+                    ? "validation-correct"
+                    : ""
+                }`}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  cursor: "pointer",
+                  background: "transparent",
+                  // יצירת עיגול שמקיף את המילה כשזה נבחר (בחירה ב-"yes")
+                  border:
+                    formValues.beidatzIsLicenseValid === "yes"
+                      ? "3px solid black"
+                      : "none",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxSizing: "border-box",
+                }}
+                type="button"
+                onClick={() =>
+                  updateField(
+                    "beidatzIsLicenseValid",
+                    formValues.beidatzIsLicenseValid === "yes" ? "" : "yes"
+                  )
+                }
+                disabled={validationResults.beidatzIsLicenseValid === "correct"}
+              />
+            </div>
+          </foreignObject>
+
+          {/* אופציה: לא */}
           <rect
             className="cls-1"
             x="892.23"
             y="880.37"
             width="45.39"
             height="39.13"
+            style={{ pointerEvents: "none", opacity: 0 }}
           />
+          <foreignObject x="855.23" y="865.37" width="100" height="70">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-checkbox-host"
+              style={{ width: "100%", height: "100%" }}
+            >
+              <button
+                className={`svg-circle-checkbox ${
+                  validationResults.beidatzIsLicenseValid === "correct"
+                    ? "validation-correct"
+                    : ""
+                }`}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  cursor: "pointer",
+                  background: "transparent",
+                  // יצירת עיגול שמקיף את המילה כשזה נבחר (בחירה ב-"no")
+                  border:
+                    formValues.beidatzIsLicenseValid === "no"
+                      ? "3px solid black"
+                      : "none",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxSizing: "border-box",
+                }}
+                type="button"
+                onClick={() =>
+                  updateField(
+                    "beidatzIsLicenseValid",
+                    formValues.beidatzIsLicenseValid === "no" ? "" : "no"
+                  )
+                }
+                disabled={validationResults.beidatzIsLicenseValid === "correct"}
+              />
+            </div>
+          </foreignObject>
 
+          {/* === סוג רישיון - דרופדאון === */}
+          <rect
+            className="cls-1"
+            x="488.32"
+            y="855.33"
+            width="188.21"
+            height="76.24"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="488.32" y="855.33" width="188.21" height="76.24">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-select-host"
+            >
+              <select
+                className={`svg-report-select svg-report-select-beidatz ${
+                  validationResults.beidatzLicenseType === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzLicenseType === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                value={formValues.beidatzLicenseType || ""}
+                onChange={(e) =>
+                  updateField("beidatzLicenseType", e.target.value)
+                }
+                disabled={validationResults.beidatzLicenseType === "correct"}
+              >
+                <option value="">בחר...</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div>
+          </foreignObject>
+
+          {/* === מספר רישוי אזרחי - טקסט מספרים === */}
+          <rect
+            className="cls-1"
+            x="1246.49"
+            y="970.63"
+            width="435.82"
+            height="51.93"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1246.49" y="970.63" width="435.82" height="51.93">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                className={`svg-report-input svg-report-input-small-beidatz ${
+                  validationResults.beidatzCivilPlateNumber === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzCivilPlateNumber === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                placeholder="מספר רכב..."
+                value={formValues.beidatzCivilPlateNumber || ""}
+                onChange={(e) =>
+                  updateField(
+                    "beidatzCivilPlateNumber",
+                    e.target.value.replace(/\D/g, "")
+                  )
+                }
+                disabled={
+                  validationResults.beidatzCivilPlateNumber === "correct"
+                }
+              />
+            </div>
+          </foreignObject>
+
+          {/* === סוג רכב - טקסט === */}
+          <rect
+            className="cls-1"
+            x="341.58"
+            y="949.24"
+            width="352.95"
+            height="76.24"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="341.58" y="949.24" width="352.95" height="76.24">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                type="text"
+                className={`svg-report-input svg-report-input-small-beidatz ${
+                  validationResults.beidatzVehicleName === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzVehicleName === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                placeholder="סוג הרכב..."
+                value={formValues.beidatzVehicleName || ""}
+                onChange={(e) =>
+                  updateField("beidatzVehicleName", e.target.value)
+                }
+                disabled={validationResults.beidatzVehicleName === "correct"}
+              />
+            </div>
+          </foreignObject>
+
+          {/* === היתר - דרופדאון === */}
+          <rect
+            className="cls-1"
+            x="148.66"
+            y="855.33"
+            width="230.86"
+            height="76.24"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="148.66" y="855.33" width="230.86" height="76.24">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-select-host"
+            >
+              <select
+                className={`svg-report-select svg-report-select-beidatz ${
+                  validationResults.beidatzPermit === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzPermit === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                value={formValues.beidatzPermit || ""}
+                onChange={(e) => updateField("beidatzPermit", e.target.value)}
+                disabled={validationResults.beidatzPermit === "correct"}
+              >
+                <option value="">בחר היתר...</option>
+                <option value="35">35</option>
+                <option value="no">ללא</option>
+              </select>
+            </div>
+          </foreignObject>
+
+          {/* === צבע הרכב - אופציות / דרופדאון === */}
+          <rect
+            className="cls-1"
+            x="148.66"
+            y="955.5"
+            width="100.06"
+            height="69.98"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="148.66" y="955.5" width="100.06" height="69.98">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-select-host"
+            >
+              <select
+                className={`svg-report-select svg-report-select-beidatz ${
+                  validationResults.beidatzVehicleColor === "correct"
+                    ? "validation-correct"
+                    : validationResults.beidatzVehicleColor === "incorrect"
+                    ? "validation-incorrect"
+                    : ""
+                }`}
+                value={formValues.beidatzVehicleColor || ""}
+                onChange={(e) =>
+                  updateField("beidatzVehicleColor", e.target.value)
+                }
+                disabled={validationResults.beidatzVehicleColor === "correct"}
+              >
+                <option value="">בחר...</option>
+                <option value="לבן">לבן</option>
+                <option value="שחור">שחור</option>
+                <option value="אפור">אפור</option>
+                <option value="כחול">כחול</option>
+                <option value="אדום">כסוף</option>
+              </select>
+            </div>
+          </foreignObject>
+
+          {/* ממולא מראש בדו"ח */}
           <path
             className="cls-2"
             d="M1843.26,185.99c-29.61-7.41-70.55.35-81.1,19.83-10.84,20.03,14.89,44.29,49.76,47.82,33,3.34,67.97-12.49,70.04-32.66,1.64-15.99-17.9-29.78-38.71-34.99Z"

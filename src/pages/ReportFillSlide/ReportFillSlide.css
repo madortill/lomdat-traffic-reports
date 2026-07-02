@@ -286,7 +286,7 @@
     color: #000;
 
     font-family: "Fredoka", Arial, sans-serif;
-    font-size: 32px;
+    font-size: 36px;
     line-height: 1;
 
     text-align: center;
@@ -434,6 +434,9 @@
     box-shadow: 0 0 0 2px rgba(56, 82, 163, 0.18);
 }
 
+.svg-report-select-beidatz {
+    font-size: 39px;
+}
 
 /* ======================================================= */
 /* קלאס ייעודי לחתימה בתוך SVG */
