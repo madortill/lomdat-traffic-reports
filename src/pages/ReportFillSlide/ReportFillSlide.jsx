@@ -51,7 +51,6 @@ const REPORTS_CONFIG = {
           "הכרמים ,22 ראשון לציון",
           ".הכרמים 22 ראשון לציון",
           ".הכרמים 22, ראשון לציון",
-          ".הכרמים 22, ראשון לציון",
         ],
         beidatzIdNumber: ["215886576"],
         beidatzPhoneNumber: ["053-228-0564", "0532280564"],
@@ -84,6 +83,7 @@ const REPORTS_CONFIG = {
         beidatzVehicleName: ["רנו קנגו", "רנו-קנגו", "רנו קנגו.", "רנו-קנגו."],
         beidatzPermit: ["no"],
         beidatzVehicleColor: ["כסוף"],
+
         // דף 2
         beidatzMainSection: ["main"],
         beidatzSubOption: ["option1"],
@@ -95,6 +95,7 @@ const REPORTS_CONFIG = {
         "beidatzOfficerPersonalNumber",
         "beidatzOfficerRank",
         "isOfficerWitnessSignedBeidatz",
+
         // דף 2
         "beidatzDriverResponse",
         "isDriverSignedBeidatz",
@@ -106,6 +107,7 @@ const REPORTS_CONFIG = {
       ],
     },
   },
+
   damash: {
     pages: [
       { id: "damash-page-1", title: "עמוד 1", Component: DamashReportPage1 },
@@ -190,6 +192,30 @@ const REPORTS_CONFIG = {
   },
 };
 
+function normalizeValue(value) {
+  if (typeof value === "string") {
+    return value.trim();
+  }
+
+  return value;
+}
+
+function hasFieldValue(value) {
+  if (typeof value === "boolean") {
+    return value === true;
+  }
+
+  if (value === undefined || value === null) {
+    return false;
+  }
+
+  if (typeof value === "string") {
+    return value.trim() !== "";
+  }
+
+  return value !== "";
+}
+
 function ReportFillSlide({ data, isPreview = false }) {
   const reportKind = data?.reportKind || "beidatz";
   const reportConfig = REPORTS_CONFIG[reportKind];
@@ -197,22 +223,22 @@ function ReportFillSlide({ data, isPreview = false }) {
   const pages = reportConfig.pages;
   const hasMultiplePages = pages.length > 1;
 
-  // מפתחות ייחודיים לפי ה-ID של השקף / דוח
   const pageStorageKey = `report_current_page_${data.id}`;
   const valuesStorageKey = `report_values_${data.id}`;
   const countStorageKey = `report_check_count_${data.id}`;
   const validationStorageKey = `report_validation_results_${data.id}`;
 
-  // 1. עמוד נוכחי
   const [currentPageIndex, setCurrentPageIndex] = useState(() => {
     const saved = sessionStorage.getItem(pageStorageKey);
     const parsed = Number(saved);
-    if (Number.isInteger(parsed) && parsed >= 0 && parsed < pages.length)
+
+    if (Number.isInteger(parsed) && parsed >= 0 && parsed < pages.length) {
       return parsed;
+    }
+
     return 0;
   });
 
-  // 2. ערכי השדות
   const [formValues, setFormValues] = useState(() => {
     try {
       const saved = sessionStorage.getItem(valuesStorageKey);
@@ -222,7 +248,6 @@ function ReportFillSlide({ data, isPreview = false }) {
     }
   });
 
-  // 3. תוצאות הבדיקה
   const [validationResults, setValidationResults] = useState(() => {
     try {
       const saved = sessionStorage.getItem(validationStorageKey);
@@ -232,16 +257,15 @@ function ReportFillSlide({ data, isPreview = false }) {
     }
   });
 
-  // 4. מונה הבדיקות
   const [checkCount, setCheckCount] = useState(() => {
     const saved = sessionStorage.getItem(countStorageKey);
     return saved ? Number(saved) : 0;
   });
 
-  // סינכרון המצב כאשר הדוח משתנה חיצונית (במידה והקומפוננטה לא עוברת Unmount)
   useEffect(() => {
     const savedPage = sessionStorage.getItem(pageStorageKey);
     const parsedPage = Number(savedPage);
+
     setCurrentPageIndex(
       Number.isInteger(parsedPage) &&
         parsedPage >= 0 &&
@@ -275,14 +299,6 @@ function ReportFillSlide({ data, isPreview = false }) {
     pages.length,
   ]);
 
-  // אפקטים לשמירה אוטומטית בסטורג' בכל פעם שהסטייט משתנה
-  useEffect(() => {
-    sessionStorage.setItem(
-      validationStorageKey,
-      JSON.stringify(validationResults)
-    );
-  }, [validationResults, validationStorageKey]);
-
   useEffect(() => {
     sessionStorage.setItem(pageStorageKey, String(currentPageIndex));
   }, [currentPageIndex, pageStorageKey]);
@@ -292,16 +308,26 @@ function ReportFillSlide({ data, isPreview = false }) {
   }, [formValues, valuesStorageKey]);
 
   useEffect(() => {
+    sessionStorage.setItem(
+      validationStorageKey,
+      JSON.stringify(validationResults)
+    );
+  }, [validationResults, validationStorageKey]);
+
+  useEffect(() => {
     sessionStorage.setItem(countStorageKey, String(checkCount));
   }, [checkCount, countStorageKey]);
 
   const updateField = (fieldName, value) => {
-    setFormValues((prev) => ({ ...prev, [fieldName]: value }));
+    if (validationResults[fieldName] === "correct") return;
+    if (validationResults[fieldName] === "locked") return;
 
-    if (
-      validationResults[fieldName] &&
-      validationResults[fieldName] !== "correct"
-    ) {
+    setFormValues((prev) => ({
+      ...prev,
+      [fieldName]: value,
+    }));
+
+    if (validationResults[fieldName]) {
       setValidationResults((prev) => {
         const updated = { ...prev };
         delete updated[fieldName];
@@ -310,37 +336,50 @@ function ReportFillSlide({ data, isPreview = false }) {
     }
   };
 
-  const isEverythingCorrect = useMemo(() => {
-    const rules = reportConfig.validation;
-    if (!rules || Object.keys(rules.answers).length === 0) return false;
-
-    const allAnswersCorrect = Object.keys(rules.answers).every(
-      (key) => validationResults[key] === "correct"
-    );
-
-    const correctLocation = rules.answers.offenseLocationType?.[0];
-    let locFieldsCorrect = true;
-    if (correctLocation === "loc5") {
-      locFieldsCorrect = validationResults.loc5Field1 === "correct";
-    }
-
-    return allAnswersCorrect && locFieldsCorrect;
-  }, [validationResults, reportConfig.validation]);
-
   const isFormComplete = useMemo(() => {
     const rules = reportConfig.validation;
     if (!rules) return false;
 
-    const allAnswersFilled = Object.keys(rules.answers).every(
-      (key) => formValues[key] !== undefined && formValues[key] !== ""
-    );
+    const allAnswersFilled = Object.keys(rules.answers).every((key) => {
+      return hasFieldValue(formValues[key]);
+    });
 
-    const allRequiredFilled = rules.requiredOnly.every(
-      (key) => formValues[key] !== undefined && key in formValues
-    );
+    const allRequiredFilled = rules.requiredOnly.every((key) => {
+      return hasFieldValue(formValues[key]);
+    });
 
     return allAnswersFilled && allRequiredFilled;
   }, [formValues, reportConfig.validation]);
+
+  const isEverythingCorrect = useMemo(() => {
+    const rules = reportConfig.validation;
+    if (!rules) return false;
+
+    const allAnswersCorrect = Object.keys(rules.answers).every((key) => {
+      return validationResults[key] === "correct";
+    });
+
+    const allRequiredLocked = rules.requiredOnly.every((key) => {
+      return validationResults[key] === "locked";
+    });
+
+    return allAnswersCorrect && allRequiredLocked;
+  }, [validationResults, reportConfig.validation]);
+
+  const checkNormalAnswer = (field, results) => {
+    if (validationResults[field] === "correct") return;
+
+    const rules = reportConfig.validation;
+    const allowedAnswers = rules.answers[field];
+
+    const userValue = normalizeValue(formValues[field]);
+
+    if (allowedAnswers.includes(userValue)) {
+      results[field] = "correct";
+    } else {
+      results[field] = "incorrect";
+    }
+  };
 
   const handleValidate = () => {
     const rules = reportConfig.validation;
@@ -349,134 +388,157 @@ function ReportFillSlide({ data, isPreview = false }) {
     const results = { ...validationResults };
 
     Object.keys(rules.answers).forEach((field) => {
-      if (field.startsWith("loc") && field.includes("Field")) return;
-      if (field === "policeUnitOtherDetails") return;
       if (validationResults[field] === "correct") return;
 
-      const allowedAnswers = rules.answers[field];
-      const rawUserValue = formValues[field];
-      const userValue =
-        typeof rawUserValue === "string" ? rawUserValue.trim() : rawUserValue;
+      /*
+        שדות תלויים/מיוחדים.
+        כרגע השארתי את ההחרגות שהיו אצלך כדי לא לשבור לוגיקה קיימת.
+      */
+      if (field.startsWith("loc") && field.includes("Field")) return;
+      if (field.startsWith("beidatzLoc") && field.includes("Field")) return;
+      if (field === "policeUnitOtherDetails") return;
 
-      if (allowedAnswers.includes(userValue)) {
-        results[field] = "correct";
-      } else {
-        results[field] = "incorrect";
-      }
+      checkNormalAnswer(field, results);
     });
 
-    const correctLocation = rules.answers.offenseLocationType?.[0] || "loc3";
-    const checkLocField = (locName, fieldName, fieldValue) => {
-      if (formValues.offenseLocationType !== locName) return "";
-      if (validationResults[fieldName] === "correct") return "correct";
-      if (locName === correctLocation) {
-        const allowedAnswers = rules.answers[fieldName];
-        const userValue =
-          typeof fieldValue === "string" ? fieldValue.trim() : fieldValue;
-        if (allowedAnswers)
-          return allowedAnswers.includes(userValue) ? "correct" : "incorrect";
-        return userValue && userValue !== "" ? "correct" : "incorrect";
-      }
-      return "incorrect";
-    };
+    /*
+      לוגיקת מיקום לדמ"ש.
+      אם בהמשך תרצי, נעשה גם גרסה מקבילה מסודרת לביד"צ.
+    */
+    if (rules.answers.offenseLocationType) {
+      const correctLocation = rules.answers.offenseLocationType?.[0] || "loc3";
 
-    results.loc1Field1 = checkLocField(
-      "loc1",
-      "loc1Field1",
-      formValues.loc1Field1
-    );
-    results.loc1Field2 = checkLocField(
-      "loc1",
-      "loc1Field2",
-      formValues.loc1Field2
-    );
-    results.loc1Field3 = checkLocField(
-      "loc1",
-      "loc1Field3",
-      formValues.loc1Field3
-    );
-    results.loc1Field4 = checkLocField(
-      "loc1",
-      "loc1Field4",
-      formValues.loc1Field4
-    );
-    results.loc2Field1 = checkLocField(
-      "loc2",
-      "loc2Field1",
-      formValues.loc2Field1
-    );
-    results.loc2Field2 = checkLocField(
-      "loc2",
-      "loc2Field2",
-      formValues.loc2Field2
-    );
-    results.loc2Field3 = checkLocField(
-      "loc2",
-      "loc2Field3",
-      formValues.loc2Field3
-    );
-    results.loc2Field4 = checkLocField(
-      "loc2",
-      "loc2Field4",
-      formValues.loc2Field4
-    );
-    results.loc3Field1 = checkLocField(
-      "loc3",
-      "loc3Field1",
-      formValues.loc3Field1
-    );
-    results.loc3Field2 = checkLocField(
-      "loc3",
-      "loc3Field2",
-      formValues.loc3Field2
-    );
-    results.loc3Field3 = checkLocField(
-      "loc3",
-      "loc3Field3",
-      formValues.loc3Field3
-    );
-    results.loc4Field1 = checkLocField(
-      "loc4",
-      "loc4Field1",
-      formValues.loc4Field1
-    );
-    results.loc5Field1 = checkLocField(
-      "loc5",
-      "loc5Field1",
-      formValues.loc5Field1
-    );
+      const checkLocField = (locName, fieldName, fieldValue) => {
+        if (formValues.offenseLocationType !== locName) return "";
 
-    const correctPoliceUnit = rules.answers.policeUnit?.[0] || "unit3";
-    if (formValues.policeUnit === "unit3") {
-      if (validationResults.policeUnitOtherDetails !== "correct") {
-        if (correctPoliceUnit === "unit3") {
-          const allowedDetails = rules.answers.policeUnitOtherDetails;
-          const userDetailsValue =
-            typeof formValues.policeUnitOtherDetails === "string"
-              ? formValues.policeUnitOtherDetails.trim()
-              : formValues.policeUnitOtherDetails;
-          if (allowedDetails) {
-            results.policeUnitOtherDetails = allowedDetails.includes(
-              userDetailsValue
-            )
-              ? "correct"
-              : "incorrect";
-          } else {
-            results.policeUnitOtherDetails =
-              userDetailsValue && userDetailsValue !== ""
-                ? "correct"
-                : "incorrect";
-          }
-        } else {
-          results.policeUnitOtherDetails = "incorrect";
+        if (validationResults[fieldName] === "correct") {
+          return "correct";
         }
-      }
-    } else {
-      results.policeUnitOtherDetails = "";
+
+        if (locName === correctLocation) {
+          const allowedAnswers = rules.answers[fieldName];
+          const userValue = normalizeValue(fieldValue);
+
+          if (allowedAnswers) {
+            return allowedAnswers.includes(userValue) ? "correct" : "incorrect";
+          }
+
+          return hasFieldValue(userValue) ? "correct" : "incorrect";
+        }
+
+        return "incorrect";
+      };
+
+      results.loc1Field1 = checkLocField(
+        "loc1",
+        "loc1Field1",
+        formValues.loc1Field1
+      );
+      results.loc1Field2 = checkLocField(
+        "loc1",
+        "loc1Field2",
+        formValues.loc1Field2
+      );
+      results.loc1Field3 = checkLocField(
+        "loc1",
+        "loc1Field3",
+        formValues.loc1Field3
+      );
+      results.loc1Field4 = checkLocField(
+        "loc1",
+        "loc1Field4",
+        formValues.loc1Field4
+      );
+      results.loc2Field1 = checkLocField(
+        "loc2",
+        "loc2Field1",
+        formValues.loc2Field1
+      );
+      results.loc2Field2 = checkLocField(
+        "loc2",
+        "loc2Field2",
+        formValues.loc2Field2
+      );
+      results.loc2Field3 = checkLocField(
+        "loc2",
+        "loc2Field3",
+        formValues.loc2Field3
+      );
+      results.loc2Field4 = checkLocField(
+        "loc2",
+        "loc2Field4",
+        formValues.loc2Field4
+      );
+      results.loc3Field1 = checkLocField(
+        "loc3",
+        "loc3Field1",
+        formValues.loc3Field1
+      );
+      results.loc3Field2 = checkLocField(
+        "loc3",
+        "loc3Field2",
+        formValues.loc3Field2
+      );
+      results.loc3Field3 = checkLocField(
+        "loc3",
+        "loc3Field3",
+        formValues.loc3Field3
+      );
+      results.loc4Field1 = checkLocField(
+        "loc4",
+        "loc4Field1",
+        formValues.loc4Field1
+      );
+      results.loc5Field1 = checkLocField(
+        "loc5",
+        "loc5Field1",
+        formValues.loc5Field1
+      );
     }
 
+    /*
+      לוגיקת יחידה / פרטים נוספים בדמ"ש.
+    */
+    if (rules.answers.policeUnit) {
+      const correctPoliceUnit = rules.answers.policeUnit?.[0] || "unit3";
+
+      if (formValues.policeUnit === "unit3") {
+        if (validationResults.policeUnitOtherDetails !== "correct") {
+          if (correctPoliceUnit === "unit3") {
+            const allowedDetails = rules.answers.policeUnitOtherDetails;
+            const userDetailsValue = normalizeValue(
+              formValues.policeUnitOtherDetails
+            );
+
+            if (allowedDetails) {
+              results.policeUnitOtherDetails = allowedDetails.includes(
+                userDetailsValue
+              )
+                ? "correct"
+                : "incorrect";
+            } else {
+              results.policeUnitOtherDetails = hasFieldValue(userDetailsValue)
+                ? "correct"
+                : "incorrect";
+            }
+          } else {
+            results.policeUnitOtherDetails = "incorrect";
+          }
+        }
+      } else {
+        results.policeUnitOtherDetails = "";
+      }
+    }
+
+    /*
+      שדות requiredOnly:
+      לא בודקים אם התוכן נכון.
+      רק אם הוא מלא — נועלים אותו.
+    */
     rules.requiredOnly.forEach((field) => {
-      if (formValues[field] !== undefined && formValues[field] !== "") {
+      if (validationResults[field] === "locked") return;
+
+      if (hasFieldValue(formValues[field])) {
         results[field] = "locked";
       }
     });
@@ -485,18 +547,30 @@ function ReportFillSlide({ data, isPreview = false }) {
     setCheckCount((prev) => prev + 1);
   };
 
-  // --- מנגנון הגנה מפני חריגה מגבולות המערך בזמן החלפת דוחות ---
-  // אם האינדקס הנוכחי גדול מכמות העמודים שיש, נשתמש בעמוד הראשון (אינדקס 0)
-  const safePageIndex = currentPageIndex < pages.length ? currentPageIndex : 0;
+  const getValidationClass = (fieldName) => {
+    const result = validationResults[fieldName];
 
+    if (result === "correct") return "validation-correct";
+    if (result === "incorrect") return "validation-incorrect";
+    if (result === "locked") return "validation-locked";
+
+    return "";
+  };
+
+  const isFieldLocked = (fieldName) => {
+    return (
+      validationResults[fieldName] === "correct" ||
+      validationResults[fieldName] === "locked"
+    );
+  };
+
+  const safePageIndex = currentPageIndex < pages.length ? currentPageIndex : 0;
   const currentPage = pages[safePageIndex];
   const CurrentReportPage = currentPage ? currentPage.Component : null;
 
   const isFirstPage = safePageIndex === 0;
   const isLastPage = safePageIndex === pages.length - 1;
-  // -----------------------------------------------------------
 
-  // אם משהו השתבש והעמוד לא נמצא, נמנע קריסה ונציג הודעת טעינה זמנית
   if (!CurrentReportPage) {
     return <div className="report-fill-slide">טוען...</div>;
   }
@@ -513,6 +587,7 @@ function ReportFillSlide({ data, isPreview = false }) {
             src={ReportPagePrevBtn}
             className="report-page-arrow report-page-arrow-right"
             onClick={() => setCurrentPageIndex((prev) => Math.max(prev - 1, 0))}
+            alt="לעמוד הקודם"
           />
         )}
 
@@ -521,6 +596,8 @@ function ReportFillSlide({ data, isPreview = false }) {
             formValues={formValues}
             updateField={updateField}
             validationResults={validationResults}
+            getValidationClass={getValidationClass}
+            isFieldLocked={isFieldLocked}
           />
         </div>
 
@@ -533,6 +610,7 @@ function ReportFillSlide({ data, isPreview = false }) {
                 Math.min(prev + 1, pages.length - 1)
               )
             }
+            alt="לעמוד הבא"
           />
         )}
       </div>
@@ -574,6 +652,7 @@ function ReportFillSlide({ data, isPreview = false }) {
               }`}
               onClick={() => setCurrentPageIndex(index)}
               type="button"
+              aria-label={`מעבר אל ${page.title}`}
             />
           ))}
         </div>

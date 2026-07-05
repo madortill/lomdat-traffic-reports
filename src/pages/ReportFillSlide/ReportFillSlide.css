@@ -512,22 +512,19 @@
     border-color: #d0d7de !important;
 }
 
-/* שדות שהם רק required ומולאו בהצלחה - חיווי כחול אפור פסטלי */
 .validation-locked {
-    border-color: #b0c4de !important; /* כחול-אפור פסטלי (LightSteelBlue) */
-    background-color: #f4f6f9 !important; /* רקע אפרפר-כחלחל עדין מאד */
+    border-color: #b0c4de !important;
+    background-color: #f4f6f9 !important;
     color: #556b2f !important;
     cursor: not-allowed !important;
-    opacity: 0.85; /* נותן תחושה מעט שקופה ונעולה */
+    opacity: 0.85;
 }
-  
-/* עבור חתימות (אלמנט SVG מסוג rect) - רק אם הן לא חתומות עדיין! */
+
 rect.validation-locked:not(.is-signed) {
     stroke: #b0c4de !important;
     fill: #f4f6f9 !important;
 }
 
-/* אם החתימה כבר נעולה וגם חתומה, נשמור עליה שקופה כדי שיראו את התמונה, אבל נשנה את ה-cursor */
 rect.validation-locked.is-signed {
     fill: transparent !important;
     stroke: transparent !important;
