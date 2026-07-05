@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2144 3000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer_1">
+    <g>
+      <image width="2144" height="3000" xlink:href="../בידצ2.jpg"/>
+      <rect class="cls-1" x="181" y="201.65" width="1768.7" height="209.74"/>
+      <rect class="cls-1" x="1494.22" y="420.78" width="226.96" height="50.09"/>
+      <rect class="cls-1" x="450.22" y="420.78" width="244.17" height="50.09"/>
+      <rect class="cls-1" x="184.13" y="1155.65" width="1765.57" height="807.65"/>
+      <rect class="cls-1" x="979.7" y="2084.96" width="28.17" height="28.17"/>
+      <rect class="cls-1" x="506.26" y="2072.22" width="58.22" height="53.22"/>
+      <rect class="cls-1" x="344.26" y="2072.22" width="58.22" height="53.22"/>
+      <rect class="cls-1" x="1564" y="2339.87" width="225.39" height="53.22"/>
+      <rect class="cls-1" x="1424.7" y="2339.87" width="97.04" height="53.22"/>
+      <rect class="cls-1" x="1185.22" y="2339.87" width="200.35" height="53.22"/>
+      <rect class="cls-1" x="853.39" y="2339.87" width="292.7" height="53.22"/>
+      <rect class="cls-1" x="609.22" y="2339.87" width="201.91" height="53.22"/>
+    </g>
+  </g>
+</svg>

@@ -28,9 +28,19 @@ const REPORTS_CONFIG = {
     ],
     validation: {
       answers: {
+        // דף 1
         serviceType: ["type2"],
         beidatzPersonalNumber: ["9484096"],
-        beidatzRank: ["רב סרן", `רס"ן`, "רס''ן", "רב סרן.", "רס''ן.", `רס"ן.`],
+        beidatzRank: [
+          "רב סרן",
+          `רס"ן`,
+          "רס''ן",
+          "רב סרן.",
+          "רס''ן.",
+          `רס"ן.`,
+          "רסן",
+          "רסן.",
+        ],
         beidatzLastName: ["שמחוני"],
         beidatzFirstName: ["אביב"],
         beidatzCorps: ["מודיעין"],
@@ -52,8 +62,11 @@ const REPORTS_CONFIG = {
         beidatzMinute: ["35"],
         beidatzHour: ["13"],
         beidatzVehicleType: ["type1"],
+        beidatzPoliceUnit: ["unit4"],
+        beidatzDeliveryMethod: ["method1"],
+        beidatzActivityFramework: ["opt2"],
         beidatzOffenseLocationType: ["loc4"],
-        loc5Field1: [
+        beidatzLoc4Field1: [
           `ש"ג צריפין`,
           "ש''ג צריפין",
           "ש''ג, צריפין",
@@ -61,18 +74,35 @@ const REPORTS_CONFIG = {
           `.ש"ג צריפין`,
           ".ש''ג, צריפין",
         ],
-
-        // policeUnitOtherDetails: [`פ"מ`, "פ''מ", "פמ"],
-        // deliveryMethod: ["method1"],
+        beidatzBase: ["בית ליד", "בית-ליד", "בית ליד.", "בית-ליד."],
+        beidatzOfficerFamilyName: ["פרי"],
+        beidatzOfficerFirstName: ["דני"],
+        beidatzLicenseNumber: ["2316547"],
+        beidatzIsLicenseValid: ["yes"],
+        beidatzLicenseType: ["B"],
+        beidatzCivilPlateNumber: ["436-66-224", "43666224"],
+        beidatzVehicleName: ["רנו קנגו", "רנו-קנגו", "רנו קנגו.", "רנו-קנגו."],
+        beidatzPermit: ["no"],
+        beidatzVehicleColor: ["כסוף"],
+        // דף 2
+        beidatzMainSection: ["main"],
+        beidatzSubOption: ["option1"],
+        beidatzSecondOfficerFirstName: ["דני"],
+        beidatzSecondOfficerFamilyName: ["פרי"],
       },
       requiredOnly: [
-        // "offenseDescription",
-        // "circumstances",
-        // "recipientResponse",
-        // "isSigned",
-        // "witnessOfficerPersonalNumber",
-        // "witnessOfficerRank",
-        // "isOfficerWitnessSigned",
+        // דף 1
+        "beidatzOfficerPersonalNumber",
+        "beidatzOfficerRank",
+        "isOfficerWitnessSignedBeidatz",
+        // דף 2
+        "beidatzDriverResponse",
+        "isDriverSignedBeidatz",
+        "isOfficerPage2SignedBeidatz",
+        "beidatzReportDetails",
+        "beidatzSecondOfficerPersonalNumber",
+        "beidatzSecondOfficerRank",
+        "isSecondOfficerSignedBeidatz",
       ],
     },
   },
@@ -447,7 +477,7 @@ function ReportFillSlide({ data, isPreview = false }) {
 
     rules.requiredOnly.forEach((field) => {
       if (formValues[field] !== undefined && formValues[field] !== "") {
-        results[field] = "skipped";
+        results[field] = "locked";
       }
     });
 
@@ -455,10 +485,21 @@ function ReportFillSlide({ data, isPreview = false }) {
     setCheckCount((prev) => prev + 1);
   };
 
-  const currentPage = pages[currentPageIndex];
-  const CurrentReportPage = currentPage.Component;
-  const isFirstPage = currentPageIndex === 0;
-  const isLastPage = currentPageIndex === pages.length - 1;
+  // --- מנגנון הגנה מפני חריגה מגבולות המערך בזמן החלפת דוחות ---
+  // אם האינדקס הנוכחי גדול מכמות העמודים שיש, נשתמש בעמוד הראשון (אינדקס 0)
+  const safePageIndex = currentPageIndex < pages.length ? currentPageIndex : 0;
+
+  const currentPage = pages[safePageIndex];
+  const CurrentReportPage = currentPage ? currentPage.Component : null;
+
+  const isFirstPage = safePageIndex === 0;
+  const isLastPage = safePageIndex === pages.length - 1;
+  // -----------------------------------------------------------
+
+  // אם משהו השתבש והעמוד לא נמצא, נמנע קריסה ונציג הודעת טעינה זמנית
+  if (!CurrentReportPage) {
+    return <div className="report-fill-slide">טוען...</div>;
+  }
 
   return (
     <div

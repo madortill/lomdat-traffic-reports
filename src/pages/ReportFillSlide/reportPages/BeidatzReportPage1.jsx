@@ -2355,103 +2355,83 @@ function BeidatzReportPage1({
 </foreignObject>
 
           {/* === רישיון בתוקף? - סימון בעיגול (כן/לא) === */}
-          {/* אופציה: כן */}
-          <rect
-            className="cls-1"
-            x="955.91"
-            y="880.33"
-            width="45.39"
-            height="39.13"
-            style={{ pointerEvents: "none", opacity: 0 }}
-          />
-          <foreignObject x="935.91" y="865.33" width="100" height="70">
-            <div
-              xmlns="http://www.w3.org/1999/xhtml"
-              className="svg-checkbox-host"
-              style={{ width: "100%", height: "100%" }}
-            >
-              <button
-                className={`svg-circle-checkbox ${
-                  validationResults.beidatzIsLicenseValid === "correct"
-                    ? "validation-correct"
-                    : ""
-                }`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  cursor: "pointer",
-                  background: "transparent",
-                  // יצירת עיגול שמקיף את המילה כשזה נבחר (בחירה ב-"yes")
-                  border:
-                    formValues.beidatzIsLicenseValid === "yes"
-                      ? "3px solid black"
-                      : "none",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxSizing: "border-box",
-                }}
-                type="button"
-                onClick={() =>
-                  updateField(
-                    "beidatzIsLicenseValid",
-                    formValues.beidatzIsLicenseValid === "yes" ? "" : "yes"
-                  )
-                }
-                disabled={validationResults.beidatzIsLicenseValid === "correct"}
-              />
-            </div>
-          </foreignObject>
+{/* אופציה: כן */}
+<rect
+  className="cls-1"
+  x="955.91"
+  y="880.33"
+  width="45.39"
+  height="39.13"
+  style={{ pointerEvents: "none", opacity: 0 }}
+/>
+<foreignObject x="955.91" y="880.33" width="45.39" height="39.13" style={{ overflow: "visible" }}>
+  <div
+    xmlns="http://www.w3.org/1999/xhtml"
+    className="svg-checkbox-host"
+    style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}
+  >
+    <button
+      className={`svg-circle-checkbox ${
+        validationResults.beidatzIsLicenseValid === "correct" ? "validation-correct" : ""
+      }`}
+      style={{
+        width: "90px",
+        height: "60px",
+        flexShrink: 0,
+        cursor: "pointer",
+        background: "transparent",
+        borderRadius: "50%",
+        boxSizing: "border-box",
+        // התיקון: קביעת צבע הגבול לפי סטטוס הוולידציה
+        border: formValues.beidatzIsLicenseValid === "yes" 
+          ? `3px solid ${validationResults.beidatzIsLicenseValid === "correct" ? "#28a745" : "black"}` 
+          : "none"
+      }}
+      type="button"
+      onClick={() => updateField("beidatzIsLicenseValid", formValues.beidatzIsLicenseValid === "yes" ? "" : "yes")}
+      disabled={validationResults.beidatzIsLicenseValid === "correct"}
+    />
+  </div>
+</foreignObject>
 
-          {/* אופציה: לא */}
-          <rect
-            className="cls-1"
-            x="892.23"
-            y="880.37"
-            width="45.39"
-            height="39.13"
-            style={{ pointerEvents: "none", opacity: 0 }}
-          />
-          <foreignObject x="855.23" y="865.37" width="100" height="70">
-            <div
-              xmlns="http://www.w3.org/1999/xhtml"
-              className="svg-checkbox-host"
-              style={{ width: "100%", height: "100%" }}
-            >
-              <button
-                className={`svg-circle-checkbox ${
-                  validationResults.beidatzIsLicenseValid === "correct"
-                    ? "validation-correct"
-                    : ""
-                }`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  cursor: "pointer",
-                  background: "transparent",
-                  // יצירת עיגול שמקיף את המילה כשזה נבחר (בחירה ב-"no")
-                  border:
-                    formValues.beidatzIsLicenseValid === "no"
-                      ? "3px solid black"
-                      : "none",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxSizing: "border-box",
-                }}
-                type="button"
-                onClick={() =>
-                  updateField(
-                    "beidatzIsLicenseValid",
-                    formValues.beidatzIsLicenseValid === "no" ? "" : "no"
-                  )
-                }
-                disabled={validationResults.beidatzIsLicenseValid === "correct"}
-              />
-            </div>
-          </foreignObject>
+{/* אופציה: לא */}
+<rect
+  className="cls-1"
+  x="892.23"
+  y="880.37"
+  width="45.39"
+  height="39.13"
+  style={{ pointerEvents: "none", opacity: 0 }}
+/>
+<foreignObject x="892.23" y="880.37" width="45.39" height="39.13" style={{ overflow: "visible" }}>
+  <div
+    xmlns="http://www.w3.org/1999/xhtml"
+    className="svg-checkbox-host"
+    style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}
+  >
+    <button
+      className={`svg-circle-checkbox ${
+        validationResults.beidatzIsLicenseValid === "correct" ? "validation-correct" : ""
+      }`}
+      style={{
+        width: "90px",
+        height: "60px",
+        flexShrink: 0,
+        cursor: "pointer",
+        background: "transparent",
+        borderRadius: "50%",
+        boxSizing: "border-box",
+        // התיקון: קביעת צבע הגבול לפי סטטוס הוולידציה
+        border: formValues.beidatzIsLicenseValid === "no" 
+          ? `3px solid ${validationResults.beidatzIsLicenseValid === "correct" ? "#28a745" : "black"}` 
+          : "none"
+      }}
+      type="button"
+      onClick={() => updateField("beidatzIsLicenseValid", formValues.beidatzIsLicenseValid === "no" ? "" : "no")}
+      disabled={validationResults.beidatzIsLicenseValid === "correct"}
+    />
+  </div>
+</foreignObject>
 
           {/* === סוג רישיון - דרופדאון === */}
           <rect
@@ -2629,7 +2609,7 @@ function BeidatzReportPage1({
                 <option value="שחור">שחור</option>
                 <option value="אפור">אפור</option>
                 <option value="כחול">כחול</option>
-                <option value="אדום">כסוף</option>
+                <option value="כסוף">כסוף</option>
               </select>
             </div>
           </foreignObject>

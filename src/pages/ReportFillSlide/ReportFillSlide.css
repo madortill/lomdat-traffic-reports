@@ -487,8 +487,10 @@
 .svg-report-select.validation-correct,
 .svg-x-checkbox.validation-correct,
 .svg-sign-clickable.validation-correct {
-    background-color: #e2f5e7 !important; /* ירוק פסטל */
-    border-color: #a3cfbb !important;
+    /* background-color: #e2f5e7 !important; */
+    background-color: #c4e9ce !important;
+    /* border-color: #a3cfbb !important; */
+    border-color: #7fbea2 !important;
     cursor:default;
 }
 
@@ -496,8 +498,10 @@
 .svg-report-select.validation-incorrect,
 .svg-x-checkbox.validation-incorrect,
 .svg-sign-clickable.validation-incorrect {
-    background-color: #fce8e6 !important; /* אדום פסטל */
-    border-color: #f5c2c7 !important;
+    /* background-color: #fce8e6 !important; */
+    background-color: #fcd8d5 !important;
+    /* border-color: #f5c2c7 !important; */
+    border-color: #f3b0b7 !important;
 }
 
 .svg-report-input.validation-skipped,
@@ -506,6 +510,28 @@
 .svg-sign-clickable.validation-skipped {
     background-color: #f0f4f8 !important; /* תכלת-אפור בהיר (לא נבדק) */
     border-color: #d0d7de !important;
+}
+
+/* שדות שהם רק required ומולאו בהצלחה - חיווי כחול אפור פסטלי */
+.validation-locked {
+    border-color: #b0c4de !important; /* כחול-אפור פסטלי (LightSteelBlue) */
+    background-color: #f4f6f9 !important; /* רקע אפרפר-כחלחל עדין מאד */
+    color: #556b2f !important;
+    cursor: not-allowed !important;
+    opacity: 0.85; /* נותן תחושה מעט שקופה ונעולה */
+}
+  
+/* עבור חתימות (אלמנט SVG מסוג rect) - רק אם הן לא חתומות עדיין! */
+rect.validation-locked:not(.is-signed) {
+    stroke: #b0c4de !important;
+    fill: #f4f6f9 !important;
+}
+
+/* אם החתימה כבר נעולה וגם חתומה, נשמור עליה שקופה כדי שיראו את התמונה, אבל נשנה את ה-cursor */
+rect.validation-locked.is-signed {
+    fill: transparent !important;
+    stroke: transparent !important;
+    cursor: not-allowed !important;
 }
 
 /* קונטיינר הפידבק והכפתור בתחתית */
