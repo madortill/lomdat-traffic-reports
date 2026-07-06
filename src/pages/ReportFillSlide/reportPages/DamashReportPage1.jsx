@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import damashReportImage from "../../../assets/דוח-דמש.png";
-import noasHatima from "../../../../public/Noas-hatima.svg";
-import ronisHatima from "../../../../public/Ronis-hatima.svg";
+import noasHatima from "../../../assets/Noas-hatima.svg";
+import ronisHatima from "../../../assets/Ronis-hatima.svg";
 
 // function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
 function DamashReportPage1({
-  formValues,
-  updateField,
+  formValues = {},
+  updateField = () => {},
   validationResults = {},
+  getValidationClass = () => "",
+  isFieldLocked = () => false,
 }) {
   const renderNumberOptions = (from, to) => {
     return Array.from({ length: to - from + 1 }, (_, index) => {
@@ -93,13 +95,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.selectedViolation === "correct"
-                    ? "validation-correct"
-                    : validationResults.selectedViolation === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "selectedViolation"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -107,7 +105,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option1" ? "" : "option1"
                   )
                 }
-                disabled={validationResults.selectedViolation === "correct"}
+                disabled={isFieldLocked("selectedViolation")}
               >
                 {formValues.selectedViolation === "option1" ? "×" : ""}
               </button>
@@ -129,13 +127,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.selectedViolation === "correct"
-                    ? "validation-correct"
-                    : validationResults.selectedViolation === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "selectedViolation"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -143,7 +137,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option2" ? "" : "option2"
                   )
                 }
-                disabled={validationResults.selectedViolation === "correct"}
+                disabled={isFieldLocked("selectedViolation")}
               >
                 {formValues.selectedViolation === "option2" ? "×" : ""}
               </button>
@@ -165,13 +159,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.selectedViolation === "correct"
-                    ? "validation-correct"
-                    : validationResults.selectedViolation === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "selectedViolation"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -179,7 +169,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option3" ? "" : "option3"
                   )
                 }
-                disabled={validationResults.selectedViolation === "correct"}
+                disabled={isFieldLocked("selectedViolation")}
               >
                 {formValues.selectedViolation === "option3" ? "×" : ""}
               </button>
@@ -201,13 +191,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.selectedViolation === "correct"
-                    ? "validation-correct"
-                    : validationResults.selectedViolation === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "selectedViolation"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -215,7 +201,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option4" ? "" : "option4"
                   )
                 }
-                disabled={validationResults.selectedViolation === "correct"}
+                disabled={isFieldLocked("selectedViolation")}
               >
                 {formValues.selectedViolation === "option4" ? "×" : ""}
               </button>
@@ -237,13 +223,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.selectedViolation === "correct"
-                    ? "validation-correct"
-                    : validationResults.selectedViolation === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "selectedViolation"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -251,7 +233,7 @@ function DamashReportPage1({
                     formValues.selectedViolation === "option5" ? "" : "option5"
                   )
                 }
-                disabled={validationResults.selectedViolation === "correct"}
+                disabled={isFieldLocked("selectedViolation")}
               >
                 {formValues.selectedViolation === "option5" ? "×" : ""}
               </button>
@@ -273,13 +255,9 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-personal-number ${
-                  validationResults.personalNumber === "correct"
-                    ? "validation-correct"
-                    : validationResults.personalNumber === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-personal-number ${getValidationClass(
+                  "personalNumber"
+                )}`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.personalNumber || ""}
@@ -287,7 +265,7 @@ function DamashReportPage1({
                   const onlyNumbers = e.target.value.replace(/\D/g, "");
                   updateField("personalNumber", onlyNumbers);
                 }}
-                disabled={validationResults.personalNumber === "correct"}
+                disabled={isFieldLocked("personalNumber")}
               />
             </div>
           </foreignObject>
@@ -307,17 +285,13 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small ${
-                  validationResults.rank === "correct"
-                    ? "validation-correct"
-                    : validationResults.rank === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-small ${getValidationClass(
+                  "rank"
+                )}`}
                 type="text"
                 value={formValues.rank || ""}
                 onChange={(e) => updateField("rank", e.target.value)}
-                disabled={validationResults.rank === "correct"}
+                disabled={isFieldLocked("rank")}
               />
             </div>
           </foreignObject>
@@ -337,17 +311,13 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small ${
-                  validationResults.lastName === "correct"
-                    ? "validation-correct"
-                    : validationResults.lastName === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-small ${getValidationClass(
+                  "lastName"
+                )}`}
                 type="text"
                 value={formValues.lastName || ""}
                 onChange={(e) => updateField("lastName", e.target.value)}
-                disabled={validationResults.lastName === "correct"}
+                disabled={isFieldLocked("lastName")}
               />
             </div>
           </foreignObject>
@@ -367,17 +337,13 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small ${
-                  validationResults.firstName === "correct"
-                    ? "validation-correct"
-                    : validationResults.firstName === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-small ${getValidationClass(
+                  "firstName"
+                )}`}
                 type="text"
                 value={formValues.firstName || ""}
                 onChange={(e) => updateField("firstName", e.target.value)}
-                disabled={validationResults.firstName === "correct"}
+                disabled={isFieldLocked("firstName")}
               />
             </div>
           </foreignObject>
@@ -397,17 +363,13 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small ${
-                  validationResults.corps === "correct"
-                    ? "validation-correct"
-                    : validationResults.corps === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-small ${getValidationClass(
+                  "corps"
+                )}`}
                 type="text"
                 value={formValues.corps || ""}
                 onChange={(e) => updateField("corps", e.target.value)}
-                disabled={validationResults.corps === "correct"}
+                disabled={isFieldLocked("corps")}
               />
             </div>
           </foreignObject>
@@ -427,13 +389,9 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small ${
-                  validationResults.unit === "correct"
-                    ? "validation-correct"
-                    : validationResults.unit === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-small ${getValidationClass(
+                  "unit"
+                )}`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.unit || ""}
@@ -441,7 +399,7 @@ function DamashReportPage1({
                   const onlyNumbers = e.target.value.replace(/\D/g, "");
                   updateField("unit", onlyNumbers);
                 }}
-                disabled={validationResults.unit === "correct"}
+                disabled={isFieldLocked("unit")}
               />
             </div>
           </foreignObject>
@@ -461,17 +419,13 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small ${
-                  validationResults.address === "correct"
-                    ? "validation-correct"
-                    : validationResults.address === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-small ${getValidationClass(
+                  "address"
+                )}`}
                 type="text"
                 value={formValues.address || ""}
                 onChange={(e) => updateField("address", e.target.value)}
-                disabled={validationResults.address === "correct"}
+                disabled={isFieldLocked("address")}
               />
             </div>
           </foreignObject>
@@ -491,13 +445,9 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-personal-number ${
-                  validationResults.idNumber === "correct"
-                    ? "validation-correct"
-                    : validationResults.idNumber === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-personal-number ${getValidationClass(
+                  "idNumber"
+                )}`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.idNumber || ""}
@@ -505,7 +455,7 @@ function DamashReportPage1({
                   const onlyNumbers = e.target.value.replace(/\D/g, "");
                   updateField("idNumber", onlyNumbers);
                 }}
-                disabled={validationResults.idNumber === "correct"}
+                disabled={isFieldLocked("idNumber")}
               />
             </div>
           </foreignObject>
@@ -525,13 +475,9 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small ${
-                  validationResults.phoneNumber === "correct"
-                    ? "validation-correct"
-                    : validationResults.phoneNumber === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-small ${getValidationClass(
+                  "phoneNumber"
+                )}`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.phoneNumber || ""}
@@ -539,7 +485,7 @@ function DamashReportPage1({
                   const onlyNumbers = e.target.value.replace(/\D/g, "");
                   updateField("phoneNumber", onlyNumbers);
                 }}
-                disabled={validationResults.phoneNumber === "correct"}
+                disabled={isFieldLocked("phoneNumber")}
               />
             </div>
           </foreignObject>
@@ -577,16 +523,12 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select ${
-                  validationResults.eventDay === "correct"
-                    ? "validation-correct"
-                    : validationResults.eventDay === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-select ${getValidationClass(
+                  "eventDay"
+                )}`}
                 value={formValues.eventDay || ""}
                 onChange={(e) => updateField("eventDay", e.target.value)}
-                disabled={validationResults.eventDay === "correct"}
+                disabled={isFieldLocked("eventDay")}
               >
                 <option value="">יום</option>
                 {renderNumberOptions(1, 31)}
@@ -601,16 +543,12 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select ${
-                  validationResults.eventMonth === "correct"
-                    ? "validation-correct"
-                    : validationResults.eventMonth === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-select ${getValidationClass(
+                  "eventMonth"
+                )}`}
                 value={formValues.eventMonth || ""}
                 onChange={(e) => updateField("eventMonth", e.target.value)}
-                disabled={validationResults.eventMonth === "correct"}
+                disabled={isFieldLocked("eventMonth")}
               >
                 <option value="">חודש</option>
                 {renderNumberOptions(1, 12)}
@@ -625,16 +563,12 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select ${
-                  validationResults.eventYear === "correct"
-                    ? "validation-correct"
-                    : validationResults.eventYear === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-select ${getValidationClass(
+                  "eventYear"
+                )}`}
                 value={formValues.eventYear || ""}
                 onChange={(e) => updateField("eventYear", e.target.value)}
-                disabled={validationResults.eventYear === "correct"}
+                disabled={isFieldLocked("eventYear")}
               >
                 <option value="">שנה</option>
                 {renderNumberOptions(2020, 2026)}
@@ -657,16 +591,10 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select ${
-                  validationResults.weekDay === "correct"
-                    ? "validation-correct"
-                    : validationResults.weekDay === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-select ${getValidationClass("weekDay")}`}
                 value={formValues.weekDay || ""}
                 onChange={(e) => updateField("weekDay", e.target.value)}
-                disabled={validationResults.weekDay === "correct"}
+                disabled={isFieldLocked("weekDay")}
               >
                 <option value="">יום</option>
                 {renderOptions(weekDays)}
@@ -699,16 +627,12 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select svg-report-select-time ${
-                  validationResults.eventMinute === "correct"
-                    ? "validation-correct"
-                    : validationResults.eventMinute === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-select svg-report-select-time ${getValidationClass(
+                  "eventMinute"
+                )}`}
                 value={formValues.eventMinute || ""}
                 onChange={(e) => updateField("eventMinute", e.target.value)}
-                disabled={validationResults.eventMinute === "correct"}
+                disabled={isFieldLocked("eventMinute")}
               >
                 <option value="">דקה</option>
                 {renderOptions(minuteOptions)}
@@ -723,16 +647,12 @@ function DamashReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select svg-report-select-time ${
-                  validationResults.eventHour === "correct"
-                    ? "validation-correct"
-                    : validationResults.eventHour === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-select svg-report-select-time ${getValidationClass(
+                  "eventHour"
+                )}`}
                 value={formValues.eventHour || ""}
                 onChange={(e) => updateField("eventHour", e.target.value)}
-                disabled={validationResults.eventHour === "correct"}
+                disabled={isFieldLocked("eventHour")}
               >
                 <option value="">שעה</option>
                 {renderOptions(hourOptions)}
@@ -755,19 +675,16 @@ function DamashReportPage1({
               className="svg-textarea-host"
             >
               <textarea
-                className={`svg-report-textarea ${
-                  validationResults.offenseDescription === "correct"
-                    ? "validation-correct"
-                    : validationResults.offenseDescription === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-textarea ${getValidationClass(
+                  "offenseDescription"
+                )}`}
                 placeholder="פירוט תיאור העבירה..."
                 value={formValues.offenseDescription || ""}
                 onChange={(e) =>
                   updateField("offenseDescription", e.target.value)
                 }
-                // disabled={validationResults.offenseDescription === "correct"}
+                // disabled={isFieldLocked("offenseDescription")}
+                disabled={isFieldLocked("offenseDescription")}
               />
             </div>
           </foreignObject>
@@ -787,16 +704,13 @@ function DamashReportPage1({
               className="svg-textarea-host"
             >
               <textarea
-                className={`svg-report-textarea ${
-                  validationResults.circumstances === "correct"
-                    ? "validation-correct"
-                    : validationResults.circumstances === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-textarea ${getValidationClass(
+                  "circumstances"
+                )}`}
                 placeholder="פירוט הנסיבות..."
                 value={formValues.circumstances || ""}
                 onChange={(e) => updateField("circumstances", e.target.value)}
+                disabled={isFieldLocked("circumstances")}
               />
             </div>
           </foreignObject>
@@ -816,18 +730,15 @@ function DamashReportPage1({
               className="svg-textarea-host"
             >
               <textarea
-                className={`svg-report-textarea ${
-                  validationResults.recipientResponse === "correct"
-                    ? "validation-correct"
-                    : validationResults.recipientResponse === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-textarea ${getValidationClass(
+                  "recipientResponse"
+                )}`}
                 placeholder="דברי מקבל הדו״ח..."
                 value={formValues.recipientResponse || ""}
                 onChange={(e) =>
                   updateField("recipientResponse", e.target.value)
                 }
+                disabled={isFieldLocked("recipientResponse")}
               />
             </div>
           </foreignObject>
@@ -843,14 +754,11 @@ function DamashReportPage1({
               /* ה-Class משתנה דינמית בשביל להעלים את המסגרת כשיש חתימה או להציג ולידציה */
               className={`svg-sign-clickable ${
                 formValues.isSigned ? "is-signed" : ""
-              } ${
-                validationResults.isSigned === "correct"
-                  ? "validation-correct"
-                  : validationResults.isSigned === "incorrect"
-                  ? "validation-incorrect"
-                  : ""
-              }`}
-              onClick={() => updateField("isSigned", true)}
+              } ${getValidationClass("isSigned")}`}
+              onClick={() => {
+                if (isFieldLocked("isSigned")) return;
+                updateField("isSigned", true);
+              }}
             />
 
             {/* הצגת תמונת החתימה */}
@@ -884,13 +792,7 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnit === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnit === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass("policeUnit")}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -898,7 +800,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit1" ? "" : "unit1"
                   )
                 }
-                disabled={validationResults.policeUnit === "correct"}
+                disabled={isFieldLocked("policeUnit")}
               >
                 {formValues.policeUnit === "unit1" ? "×" : ""}
               </button>
@@ -920,13 +822,7 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnit === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnit === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass("policeUnit")}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -934,7 +830,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit2" ? "" : "unit2"
                   )
                 }
-                disabled={validationResults.policeUnit === "correct"}
+                disabled={isFieldLocked("policeUnit")}
               >
                 {formValues.policeUnit === "unit2" ? "×" : ""}
               </button>
@@ -956,13 +852,7 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnit === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnit === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass("policeUnit")}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -970,7 +860,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit3" ? "" : "unit3"
                   )
                 }
-                disabled={validationResults.policeUnit === "correct"}
+                disabled={isFieldLocked("policeUnit")}
               >
                 {formValues.policeUnit === "unit3" ? "×" : ""}
               </button>
@@ -994,21 +884,15 @@ function DamashReportPage1({
               >
                 <input
                   type="text"
-                  className={`svg-report-input svg-report-input-tiny ${
-                    validationResults.policeUnitOtherDetails === "correct"
-                      ? "validation-correct"
-                      : validationResults.policeUnitOtherDetails === "incorrect"
-                      ? "validation-incorrect"
-                      : ""
-                  }`}
+                  className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                    "policeUnitOtherDetails"
+                  )}`}
                   placeholder="פירוט..."
                   value={formValues.policeUnitOtherDetails || ""}
                   onChange={(e) =>
                     updateField("policeUnitOtherDetails", e.target.value)
                   }
-                  disabled={
-                    validationResults.policeUnitOtherDetails === "correct"
-                  }
+                  disabled={isFieldLocked("policeUnitOtherDetails")}
                 />
               </div>
             </foreignObject>
@@ -1029,13 +913,7 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnit === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnit === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass("policeUnit")}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1043,7 +921,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit4" ? "" : "unit4"
                   )
                 }
-                disabled={validationResults.policeUnit === "correct"}
+                disabled={isFieldLocked("policeUnit")}
               >
                 {formValues.policeUnit === "unit4" ? "×" : ""}
               </button>
@@ -1065,13 +943,7 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnit === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnit === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass("policeUnit")}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1079,7 +951,7 @@ function DamashReportPage1({
                     formValues.policeUnit === "unit5" ? "" : "unit5"
                   )
                 }
-                disabled={validationResults.policeUnit === "correct"}
+                disabled={isFieldLocked("policeUnit")}
               >
                 {formValues.policeUnit === "unit5" ? "×" : ""}
               </button>
@@ -1102,13 +974,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.deliveryMethod === "correct"
-                    ? "validation-correct"
-                    : validationResults.deliveryMethod === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "deliveryMethod"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1116,7 +984,7 @@ function DamashReportPage1({
                     formValues.deliveryMethod === "method1" ? "" : "method1"
                   )
                 }
-                disabled={validationResults.deliveryMethod === "correct"}
+                disabled={isFieldLocked("deliveryMethod")}
               >
                 {formValues.deliveryMethod === "method1" ? "×" : ""}
               </button>
@@ -1138,13 +1006,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.deliveryMethod === "correct"
-                    ? "validation-correct"
-                    : validationResults.deliveryMethod === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "deliveryMethod"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1152,7 +1016,7 @@ function DamashReportPage1({
                     formValues.deliveryMethod === "method2" ? "" : "method2"
                   )
                 }
-                disabled={validationResults.deliveryMethod === "correct"}
+                disabled={isFieldLocked("deliveryMethod")}
               >
                 {formValues.deliveryMethod === "method2" ? "×" : ""}
               </button>
@@ -1168,24 +1032,20 @@ function DamashReportPage1({
             height="40.04"
             style={{ pointerEvents: "none" }}
           />
-          
+
           <foreignObject x="975.85" y="1776.56" width="182.48" height="40.04">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small ${
-                  validationResults.base === "correct"
-                    ? "validation-correct"
-                    : validationResults.base === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-small ${getValidationClass(
+                  "base"
+                )}`}
                 type="text"
                 value={formValues.base || ""}
                 onChange={(e) => updateField("base", e.target.value)}
-                disabled={validationResults.base === "correct"}
+                disabled={isFieldLocked("base")}
               />
             </div>
           </foreignObject>
@@ -1207,22 +1067,15 @@ function DamashReportPage1({
             >
               <input
                 type="text"
-                className={`svg-report-input svg-report-input-personal-number ${
-                  validationResults.witnessOfficerPersonalNumber === "correct"
-                    ? "validation-correct"
-                    : validationResults.witnessOfficerPersonalNumber ===
-                      "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-personal-number ${getValidationClass(
+                  "witnessOfficerPersonalNumber"
+                )}`}
                 placeholder="מספר אישי..."
                 value={formValues.witnessOfficerPersonalNumber || ""}
                 onChange={(e) =>
                   updateField("witnessOfficerPersonalNumber", e.target.value)
                 }
-                disabled={
-                  validationResults.witnessOfficerPersonalNumber === "correct"
-                }
+                disabled={isFieldLocked("witnessOfficerPersonalNumber")}
               />
             </div>
           </foreignObject>
@@ -1243,19 +1096,15 @@ function DamashReportPage1({
             >
               <input
                 type="text"
-                className={`svg-report-input svg-report-input-tiny ${
-                  validationResults.witnessOfficerRank === "correct"
-                    ? "validation-correct"
-                    : validationResults.witnessOfficerRank === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                  "witnessOfficerRank"
+                )}`}
                 placeholder="דרגה..."
                 value={formValues.witnessOfficerRank || ""}
                 onChange={(e) =>
                   updateField("witnessOfficerRank", e.target.value)
                 }
-                disabled={validationResults.witnessOfficerRank === "correct"}
+                disabled={isFieldLocked("witnessOfficerRank")}
               />
             </div>
           </foreignObject>
@@ -1276,21 +1125,15 @@ function DamashReportPage1({
             >
               <input
                 type="text"
-                className={`svg-report-input svg-report-input-tiny ${
-                  validationResults.witnessOfficerFirstName === "correct"
-                    ? "validation-correct"
-                    : validationResults.witnessOfficerFirstName === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                  "witnessOfficerFirstName"
+                )}`}
                 placeholder="שם פרטי..."
                 value={formValues.witnessOfficerFirstName || ""}
                 onChange={(e) =>
                   updateField("witnessOfficerFirstName", e.target.value)
                 }
-                disabled={
-                  validationResults.witnessOfficerFirstName === "correct"
-                }
+                disabled={isFieldLocked("witnessOfficerFirstName")}
               />
             </div>
           </foreignObject>
@@ -1311,21 +1154,15 @@ function DamashReportPage1({
             >
               <input
                 type="text"
-                className={`svg-report-input svg-report-input-tiny ${
-                  validationResults.witnessOfficerFamilyName === "correct"
-                    ? "validation-correct"
-                    : validationResults.witnessOfficerFamilyName === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                  "witnessOfficerFamilyName"
+                )}`}
                 placeholder="שם משפחה..."
                 value={formValues.witnessOfficerFamilyName || ""}
                 onChange={(e) =>
                   updateField("witnessOfficerFamilyName", e.target.value)
                 }
-                disabled={
-                  validationResults.witnessOfficerFamilyName === "correct"
-                }
+                disabled={isFieldLocked("witnessOfficerFamilyName")}
               />
             </div>
           </foreignObject>
@@ -1339,14 +1176,11 @@ function DamashReportPage1({
               height="36.26"
               className={`svg-sign-clickable ${
                 formValues.isOfficerWitnessSigned ? "is-signed" : ""
-              } ${
-                validationResults.isOfficerWitnessSigned === "correct"
-                  ? "validation-correct"
-                  : validationResults.isOfficerWitnessSigned === "incorrect"
-                  ? "validation-incorrect"
-                  : ""
-              }`}
-              onClick={() => updateField("isOfficerWitnessSigned", true)}
+              } ${getValidationClass("isOfficerWitnessSigned")}`}
+              onClick={() => {
+                if (isFieldLocked("isOfficerWitnessSigned")) return;
+                updateField("isOfficerWitnessSigned", true);
+              }}
             />
 
             {formValues.isOfficerWitnessSigned && (
@@ -1379,13 +1213,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnitSection === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnitSection === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "policeUnitSection"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1395,7 +1225,7 @@ function DamashReportPage1({
                       : "section1"
                   )
                 }
-                disabled={validationResults.policeUnitSection === "correct"}
+                disabled={isFieldLocked("policeUnitSection")}
               >
                 {formValues.policeUnitSection === "section1" ? "×" : ""}
               </button>
@@ -1417,13 +1247,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnitSection === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnitSection === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "policeUnitSection"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1433,7 +1259,7 @@ function DamashReportPage1({
                       : "section2"
                   )
                 }
-                disabled={validationResults.policeUnitSection === "correct"}
+                disabled={isFieldLocked("policeUnitSection")}
               >
                 {formValues.policeUnitSection === "section2" ? "×" : ""}
               </button>
@@ -1455,13 +1281,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnitSection === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnitSection === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "policeUnitSection"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1471,7 +1293,7 @@ function DamashReportPage1({
                       : "section3"
                   )
                 }
-                disabled={validationResults.policeUnitSection === "correct"}
+                disabled={isFieldLocked("policeUnitSection")}
               >
                 {formValues.policeUnitSection === "section3" ? "×" : ""}
               </button>
@@ -1493,13 +1315,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnitSection === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnitSection === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "policeUnitSection"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1509,7 +1327,7 @@ function DamashReportPage1({
                       : "section4"
                   )
                 }
-                disabled={validationResults.policeUnitSection === "correct"}
+                disabled={isFieldLocked("policeUnitSection")}
               >
                 {formValues.policeUnitSection === "section4" ? "×" : ""}
               </button>
@@ -1531,13 +1349,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnitSection === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnitSection === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "policeUnitSection"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1547,7 +1361,7 @@ function DamashReportPage1({
                       : "section5"
                   )
                 }
-                disabled={validationResults.policeUnitSection === "correct"}
+                disabled={isFieldLocked("policeUnitSection")}
               >
                 {formValues.policeUnitSection === "section5" ? "×" : ""}
               </button>
@@ -1569,13 +1383,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.policeUnitSection === "correct"
-                    ? "validation-correct"
-                    : validationResults.policeUnitSection === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "policeUnitSection"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1585,7 +1395,7 @@ function DamashReportPage1({
                       : "section6"
                   )
                 }
-                disabled={validationResults.policeUnitSection === "correct"}
+                disabled={isFieldLocked("policeUnitSection")}
               >
                 {formValues.policeUnitSection === "section6" ? "×" : ""}
               </button>
@@ -1611,13 +1421,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.offenseLocationType === "correct"
-                    ? "validation-correct"
-                    : validationResults.offenseLocationType === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "offenseLocationType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1625,7 +1431,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc1" ? "" : "loc1"
                   )
                 }
-                disabled={validationResults.offenseLocationType === "correct"}
+                disabled={isFieldLocked("offenseLocationType")}
               >
                 {formValues.offenseLocationType === "loc1" ? "×" : ""}
               </button>
@@ -1655,19 +1461,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc1Field1 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc1Field1 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc1Field1"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc1Field1 || ""}
                     onChange={(e) => updateField("loc1Field1", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc1Field1")}
                   />
                 </div>
               </foreignObject>
@@ -1692,19 +1492,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc1Field2 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc1Field2 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc1Field2"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc1Field2 || ""}
                     onChange={(e) => updateField("loc1Field2", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc1Field2")}
                   />
                 </div>
               </foreignObject>
@@ -1724,19 +1518,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc1Field3 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc1Field3 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc1Field3"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc1Field3 || ""}
                     onChange={(e) => updateField("loc1Field3", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc1Field3")}
                   />
                 </div>
               </foreignObject>
@@ -1756,19 +1544,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc1Field4 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc1Field4 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc1Field4"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc1Field4 || ""}
                     onChange={(e) => updateField("loc1Field4", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc1Field4")}
                   />
                 </div>
               </foreignObject>
@@ -1792,13 +1574,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.offenseLocationType === "correct"
-                    ? "validation-correct"
-                    : validationResults.offenseLocationType === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "offenseLocationType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1806,7 +1584,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc2" ? "" : "loc2"
                   )
                 }
-                disabled={validationResults.offenseLocationType === "correct"}
+                disabled={isFieldLocked("offenseLocationType")}
               >
                 {formValues.offenseLocationType === "loc2" ? "×" : ""}
               </button>
@@ -1836,19 +1614,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc2Field1 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc2Field1 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc2Field1"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc2Field1 || ""}
                     onChange={(e) => updateField("loc2Field1", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc2Field1")}
                   />
                 </div>
               </foreignObject>
@@ -1873,19 +1645,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc2Field2 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc2Field2 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc2Field2"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc2Field2 || ""}
                     onChange={(e) => updateField("loc2Field2", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc2Field2")}
                   />
                 </div>
               </foreignObject>
@@ -1905,19 +1671,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc2Field3 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc2Field3 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc2Field3"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc2Field3 || ""}
                     onChange={(e) => updateField("loc2Field3", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc2Field3")}
                   />
                 </div>
               </foreignObject>
@@ -1937,19 +1697,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc2Field4 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc2Field4 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc2Field4"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc2Field4 || ""}
                     onChange={(e) => updateField("loc2Field4", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc2Field4")}
                   />
                 </div>
               </foreignObject>
@@ -1973,13 +1727,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.offenseLocationType === "correct"
-                    ? "validation-correct"
-                    : validationResults.offenseLocationType === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "offenseLocationType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1987,7 +1737,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc3" ? "" : "loc3"
                   )
                 }
-                disabled={validationResults.offenseLocationType === "correct"}
+                disabled={isFieldLocked("offenseLocationType")}
               >
                 {formValues.offenseLocationType === "loc3" ? "×" : ""}
               </button>
@@ -2017,19 +1767,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc3Field1 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc3Field1 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc3Field1"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc3Field1 || ""}
                     onChange={(e) => updateField("loc3Field1", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc3Field1")}
                   />
                 </div>
               </foreignObject>
@@ -2054,19 +1798,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc3Field2 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc3Field2 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc3Field2"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc3Field2 || ""}
                     onChange={(e) => updateField("loc3Field2", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc3Field2")}
                   />
                 </div>
               </foreignObject>
@@ -2091,19 +1829,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc3Field3 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc3Field3 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc3Field3"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc3Field3 || ""}
                     onChange={(e) => updateField("loc3Field3", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc3Field3")}
                   />
                 </div>
               </foreignObject>
@@ -2127,13 +1859,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.offenseLocationType === "correct"
-                    ? "validation-correct"
-                    : validationResults.offenseLocationType === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "offenseLocationType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -2141,7 +1869,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc4" ? "" : "loc4"
                   )
                 }
-                disabled={validationResults.offenseLocationType === "correct"}
+                disabled={isFieldLocked("offenseLocationType")}
               >
                 {formValues.offenseLocationType === "loc4" ? "×" : ""}
               </button>
@@ -2171,19 +1899,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc4Field1 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc4Field1 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc4Field1"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc4Field1 || ""}
                     onChange={(e) => updateField("loc4Field1", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc4Field1")}
                   />
                 </div>
               </foreignObject>
@@ -2207,13 +1929,9 @@ function DamashReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${
-                  validationResults.offenseLocationType === "correct"
-                    ? "validation-correct"
-                    : validationResults.offenseLocationType === "incorrect"
-                    ? "validation-incorrect"
-                    : ""
-                }`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "offenseLocationType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -2221,7 +1939,7 @@ function DamashReportPage1({
                     formValues.offenseLocationType === "loc5" ? "" : "loc5"
                   )
                 }
-                disabled={validationResults.offenseLocationType === "correct"}
+                disabled={isFieldLocked("offenseLocationType")}
               >
                 {formValues.offenseLocationType === "loc5" ? "×" : ""}
               </button>
@@ -2251,19 +1969,13 @@ function DamashReportPage1({
                 >
                   <input
                     type="text"
-                    className={`svg-report-input svg-report-input-tiny ${
-                      validationResults.loc5Field1 === "correct"
-                        ? "validation-correct"
-                        : validationResults.loc5Field1 === "incorrect"
-                        ? "validation-incorrect"
-                        : ""
-                    }`}
+                    className={`svg-report-input svg-report-input-tiny ${getValidationClass(
+                      "loc5Field1"
+                    )}`}
                     placeholder="..."
                     value={formValues.loc5Field1 || ""}
                     onChange={(e) => updateField("loc5Field1", e.target.value)}
-                    disabled={
-                      validationResults.offenseLocationType === "correct"
-                    }
+                    disabled={isFieldLocked("loc5Field1")}
                   />
                 </div>
               </foreignObject>

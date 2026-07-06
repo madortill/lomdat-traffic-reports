@@ -260,10 +260,15 @@ function LearningPage() {
   const renderSlide = () => {
     switch (slide.type) {
       // case "reportForm":
-      //   return <ReportFormSlide data={slide} />;
+      //   return <ReportFillSlide data={slide} />;
 
       case "reportForm":
-        return <ReportFillSlide data={slide} />;
+        return (
+          <ReportFillSlide
+            data={slide}
+            onUnlock={() => handleSlideUnlocked(slide.id)}
+          />
+        );
 
       case "completionPopup": {
         const backgroundSlide =
@@ -348,7 +353,9 @@ function LearningPage() {
   return (
     <div
       className={`learning-page-container ${
-        slide.theme === "damash" ? "learning-page-container-damash" : "learning-page-container-beidatz"
+        slide.theme === "damash"
+          ? "learning-page-container-damash"
+          : "learning-page-container-beidatz"
       }`}
     >
       <img src={logoBahad13} className="logo-bahad13-fixed" alt="בהד 13" />

@@ -83,22 +83,22 @@
         "id": "4",
         "type": "reportForm",
         "reportKind": "beidatz",
-        "requireUnlock": false,
+        "requireUnlock": true,
         "navigation": {
-            "hideNextUntilUnlocked": false,
-            "next": {
-                "show": true,
-                "label": "לסיום הדו״ח >",
-                "position": "bottomLeft"
-            },
-            "back": {
-                "show": true,
-                "variant": "text",
-                "label": "< חזרה לאירוע",
-                "position": "bottomRight"
-            }
+          "hideNextUntilUnlocked": false,
+          "next": {
+            "show": true,
+            "label": "לסיום הדו״ח >",
+            "position": "bottomLeft"
+          },
+          "back": {
+            "show": true,
+            "variant": "text",
+            "label": "< חזרה לאירוע",
+            "position": "bottomRight"
+          }
         }
-    },
+      },
     {
         "id": "4-success",
         "type": "completionPopup",
@@ -202,22 +202,22 @@
         "id": "8",
         "type": "reportForm",
         "reportKind": "damash",
-        "requireUnlock": false,
+        "requireUnlock": true,
         "navigation": {
-            "hideNextUntilUnlocked": false,
-            "next": {
-                "show": true,
-                "label": "לסיום הדו״ח >",
-                "position": "bottomLeft"
-            },
-            "back": {
-                "show": true,
-                "variant": "text",
-                "label": "< חזרה לאירוע",
-                "position": "bottomRight"
-            }
+          "hideNextUntilUnlocked": false,
+          "next": {
+            "show": true,
+            "label": "לסיום הדו״ח >",
+            "position": "bottomLeft"
+          },
+          "back": {
+            "show": true,
+            "variant": "text",
+            "label": "< חזרה לאירוע",
+            "position": "bottomRight"
+          }
         }
-    },
+      },
     {
         "id": "8-success",
         "type": "completionPopup",

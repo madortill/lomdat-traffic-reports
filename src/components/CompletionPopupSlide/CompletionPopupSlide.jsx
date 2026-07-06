@@ -29,7 +29,13 @@ import backBtn from "../../assets/back-btn.svg";
 function CompletionPopupSlide({ data, onContinue, onBack }) {
   return (
     <div className="completion-popup-overlay">
-      <div className={`completion-popup-card ${data.who === "end" ? "completion-popup-card-end" : "completion-popup-card-instructions"}`}>
+      <div
+        className={`completion-popup-card ${
+          data.who === "end"
+            ? "completion-popup-card-end"
+            : "completion-popup-card-instructions"
+        }`}
+      >
         {onBack && (
           <button
             className="completion-popup-back-btn"
@@ -49,6 +55,15 @@ function CompletionPopupSlide({ data, onContinue, onBack }) {
             {data.subtitle && (
               <p className="completion-popup-subtitle">{data.subtitle}</p>
             )}
+
+            <button
+              className="completion-popup-button"
+              type="button"
+              onClick={onContinue}
+            >
+              {data.buttonLabel}
+              <span className="completion-popup-arrow">‹</span>
+            </button>
           </>
         )}
 
@@ -59,17 +74,17 @@ function CompletionPopupSlide({ data, onContinue, onBack }) {
             <p className="completion-popup-subtitle">{data.subtitle}</p>
 
             <p className="completion-popup-mini-text">{data.miniText}</p>
+
+            <button
+              className="completion-popup-button"
+              type="button"
+              onClick={onContinue}
+            >
+              {data.buttonLabel}
+              <span className="completion-popup-arrow">‹</span>
+            </button>
           </>
         )}
-
-        <button
-          className="completion-popup-button"
-          type="button"
-          onClick={onContinue}
-        >
-          {data.buttonLabel}
-          <span className="completion-popup-arrow">‹</span>
-        </button>
       </div>
     </div>
   );

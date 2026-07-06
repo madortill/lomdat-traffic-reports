@@ -37,6 +37,7 @@
     left: 1rem;
     width: 5.5rem;
     z-index: 50;
+    pointer-events: none;
 }
 
 .logo-till-fixed {
@@ -47,6 +48,7 @@
     left: 5rem;
     /* width: 7%; */
     height: auto;
+    pointer-events: none;
 }
 
 /* אזור הסלייד */

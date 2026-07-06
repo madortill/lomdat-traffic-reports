@@ -9,6 +9,8 @@ import DamashReportPage1 from "./reportPages/DamashReportPage1";
 
 import ReportPageNextBtn from "../../assets/ReportPageNextBtn.svg";
 import ReportPagePrevBtn from "../../assets/ReportPagePrevBtn.svg";
+import reportNotComplete from "../../assets/report-not-complete.png";
+import zoomBtn from "../../assets/zoom-btn.png";
 
 const REPORTS_CONFIG = {
   beidatz: {
@@ -89,12 +91,35 @@ const REPORTS_CONFIG = {
         beidatzSubOption: ["option1"],
         beidatzSecondOfficerFirstName: ["דני"],
         beidatzSecondOfficerFamilyName: ["פרי"],
+
+        // דף 3
+        beidatzPage3LineOption: ["option1"],
+
+        beidatzPage3SelectedOption: ["option1", "option2"],
+        beidatzPage3Option1Text: ["436-66-224", "43666224"],
+        beidatzPage3Option2Text: ["662", "66"],
+
+        beidatzPage3MultiOption1: [true],
+        beidatzPage3MultiOption2: [true],
+        beidatzPage3MultiOption1Text: [
+          "רנו קנגו",
+          "רנו-קנגו",
+          "רנו קנגו.",
+          "רנו-קנגו.",
+        ],
+        beidatzPage3MultiOption2Text: ["כסוף", "כסוף."],
+
+        beidatzIdentifiedOffense: ["yes"],
+        beidatzStopSignalMethod: ["method1"],
+        beidatzVehicleStopOption: ["stop1"],
       },
       requiredOnly: [
         // דף 1
         "beidatzOfficerPersonalNumber",
         "beidatzOfficerRank",
         "isOfficerWitnessSignedBeidatz",
+        "beidatzOffenseNature",
+        "beidatzOffenseDetails",
 
         // דף 2
         "beidatzDriverResponse",
@@ -104,6 +129,13 @@ const REPORTS_CONFIG = {
         "beidatzSecondOfficerPersonalNumber",
         "beidatzSecondOfficerRank",
         "isSecondOfficerSignedBeidatz",
+
+        // דף 3
+        "beidatzStopDetails",
+      ],
+      optionalOnly: [
+        "beidatzPage3MultiOption3",
+        "beidatzPage3MultiOption3Text",
       ],
     },
   },
@@ -216,7 +248,7 @@ function hasFieldValue(value) {
   return value !== "";
 }
 
-function ReportFillSlide({ data, isPreview = false }) {
+function ReportFillSlide({ data, isPreview = false, onUnlock = () => {} }) {
   const reportKind = data?.reportKind || "beidatz";
   const reportConfig = REPORTS_CONFIG[reportKind];
 
@@ -261,6 +293,8 @@ function ReportFillSlide({ data, isPreview = false }) {
     const saved = sessionStorage.getItem(countStorageKey);
     return saved ? Number(saved) : 0;
   });
+
+  const [isReportZoomed, setIsReportZoomed] = useState(false);
 
   useEffect(() => {
     const savedPage = sessionStorage.getItem(pageStorageKey);
@@ -318,6 +352,17 @@ function ReportFillSlide({ data, isPreview = false }) {
     sessionStorage.setItem(countStorageKey, String(checkCount));
   }, [checkCount, countStorageKey]);
 
+  useEffect(() => {
+    if (!isReportZoomed) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isReportZoomed]);
+
   const updateField = (fieldName, value) => {
     if (validationResults[fieldName] === "correct") return;
     if (validationResults[fieldName] === "locked") return;
@@ -336,11 +381,25 @@ function ReportFillSlide({ data, isPreview = false }) {
     }
   };
 
+  const shouldSkipValidationField = (fieldName) => {
+    if (fieldName === "beidatzPage3Option1Text") {
+      return formValues.beidatzPage3SelectedOption !== "option1";
+    }
+
+    if (fieldName === "beidatzPage3Option2Text") {
+      return formValues.beidatzPage3SelectedOption !== "option2";
+    }
+
+    return false;
+  };
+
   const isFormComplete = useMemo(() => {
     const rules = reportConfig.validation;
     if (!rules) return false;
 
     const allAnswersFilled = Object.keys(rules.answers).every((key) => {
+      if (shouldSkipValidationField(key)) return true;
+
       return hasFieldValue(formValues[key]);
     });
 
@@ -356,6 +415,8 @@ function ReportFillSlide({ data, isPreview = false }) {
     if (!rules) return false;
 
     const allAnswersCorrect = Object.keys(rules.answers).every((key) => {
+      if (shouldSkipValidationField(key)) return true;
+
       return validationResults[key] === "correct";
     });
 
@@ -364,7 +425,15 @@ function ReportFillSlide({ data, isPreview = false }) {
     });
 
     return allAnswersCorrect && allRequiredLocked;
-  }, [validationResults, reportConfig.validation]);
+  }, [validationResults, formValues, reportConfig.validation]);
+
+  useEffect(() => {
+    if (isPreview) return;
+
+    if (isEverythingCorrect) {
+      onUnlock();
+    }
+  }, [isEverythingCorrect, isPreview, onUnlock]);
 
   const checkNormalAnswer = (field, results) => {
     if (validationResults[field] === "correct") return;
@@ -389,6 +458,11 @@ function ReportFillSlide({ data, isPreview = false }) {
 
     Object.keys(rules.answers).forEach((field) => {
       if (validationResults[field] === "correct") return;
+
+      if (shouldSkipValidationField(field)) {
+        results[field] = "";
+        return;
+      }
 
       /*
         שדות תלויים/מיוחדים.
@@ -497,6 +571,113 @@ function ReportFillSlide({ data, isPreview = false }) {
     }
 
     /*
+  לוגיקת מיקום לביד"צ.
+*/
+    if (rules.answers.beidatzOffenseLocationType) {
+      const correctBeidatzLocation =
+        rules.answers.beidatzOffenseLocationType?.[0] || "loc4";
+
+      const checkBeidatzLocField = (locName, fieldName, fieldValue) => {
+        if (formValues.beidatzOffenseLocationType !== locName) return "";
+
+        if (validationResults[fieldName] === "correct") {
+          return "correct";
+        }
+
+        if (locName === correctBeidatzLocation) {
+          const allowedAnswers = rules.answers[fieldName];
+          const userValue = normalizeValue(fieldValue);
+
+          if (allowedAnswers) {
+            return allowedAnswers.includes(userValue) ? "correct" : "incorrect";
+          }
+
+          return hasFieldValue(userValue) ? "correct" : "incorrect";
+        }
+
+        return "incorrect";
+      };
+
+      results.beidatzLoc1Field1 = checkBeidatzLocField(
+        "loc1",
+        "beidatzLoc1Field1",
+        formValues.beidatzLoc1Field1
+      );
+
+      results.beidatzLoc1Field2 = checkBeidatzLocField(
+        "loc1",
+        "beidatzLoc1Field2",
+        formValues.beidatzLoc1Field2
+      );
+
+      results.beidatzLoc1Field3 = checkBeidatzLocField(
+        "loc1",
+        "beidatzLoc1Field3",
+        formValues.beidatzLoc1Field3
+      );
+
+      results.beidatzLoc1Field4 = checkBeidatzLocField(
+        "loc1",
+        "beidatzLoc1Field4",
+        formValues.beidatzLoc1Field4
+      );
+
+      results.beidatzLoc2Field1 = checkBeidatzLocField(
+        "loc2",
+        "beidatzLoc2Field1",
+        formValues.beidatzLoc2Field1
+      );
+
+      results.beidatzLoc2Field2 = checkBeidatzLocField(
+        "loc2",
+        "beidatzLoc2Field2",
+        formValues.beidatzLoc2Field2
+      );
+
+      results.beidatzLoc2Field3 = checkBeidatzLocField(
+        "loc2",
+        "beidatzLoc2Field3",
+        formValues.beidatzLoc2Field3
+      );
+
+      results.beidatzLoc2Field4 = checkBeidatzLocField(
+        "loc2",
+        "beidatzLoc2Field4",
+        formValues.beidatzLoc2Field4
+      );
+
+      results.beidatzLoc3Field1 = checkBeidatzLocField(
+        "loc3",
+        "beidatzLoc3Field1",
+        formValues.beidatzLoc3Field1
+      );
+
+      results.beidatzLoc3Field2 = checkBeidatzLocField(
+        "loc3",
+        "beidatzLoc3Field2",
+        formValues.beidatzLoc3Field2
+      );
+
+      results.beidatzLoc3Field3 = checkBeidatzLocField(
+        "loc3",
+        "beidatzLoc3Field3",
+        formValues.beidatzLoc3Field3
+      );
+
+      results.beidatzLoc4Field1 = checkBeidatzLocField(
+        "loc4",
+        "beidatzLoc4Field1",
+        formValues.beidatzLoc4Field1
+      );
+
+      results.beidatzLoc5Field1 = checkBeidatzLocField(
+        "loc5",
+        "beidatzLoc5Field1",
+        formValues.beidatzLoc5Field1
+      );
+    }
+
+    /*
       לוגיקת יחידה / פרטים נוספים בדמ"ש.
     */
     if (rules.answers.policeUnit) {
@@ -543,6 +724,14 @@ function ReportFillSlide({ data, isPreview = false }) {
       }
     });
 
+    rules.optionalOnly?.forEach((field) => {
+      if (validationResults[field] === "locked") return;
+
+      if (hasFieldValue(formValues[field])) {
+        results[field] = "locked";
+      }
+    });
+
     setValidationResults(results);
     setCheckCount((prev) => prev + 1);
   };
@@ -571,6 +760,23 @@ function ReportFillSlide({ data, isPreview = false }) {
   const isFirstPage = safePageIndex === 0;
   const isLastPage = safePageIndex === pages.length - 1;
 
+  const renderCurrentReportPage = () => (
+    <div
+      className={`report-page-frame ${
+        isReportZoomed ? "report-page-frame-zoomed" : ""
+      }`}
+      key={currentPage.id}
+    >
+      <CurrentReportPage
+        formValues={formValues}
+        updateField={updateField}
+        validationResults={validationResults}
+        getValidationClass={getValidationClass}
+        isFieldLocked={isFieldLocked}
+      />
+    </div>
+  );
+
   if (!CurrentReportPage) {
     return <div className="report-fill-slide">טוען...</div>;
   }
@@ -591,15 +797,23 @@ function ReportFillSlide({ data, isPreview = false }) {
           />
         )}
 
-        <div className="report-page-frame" key={currentPage.id}>
-          <CurrentReportPage
-            formValues={formValues}
-            updateField={updateField}
-            validationResults={validationResults}
-            getValidationClass={getValidationClass}
-            isFieldLocked={isFieldLocked}
+        {!isReportZoomed && renderCurrentReportPage()}
+
+        {!isPreview && !isReportZoomed && (
+          // <button
+          //   type="button"
+          //   className="report-zoom-btn"
+          //   onClick={() => setIsReportZoomed(true)}
+          // >
+          //   הגדל דו״ח
+          // </button>
+          <img
+            src={zoomBtn}
+            className="report-zoom-btn-img"
+            onClick={() => setIsReportZoomed(true)}
+            alt="הגדל דוח"
           />
-        </div>
+        )}
 
         {hasMultiplePages && !isLastPage && (
           <img
@@ -614,6 +828,39 @@ function ReportFillSlide({ data, isPreview = false }) {
           />
         )}
       </div>
+
+      {isReportZoomed && (
+        <div
+          className="report-zoom-overlay"
+          onClick={() => setIsReportZoomed(false)}
+        >
+          <div
+            className="report-zoom-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="report-zoom-close-btn"
+              onClick={() => setIsReportZoomed(false)}
+              aria-label="סגירת הגדלת הדוח"
+            >
+              ×
+            </button>
+
+            <div className="report-zoom-scroll-area">
+              {renderCurrentReportPage()}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {!isPreview && checkCount > 0 && !isEverythingCorrect && (
+        <img
+          src={reportNotComplete}
+          className="report-validation-feedback-image"
+          alt="יש עדיין תשובות שצריך לתקן"
+        />
+      )}
 
       {!isPreview && (
         <div className="validation-footer-container">
