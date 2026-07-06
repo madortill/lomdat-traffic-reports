@@ -1,32 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CompletionPopupSlide.css";
 import backBtn from "../../assets/back-btn.svg";
 
-// function CompletionPopupSlide({ data, onContinue }) {
-
-//   return (
-//     <div className="completion-popup-overlay">
-//       <div className="completion-popup-card">
-//         <h2 className="completion-popup-title">{data.title}</h2>
-
-//         <p className="completion-popup-subtitle">{data.subtitle}</p>
-
-//         <button
-//           className="completion-popup-button"
-//           type="button"
-//           onClick={onContinue}
-//         >
-//           {data.buttonLabel}
-//           <span className="completion-popup-arrow">‹</span>
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default CompletionPopupSlide;
-
 function CompletionPopupSlide({ data, onContinue, onBack }) {
+  const [passwordValue, setPasswordValue] = useState("");
+  const [wasPasswordTouched, setWasPasswordTouched] = useState(false);
+
+  const correctPassword = data.password || "";
+  const isPasswordCorrect =
+    data.who !== "end" || passwordValue.trim() === correctPassword;
+
+  const handlePasswordChange = (e) => {
+    setPasswordValue(e.target.value);
+    setWasPasswordTouched(true);
+  };
+
+  const handleEndContinue = () => {
+    if (!isPasswordCorrect) {
+      setWasPasswordTouched(true);
+      return;
+    }
+
+    onContinue();
+  };
+
   return (
     <div className="completion-popup-overlay">
       <div
@@ -56,14 +53,37 @@ function CompletionPopupSlide({ data, onContinue, onBack }) {
               <p className="completion-popup-subtitle">{data.subtitle}</p>
             )}
 
-            <button
-              className="completion-popup-button"
-              type="button"
-              onClick={onContinue}
-            >
-              {data.buttonLabel}
-              <span className="completion-popup-arrow">‹</span>
-            </button>
+            <div className="password-btn-container">
+              <input
+                type="password"
+                id="userPassword"
+                name="password"
+                placeholder="סיסמה..."
+                className={`password-popup ${
+                  wasPasswordTouched && passwordValue && !isPasswordCorrect
+                    ? "password-popup-error"
+                    : ""
+                } ${
+                  wasPasswordTouched && isPasswordCorrect
+                    ? "password-popup-correct"
+                    : ""
+                }`}
+                value={passwordValue}
+                onChange={handlePasswordChange}
+              />
+
+              <button
+                className={`completion-popup-button ${
+                  !isPasswordCorrect ? "completion-popup-button-disabled" : ""
+                }`}
+                type="button"
+                onClick={handleEndContinue}
+                disabled={!isPasswordCorrect}
+              >
+                {data.buttonLabel}
+                <span className="completion-popup-arrow">‹</span>
+              </button>
+            </div>
           </>
         )}
 
