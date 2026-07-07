@@ -1,6 +1,7 @@
 import beidatz2 from "../../../assets/בידצ2.jpg";
 import danisHatima from "../../../assets/danis-hatima.png";
 import AvivsHatima from "../../../assets/Avivs-hatima.png";
+import Text from "../../../assets/beidatz-2-text-format.png";
 
 function BeidatzReportPage2({
   formValues = {},
@@ -118,42 +119,6 @@ function BeidatzReportPage2({
               />
             )}
           </g>
-
-          {/* === פירוט הדו"ח - טקסט ארוך מאוד === */}
-          <rect
-            className="cls-1"
-            x="184.13"
-            y="1155.65"
-            width="1765.57"
-            height="807.65"
-            style={{ pointerEvents: "none" }}
-          />
-          <foreignObject x="184.13" y="1155.65" width="1765.57" height="807.65">
-            <div
-              xmlns="http://www.w3.org/1999/xhtml"
-              className="svg-input-host"
-              style={{ width: "100%", height: "100%" }}
-            >
-              <textarea
-                className={`svg-report-input svg-report-textarea ${getValidationClass(
-                  "beidatzReportDetails"
-                )}`}
-                placeholder="פרט את נסיבות המקרה והעבירה בהרחבה..."
-                value={formValues.beidatzReportDetails || ""}
-                onChange={(e) =>
-                  updateField("beidatzReportDetails", e.target.value)
-                }
-                disabled={isFieldLocked("beidatzReportDetails")}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  resize: "none",
-                  padding: "15px",
-                  lineHeight: "1.5",
-                }}
-              />
-            </div>
-          </foreignObject>
 
           {/* === סימון באיקס ראשי === */}
           <rect
@@ -427,6 +392,448 @@ function BeidatzReportPage2({
               />
             )}
           </g>
+
+          {/* פירוט הדוח בתוך הפורמט - טקסט ללא בדיקה אוטומטית */}
+          <rect
+            className="cls-1"
+            x="1533.3"
+            y="1152.91"
+            width="290.89"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1533.3" y="1152.91" width="290.89" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail1"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail1 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail1", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail1")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="776.11"
+            y="1152.91"
+            width="290.89"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="776.11" y="1152.91" width="290.89" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail2"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail2 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail2", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail2")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="344.11"
+            y="1152.91"
+            width="290.89"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="344.11" y="1152.91" width="290.89" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail3"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail3 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail3", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail3")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="1453.46"
+            y="1205.74"
+            width="290.89"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1453.46" y="1205.74" width="290.89" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail4"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail4 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail4", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail4")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="954.54"
+            y="1205.74"
+            width="290.89"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="954.54" y="1205.74" width="290.89" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail5"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail5 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail5", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail5")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="565.98"
+            y="1205.74"
+            width="290.89"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="565.98" y="1205.74" width="290.89" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail6"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail6 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail6", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail6")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="1574"
+            y="1258.57"
+            width="186.78"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1574" y="1258.57" width="186.78" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail7"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail7 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail7", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail7")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="1335.7"
+            y="1258.57"
+            width="144.52"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1335.7" y="1258.57" width="144.52" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail8"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail8 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail8", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail8")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="1489.48"
+            y="1311.39"
+            width="163.3"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1489.48" y="1311.39" width="163.3" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail9"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail9 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail9", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail9")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="1049.26"
+            y="1311.39"
+            width="163.3"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1049.26" y="1311.39" width="163.3" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail10"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail10 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail10", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail10")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="719.57"
+            y="1313.39"
+            width="206.61"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="719.57" y="1313.39" width="206.61" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail11"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail11 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail11", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail11")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="1396.74"
+            y="1469.87"
+            width="267.83"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1396.74" y="1469.87" width="267.83" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail12"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail12 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail12", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail12")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="1538.48"
+            y="1576.35"
+            width="267.83"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1538.48" y="1576.35" width="267.83" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail13"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail13 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail13", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail13")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="949.48"
+            y="1576.35"
+            width="284.42"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="949.48" y="1576.35" width="284.42" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail14"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail14 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail14", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail14")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="321.83"
+            y="1419.7"
+            width="203.03"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="321.83" y="1419.7" width="203.03" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail15"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail15 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail15", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail15")}
+              />
+            </div>
+          </foreignObject>
+
+          <rect
+            className="cls-1"
+            x="1249.22"
+            y="1779.43"
+            width="247.77"
+            height="42.26"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1249.22" y="1779.43" width="247.77" height="42.26">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPage2ReportDetail16"
+                )}`}
+                type="text"
+                value={formValues.beidatzPage2ReportDetail16 || ""}
+                onChange={(e) =>
+                  updateField("beidatzPage2ReportDetail16", e.target.value)
+                }
+                readOnly={isFieldLocked("beidatzPage2ReportDetail16")}
+              />
+            </div>
+          </foreignObject>
+
+          {/* נתון בדוח מראש */}
+          <image
+            width="1750"
+            height="710"
+            transform="translate(192 1161.65)"
+            xlinkHref={Text}
+            style={{ pointerEvents: "none" }}
+          />
         </g>
       </g>
     </svg>

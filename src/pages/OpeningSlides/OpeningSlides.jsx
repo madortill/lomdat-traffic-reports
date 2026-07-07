@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./OpeningSlides.css";
 
-function OpeningSlides({ data, isCompleted, onUnlock }) {
+function OpeningSlides({ data, isCompleted, onUnlock, navigationControls }) {
   const [typedText, setTypedText] = useState("");
 
   const [showTitle, setShowTitle] = useState(false);
@@ -185,52 +185,112 @@ function OpeningSlides({ data, isCompleted, onUnlock }) {
   useEffect(() => {
     if (data?.type !== "openingDrop") return;
     if (isCompleted) return;
-  
+
     if (data?.dropAnimation === false) {
       const timeout = setTimeout(() => {
         onUnlock?.(data.id);
       }, data?.unlockDelay || 400);
-  
+
       return () => clearTimeout(timeout);
     }
-  }, [data?.id, data?.type, data?.dropAnimation, data?.unlockDelay, isCompleted, onUnlock]);
+  }, [
+    data?.id,
+    data?.type,
+    data?.dropAnimation,
+    data?.unlockDelay,
+    isCompleted,
+    onUnlock,
+  ]);
+
+  const renderOpeningNavigation = () => {
+    if (!navigationControls) return null;
+    if (navigationControls.hidden) return null;
+
+    const shouldShowNext =
+      navigationControls.next?.show &&
+      (!navigationControls.hideNextUntilUnlocked ||
+        navigationControls.canProceed);
+
+    const shouldShowBack =
+      navigationControls.back?.show &&
+      navigationControls.currentSlideIndex > 0 &&
+      (!navigationControls.back?.hideUntilUnlocked ||
+        navigationControls.canProceed);
+
+    if (!shouldShowNext && !shouldShowBack) return null;
+
+    return (
+      <>
+        {shouldShowBack && (
+          <div
+            className={`opening-nav-action opening-nav-position-${navigationControls.back.position}`}
+          >
+            {navigationControls.back.variant === "text" ? (
+              <button
+                className="nav-back-text-btn"
+                onClick={navigationControls.onBack}
+                type="button"
+              >
+                {navigationControls.back.label}
+              </button>
+            ) : (
+              <img
+                src={navigationControls.backBtn}
+                onClick={navigationControls.onBack}
+                className={`nav-back-image-btn ${
+                  data?.type === "openingDrop"
+                    ? "nav-back-image-btn-notebook"
+                    : ""
+                }`}
+                alt={navigationControls.back.label}
+              />
+            )}
+          </div>
+        )}
+
+        {shouldShowNext && (
+          <div
+            className={`opening-nav-action opening-nav-position-${navigationControls.next.position}`}
+          >
+            <button
+              className={`nav-next-btn ${
+                !navigationControls.canProceed ? "btn-disabled" : ""
+              }`}
+              onClick={
+                navigationControls.canProceed
+                  ? navigationControls.onNext
+                  : undefined
+              }
+              disabled={!navigationControls.canProceed}
+              type="button"
+            >
+              {navigationControls.next.label}
+            </button>
+          </div>
+        )}
+      </>
+    );
+  };
 
   return (
     // <div className="opening-slide-container">
     <div className={`opening-slide-container ${themeClass}`}>
-      {/* {data?.type === "openingDrop" && (
-        <div className="drop-animation-wrapper">
-          <img src={data.image} alt="פתיחה" className="dropping-image" />
-        </div>
-      )} */}
-      {/* {data?.type === "openingDrop" && (
-        <div
-          className={`drop-animation-wrapper ${
-            isCompleted ? "drop-animation-done" : ""
-          }`}
-          onAnimationEnd={() => {
-            if (!isCompleted) {
-              onUnlock?.(data.id);
-            }
-          }}
-        >
-          <img src={data.image} alt="פתיחה" className="dropping-image" />
-        </div>
-      )} */}
       {data?.type === "openingDrop" && (
-        <div
-          className={`drop-animation-wrapper ${
-            shouldAnimateDrop ? "drop-animation-active" : "drop-animation-done"
-          }`}
-          onAnimationEnd={() => {
-            if (!isCompleted) {
-              onUnlock?.(data.id);
-            }
-          }}
-        >
-          <img src={data.image} alt="פתיחה" className="dropping-image" />
-        </div>
-      )}
+  <div
+    className={`drop-animation-wrapper ${
+      shouldAnimateDrop ? "drop-animation-active" : "drop-animation-done"
+    }`}
+    onAnimationEnd={() => {
+      if (!isCompleted) {
+        onUnlock?.(data.id);
+      }
+    }}
+  >
+    <img src={data.image} alt="פתיחה" className="dropping-image" />
+
+    {renderOpeningNavigation()}
+  </div>
+)}
 
       {data?.type === "billboardText" && (
         <div className="billboard-wrapper">
@@ -261,6 +321,8 @@ function OpeningSlides({ data, isCompleted, onUnlock }) {
               }`}
             ></div>
           </div>
+
+          {renderOpeningNavigation()}
         </div>
       )}
 
@@ -348,6 +410,8 @@ function OpeningSlides({ data, isCompleted, onUnlock }) {
               </div>
             </div>
           </div>
+
+          {renderOpeningNavigation()}
         </div>
       )}
     </div>

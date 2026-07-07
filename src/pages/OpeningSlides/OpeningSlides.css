@@ -224,11 +224,14 @@
 }
 
 @keyframes blinkCursor {
-    0%, 45% {
+
+    0%,
+    45% {
         opacity: 1;
     }
 
-    46%, 100% {
+    46%,
+    100% {
         opacity: 0;
     }
 }
@@ -326,7 +329,7 @@
 .pauseIcon {
     width: 0.9rem;
     height: 15px;
-    border-left: 4px solid #fff; 
+    border-left: 4px solid #fff;
     border-right: 4px solid #fff;
 }
 
@@ -418,3 +421,83 @@
 
 
 /* ============================================================================================================================================= */
+
+/* ניווט פנימי של OpeningSlides */
+/* הכפתורים נשארים עם העיצוב הרגיל מ-LearningPage.css,
+   אבל המיקום שלהם עכשיו יחסי לקומפוננטה / לשלט עצמו */
+
+.opening-nav-action {
+    position: absolute;
+    z-index: 20;
+}
+
+/* בתוך השלט - כפתור המשך תחתון */
+.opening-nav-position-insideBillboardBottom {
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* בתוך השלט - חזור למעלה ימין */
+.opening-nav-position-insideBillboardTopRight {
+    top: 18%;
+    right: 9%;
+}
+
+/* בתוך השלט - חזור למעלה שמאל */
+.opening-nav-position-insideBillboardTopLeft {
+    top: 10%;
+    left: 13%;
+}
+
+/* בתוך השלט - צד ימין */
+.opening-nav-position-insideBillboardRight {
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+}
+
+/* בתוך השלט - צד שמאל */
+.opening-nav-position-insideBillboardLeft {
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+}
+
+/* מיקומים כלליים בתוך כל מסך פתיחה */
+.opening-nav-position-bottomCenter {
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.opening-nav-position-bottomRight {
+    bottom: 2rem;
+    right: 3rem;
+}
+
+.opening-nav-position-bottomLeft {
+    bottom: 16.8vh;
+    left: -2vw;
+
+    filter: drop-shadow(0px 0px 21px rgba(255, 255, 255, 0.938));
+}
+
+.opening-nav-position-centerCenter {
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%) rotate(0.64deg);
+}
+
+/* מתאים למסך openingDrop עם המחברת */
+.opening-nav-position-insideNotebookTopRight {
+    top: 11.5%;
+    right: 19%;
+    transform: rotate(0.64deg);
+}
+
+.opening-nav-position-insideNotebookBottom {
+    bottom: 16%;
+    left: 15%;
+    transform: rotate(0.64deg);
+}

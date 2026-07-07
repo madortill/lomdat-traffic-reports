@@ -186,11 +186,36 @@
 .svg-line-mark {
     display: block;
     width: 100%;
-    height: 4px;
+    height: 8px;
     background-color: #000;
     border-radius: 999px;
 }
 
+.svg-line-checkbox.validation-correct .svg-line-mark {
+    background-color: #419648 !important;
+}
+
+.svg-line-checkbox.validation-incorrect .svg-line-mark {
+    background-color: #f3b0b7 !important;
+}
+
+.svg-line-checkbox.validation-locked .svg-line-mark {
+    background-color: #b0c4de !important;
+}
+
+/* .svg-line-checkbox.validation-correct {
+    background-color: rgba(196, 233, 206, 0.35) !important;
+    cursor: default;
+} */
+
+/* .svg-line-checkbox.validation-incorrect {
+    background-color: rgba(252, 216, 213, 0.35) !important;
+} */
+
+/* .svg-line-checkbox.validation-locked {
+    background-color: rgba(244, 246, 249, 0.6) !important;
+    cursor: not-allowed !important;
+} */
 
 /* ======================================================= */
 /* אינפוטים בתוך SVG */

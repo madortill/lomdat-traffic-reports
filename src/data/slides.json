@@ -10,7 +10,7 @@
             "next": {
                 "show": true,
                 "label": "בואו נתחיל >",
-                "position": "insideBillboardBottom"
+                "position": "insideNotebookBottom"
             },
             "back": {
                 "show": false
@@ -47,7 +47,7 @@
         "type": "billboardVideo",
         "theme": "beidatz",
         "image": "./billboard.svg",
-        "videoUrl": "./beidatz-video.mp4",
+        "videoUrl": "./beidatz-video-3.mp4",
         "requireUnlock": true,
         "navigation": {
             "hideNextUntilUnlocked": true,
@@ -126,7 +126,7 @@
             "next": {
                 "show": true,
                 "label": "בואו נתחיל >",
-                "position": "insideBillboardBottom"
+                "position": "insideNotebookBottom"
             },
             "back": {
                 "show": true,

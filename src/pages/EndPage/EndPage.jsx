@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import "./EndPage.css";
+import slidesData from "../../data/slides.json";
 
 import road from "../../assets/road.svg";
 import BigCloud from "../../assets/cloud-big.svg";
@@ -15,6 +16,8 @@ import bushRight from "../../assets/bush-right.svg";
 import gader from "../../assets/gader.svg";
 import aboutIcon from "../../assets/aboutIcon.svg";
 import mapal from "../../assets/keshet.svg";
+import StartOverBtn from "../../assets/startover-btn.svg";
+import BackToStudyBtn from "../../assets/back-to-study-btn.svg";
 
 function EndPage() {
   const navigate = useNavigate();
@@ -51,27 +54,45 @@ function EndPage() {
     };
   }, []);
 
+  // const resetLearningSession = () => {
+  //   const keysToRemove = [
+  //     "learning_current_slide_index",
+  //     "learning_completed_slides",
+  //     "learning_max_visited_slide",
+  //   ];
+
+  //   keysToRemove.forEach((key) => {
+  //     sessionStorage.removeItem(key);
+  //   });
+
+  //   Object.keys(sessionStorage).forEach((key) => {
+  //     if (
+  //       key.startsWith("report_current_page_") ||
+  //       key.startsWith("report_values_")
+  //     ) {
+  //       sessionStorage.removeItem(key);
+  //     }
+  //   });
+
+  //   navigate("/");
+  // };
+
+  const goBackToLearning = () => {
+    let targetIndex = slidesData.length - 1;
+  
+    while (targetIndex > 0 && slidesData[targetIndex]?.skipOnBack) {
+      targetIndex -= 1;
+    }
+  
+    sessionStorage.setItem("learning_current_slide_index", String(targetIndex));
+  
+    navigate("/learning");
+  };
+  
   const resetLearningSession = () => {
-    const keysToRemove = [
-      "learning_current_slide_index",
-      "learning_completed_slides",
-      "learning_max_visited_slide",
-    ];
-
-    keysToRemove.forEach((key) => {
-      sessionStorage.removeItem(key);
-    });
-
-    Object.keys(sessionStorage).forEach((key) => {
-      if (
-        key.startsWith("report_current_page_") ||
-        key.startsWith("report_values_")
-      ) {
-        sessionStorage.removeItem(key);
-      }
-    });
-
-    navigate("/");
+    sessionStorage.clear();
+  
+    navigate("/", { replace: true });
   };
 
   return (
@@ -100,6 +121,23 @@ function EndPage() {
           src={car}
           className={`car-opening-page ${driveMode ? "car-drive" : ""}`}
         />
+
+        <div className="end-btns-flex-wrapper-2">
+          <img
+            src={BackToStudyBtn}
+            alt="back"
+            className="back-to-learning-btn"
+            // onClick={() => navigate("/learning")}
+            onClick={goBackToLearning}
+          />
+          <img
+            src={StartOverBtn}
+            alt="start again"
+            className="start-again-btn"
+            // onClick={resetLearningSession}
+            onClick={resetLearningSession}
+          />
+        </div>
       </div>
 
       {/* <img
@@ -184,34 +222,48 @@ function EndPage() {
       </div>
 
       <div
-        className={`opening-content first ${inTopics ? "fade-out" : "fade-in"}`}
+        className={`end-content first ${inTopics ? "fade-out" : "fade-in"}`}
       >
         <img src={logo} className="logo-bahad13-end-page" />
 
-        <div className="end-page-header">וואוו כל הכבוד!!</div>
+        <div className="end-opening-page-header">וואוו כל הכבוד!!</div>
 
-        <div className="end-opening-page-header">סיימתם את הלומדה :)</div>
+        <div className="end-page-header">סיימתם את הלומדה :)</div>
 
         {/* <button onClick={() => navigate("/")} className="start-btn-to-topics">
           לתחילת הלומדה
         </button> */}
 
-        <div className="end-btns-flex-wrapper">
+        {/* <div className="end-btns-flex-wrapper">
           <button
             onClick={() => navigate("/learning")}
             className="back-btn-to-learning"
           >
-            ‹ חזרה
+            ‹ חזרה ללומדה
           </button>
 
           <button
             onClick={resetLearningSession}
             className="start-btn-to-topics"
           >
-            לתחילת הלומדה ›
+            להתחיל מחדש ›
           </button>
-        </div>
+        </div> */}
       </div>
+      {/* <div className="end-btns-flex-wrapper-2">
+          <img
+            src={BackToStudyBtn}
+            alt="back"
+            className="back-to-learning-btn"
+            onClick={() => navigate("/learning")}
+          />
+          <img
+            src={StartOverBtn}
+            alt="start again"
+            className="start-again-btn"
+            onClick={resetLearningSession}
+          />
+        </div> */}
     </div>
   );
 }

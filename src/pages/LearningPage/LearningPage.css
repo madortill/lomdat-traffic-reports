@@ -72,10 +72,10 @@
     padding: 0.5rem 1.2rem;
     border: none;
     border-radius: 0.5rem;
-    
+
     background-color: #8D192E;
     color: white;
-    
+
     font-family: "Fredoka";
     font-size: 0.9rem;
     font-weight: 400;
@@ -83,7 +83,7 @@
     cursor: pointer;
     box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.22);
     transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s, background-color 0.2s;
-    
+
 }
 
 .nav-next-btn:hover {
@@ -117,20 +117,20 @@
 
 /* חזור כטקסט */
 .nav-back-text-btn {
-    
+
     border-radius: 0.5rem;
-    
+
     background-color: #214ABF;
     color: white;
 
     font-family: "Fredoka";
-    
+
     padding: 0.5rem 1.2rem;
     border: none;
-    
+
     font-size: 0.9rem;
     font-weight: 400;
-    
+
     cursor: pointer;
     box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.22);
     transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s, background-color 0.2s;
@@ -199,6 +199,7 @@
     transform: rotate(0.64deg);
     left: 42%;
 }
+
 .nav-position-bottomCenter {
     bottom: 2rem;
     left: 50%;
@@ -280,7 +281,6 @@
     transform: none;
 }
 
-
 .popup-background-blur {
     position: fixed;
     inset: 0;
@@ -300,5 +300,23 @@
 
     background-color: rgba(0, 0, 0, 0.795);
     z-index: 35;
+}
+
+body.report-zoom-is-open .logo-bahad13-fixed,
+body.report-zoom-is-open .logo-till-fixed,
+body.report-zoom-is-open .single-nav-action,
+body.report-zoom-is-open .navbar-learning,
+body.report-zoom-is-open .validation-footer-container,
+body.report-zoom-is-open .report-validation-feedback-image,
+body.report-zoom-is-open .report-page-dots,
+body.report-zoom-is-open .report-page-arrow {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+body.report-zoom-is-open .report-validation-feedback-image {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
 }
 

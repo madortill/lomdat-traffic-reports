@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// import React, { useEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import "./CompletionPopupSlide.css";
 import backBtn from "../../assets/back-btn.svg";
 
@@ -6,9 +7,38 @@ function CompletionPopupSlide({ data, onContinue, onBack }) {
   const [passwordValue, setPasswordValue] = useState("");
   const [wasPasswordTouched, setWasPasswordTouched] = useState(false);
 
+  const hasAutoContinued = useRef(false);
+
+  const passwordApprovedStorageKey = `completion_password_approved_${data.id}`;
+
   const correctPassword = data.password || "";
   const isPasswordCorrect =
     data.who !== "end" || passwordValue.trim() === correctPassword;
+
+  // useEffect(() => {
+  //   if (data.who !== "end") return;
+
+  //   const wasAlreadyApproved =
+  //     sessionStorage.getItem(passwordApprovedStorageKey) === "true";
+
+  //   if (!wasAlreadyApproved) return;
+  //   if (hasAutoContinued.current) return;
+
+  //   hasAutoContinued.current = true;
+  //   onContinue();
+  // }, [data.who, passwordApprovedStorageKey, onContinue]);
+  useLayoutEffect(() => {
+    if (data.who !== "end") return;
+
+    const wasAlreadyApproved =
+      sessionStorage.getItem(passwordApprovedStorageKey) === "true";
+
+    if (!wasAlreadyApproved) return;
+    if (hasAutoContinued.current) return;
+
+    hasAutoContinued.current = true;
+    onContinue();
+  }, [data.who, passwordApprovedStorageKey, onContinue]);
 
   const handlePasswordChange = (e) => {
     setPasswordValue(e.target.value);
@@ -21,8 +51,17 @@ function CompletionPopupSlide({ data, onContinue, onBack }) {
       return;
     }
 
+    sessionStorage.setItem(passwordApprovedStorageKey, "true");
     onContinue();
   };
+
+  const wasAlreadyApproved =
+    data.who === "end" &&
+    sessionStorage.getItem(passwordApprovedStorageKey) === "true";
+
+  if (wasAlreadyApproved) {
+    return null;
+  }
 
   return (
     <div className="completion-popup-overlay">

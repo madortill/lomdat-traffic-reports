@@ -208,3 +208,13 @@
         transform: translateY(0) scale(1);
     }
 }
+
+.event-details-preview-large {
+    width: 26rem;
+    max-width: 45vw;
+    max-height: 65vh;
+}
+
+.event-details-preview-large img {
+    max-height: 63vh;
+}

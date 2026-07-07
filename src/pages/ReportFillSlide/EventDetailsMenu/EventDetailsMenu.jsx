@@ -58,7 +58,11 @@ function EventDetailsMenu({ items = [] }) {
           </div>
 
           {hoveredItem && (
-            <div className="event-details-preview">
+            <div
+              className={`event-details-preview ${
+                hoveredItem.previewClassName || ""
+              }`}
+            >
               <img src={hoveredItem.image} alt={hoveredItem.label} />
             </div>
           )}

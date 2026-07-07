@@ -257,6 +257,24 @@ function LearningPage() {
     );
   };
 
+  const isOpeningSlide =
+    slide.type === "openingDrop" ||
+    slide.type === "billboardText" ||
+    slide.type === "billboardVideo";
+
+  const navigationControls = {
+    hidden: slide.navigation?.hidden || false,
+    hideNextUntilUnlocked: navigationConfig.hideNextUntilUnlocked,
+    next: navigationConfig.next,
+    back: navigationConfig.back,
+    canProceed,
+    currentSlideIndex,
+    slideType: slide.type,
+    backBtn,
+    onNext: nextSlide,
+    onBack: prevSlide,
+  };
+
   const renderSlide = () => {
     switch (slide.type) {
       // case "reportForm":
@@ -298,6 +316,7 @@ function LearningPage() {
             data={slide}
             isCompleted={isSlideCompleted}
             onUnlock={handleSlideUnlocked}
+            navigationControls={navigationControls}
           />
         );
     }
@@ -402,7 +421,7 @@ function LearningPage() {
         maxVisitedSlide={maxVisitedSlide}
       />
 
-      {renderNavigation()}
+      {!isOpeningSlide && renderNavigation()}
     </div>
   );
 }

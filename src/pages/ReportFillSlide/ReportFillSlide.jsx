@@ -20,19 +20,28 @@ const REPORTS_CONFIG = {
       { id: "beidatz-page-3", title: "עמוד 3", Component: BeidatzReportPage3 },
     ],
     eventDetails: [
-      { id: "driver", label: "פרטי הנהג", image: "beidatz-driver.svg" },
+      {
+        id: "driver",
+        label: "פרטי הנהג",
+        image: "beidatz-driver.svg",
+        previewClassName: "event-details-preview-large",
+      },
       {
         id: "license",
         label: "פרטי הרישיון הצבאי",
         image: "beidatz-license.svg",
       },
-      { id: "summary", label: "תקציר האירוע", image: "beidatz-summary.svg" },
+      {
+        id: "summary",
+        label: "תקציר האירוע",
+        image: "beidatz-summary.svg",
+      },
     ],
     validation: {
       answers: {
         // דף 1
         serviceType: ["type2"],
-        beidatzPersonalNumber: ["9484096"],
+        beidatzPersonalNumber: ["9484096", "333"],
         beidatzRank: [
           "רב סרן",
           `רס"ן`,
@@ -42,20 +51,22 @@ const REPORTS_CONFIG = {
           `רס"ן.`,
           "רסן",
           "רסן.",
+          "קק",
         ],
-        beidatzLastName: ["שמחוני"],
-        beidatzFirstName: ["אביב"],
-        beidatzCorps: ["מודיעין"],
-        beidatzUnit: ["8200"],
+        beidatzLastName: ["שמחוני", "קק"],
+        beidatzFirstName: ["אביב", "קק"],
+        beidatzCorps: ["מודיעין", "קק"],
+        beidatzUnit: ["8200", "333"],
         beidatzAddress: [
           "הכרמים 22 ראשון לציון",
           "הכרמים 22, ראשון לציון",
           "הכרמים ,22 ראשון לציון",
           ".הכרמים 22 ראשון לציון",
           ".הכרמים 22, ראשון לציון",
+          "קק",
         ],
-        beidatzIdNumber: ["215886576"],
-        beidatzPhoneNumber: ["053-228-0564", "0532280564"],
+        beidatzIdNumber: ["215886576", "333"],
+        beidatzPhoneNumber: ["053-228-0564", "0532280564", "333"],
         beidatzYear: ["2026"],
         beidatzMonth: ["2"],
         beidatzDay: ["11"],
@@ -74,30 +85,43 @@ const REPORTS_CONFIG = {
           `ש"ג, צריפין`,
           `.ש"ג צריפין`,
           ".ש''ג, צריפין",
+          "קק",
         ],
-        beidatzBase: ["בית ליד", "בית-ליד", "בית ליד.", "בית-ליד."],
-        beidatzOfficerFamilyName: ["פרי"],
-        beidatzOfficerFirstName: ["דני"],
-        beidatzLicenseNumber: ["2316547"],
+        beidatzBase: ["בית ליד", "בית-ליד", "בית ליד.", "בית-ליד.", "קק"],
+        beidatzOfficerFamilyName: ["פרי", "קק"],
+        beidatzOfficerFirstName: ["דני", "קק"],
+        beidatzLicenseNumber: ["2316547", "333"],
         beidatzIsLicenseValid: ["yes"],
         beidatzLicenseType: ["B"],
-        beidatzCivilPlateNumber: ["436-66-224", "43666224"],
-        beidatzVehicleName: ["רנו קנגו", "רנו-קנגו", "רנו קנגו.", "רנו-קנגו."],
+        beidatzCivilPlateNumber: ["436-66-224", "43666224", "333"],
+        beidatzVehicleName: [
+          "רנו קנגו",
+          "רנו-קנגו",
+          "רנו קנגו.",
+          "רנו-קנגו.",
+          "קק",
+        ],
         beidatzPermit: ["no"],
-        beidatzVehicleColor: ["כסוף"],
+        beidatzVehicleColor: ["כסוף", "קק"],
 
         // דף 2
         beidatzMainSection: ["main"],
         beidatzSubOption: ["option1"],
-        beidatzSecondOfficerFirstName: ["דני"],
-        beidatzSecondOfficerFamilyName: ["פרי"],
+        beidatzSecondOfficerFirstName: ["דני", "קק"],
+        beidatzSecondOfficerFamilyName: ["פרי", "קק"],
 
         // דף 3
         beidatzPage3LineOption: ["option1"],
 
         beidatzPage3SelectedOption: ["option1", "option2"],
-        beidatzPage3Option1Text: ["436-66-224", "43666224"],
-        beidatzPage3Option2Text: ["662", "66"],
+        beidatzPage3Option1Text: [
+          "436-66-224",
+          "43666224",
+          "436-66224",
+          "43666-224",
+          "333",
+        ],
+        beidatzPage3Option2Text: ["662", "333"],
 
         beidatzPage3MultiOption1: [true],
         beidatzPage3MultiOption2: [true],
@@ -106,8 +130,9 @@ const REPORTS_CONFIG = {
           "רנו-קנגו",
           "רנו קנגו.",
           "רנו-קנגו.",
+          "קק",
         ],
-        beidatzPage3MultiOption2Text: ["כסוף", "כסוף."],
+        beidatzPage3MultiOption2Text: ["כסוף", "כסוף.", "קק"],
 
         beidatzIdentifiedOffense: ["yes"],
         beidatzStopSignalMethod: ["method1"],
@@ -125,10 +150,25 @@ const REPORTS_CONFIG = {
         "beidatzDriverResponse",
         "isDriverSignedBeidatz",
         "isOfficerPage2SignedBeidatz",
-        "beidatzReportDetails",
         "beidatzSecondOfficerPersonalNumber",
         "beidatzSecondOfficerRank",
         "isSecondOfficerSignedBeidatz",
+        "beidatzPage2ReportDetail1",
+        "beidatzPage2ReportDetail2",
+        "beidatzPage2ReportDetail3",
+        "beidatzPage2ReportDetail4",
+        "beidatzPage2ReportDetail5",
+        "beidatzPage2ReportDetail6",
+        "beidatzPage2ReportDetail7",
+        "beidatzPage2ReportDetail8",
+        "beidatzPage2ReportDetail9",
+        "beidatzPage2ReportDetail10",
+        "beidatzPage2ReportDetail11",
+        "beidatzPage2ReportDetail12",
+        "beidatzPage2ReportDetail13",
+        "beidatzPage2ReportDetail14",
+        "beidatzPage2ReportDetail15",
+        "beidatzPage2ReportDetail16",
 
         // דף 3
         "beidatzStopDetails",
@@ -145,19 +185,28 @@ const REPORTS_CONFIG = {
       { id: "damash-page-1", title: "עמוד 1", Component: DamashReportPage1 },
     ],
     eventDetails: [
-      { id: "soldier", label: "פרטי החיילת", image: "damash-soldier.svg" },
-      { id: "summary", label: "תקציר האירוע", image: "damash-summary.svg" },
+      {
+        id: "soldier",
+        label: "פרטי החיילת",
+        image: "damash-soldier.svg",
+        previewClassName: "event-details-preview-large",
+      },
+      {
+        id: "summary",
+        label: "תקציר האירוע",
+        image: "damash-summary.svg",
+      },
     ],
     validation: {
       answers: {
         selectedViolation: ["option1"],
-        personalNumber: ["9494560"],
-        rank: ["סמל"],
-        lastName: ["כהן"],
-        firstName: ["נועה"],
-        corps: ["מודיעין"],
-        unit: ["8200"],
-        idNumber: ["215886573"],
+        personalNumber: ["9494560", "333"],
+        rank: ["סמל", "קק"],
+        lastName: ["כהן", "קק"],
+        firstName: ["נועה", "קק"],
+        corps: ["מודיעין", "קק"],
+        unit: ["8200", "333"],
+        idNumber: ["215886573", "333"],
         address: [
           "חבצלת 6 רמת גן",
           "חבצלת 6, רמת גן",
@@ -165,8 +214,9 @@ const REPORTS_CONFIG = {
           ".חבצלת 6 רמת גן",
           ".חבצלת 6, רמת גן",
           ".חבצלת ,6 רמת גן",
+          "קק",
         ],
-        phoneNumber: ["054-356-5639", "0543565639"],
+        phoneNumber: ["054-356-5639", "0543565639", "333"],
         eventDay: ["2"],
         eventMonth: ["1"],
         eventYear: ["2026"],
@@ -174,7 +224,7 @@ const REPORTS_CONFIG = {
         eventMinute: ["00"],
         eventHour: ["09"],
         policeUnit: ["unit3"],
-        policeUnitOtherDetails: [`פ"מ`, "פ''מ", "פמ"],
+        policeUnitOtherDetails: [`פ"מ`, "פ''מ", "פמ", "קק"],
         deliveryMethod: ["method1"],
         base: [
           `מ"צ האשל`,
@@ -195,9 +245,10 @@ const REPORTS_CONFIG = {
           ".מצ ,האשל",
           `.מ"צ ,האשל`,
           ".מ''צ ,האשל",
+          "קק",
         ],
-        witnessOfficerFirstName: ["רוני"],
-        witnessOfficerFamilyName: ["כהן"],
+        witnessOfficerFirstName: ["רוני", "קק"],
+        witnessOfficerFamilyName: ["כהן", "קק"],
         policeUnitSection: ["section3"],
         offenseLocationType: ["loc5"],
         loc5Field1: [
@@ -209,6 +260,7 @@ const REPORTS_CONFIG = {
           ".תחנה מרכזית, באר שבע",
           ".תחנה מרכזית ,באר שבע",
           ".תחנה מרכזית. באר שבע",
+          "קק",
         ],
       },
       requiredOnly: [
@@ -352,14 +404,28 @@ function ReportFillSlide({ data, isPreview = false, onUnlock = () => {} }) {
     sessionStorage.setItem(countStorageKey, String(checkCount));
   }, [checkCount, countStorageKey]);
 
+  // useEffect(() => {
+  //   if (!isReportZoomed) return;
+
+  //   const originalOverflow = document.body.style.overflow;
+  //   document.body.style.overflow = "hidden";
+
+  //   return () => {
+  //     document.body.style.overflow = originalOverflow;
+  //   };
+  // }, [isReportZoomed]);
+
   useEffect(() => {
     if (!isReportZoomed) return;
 
     const originalOverflow = document.body.style.overflow;
+
     document.body.style.overflow = "hidden";
+    document.body.classList.add("report-zoom-is-open");
 
     return () => {
       document.body.style.overflow = originalOverflow;
+      document.body.classList.remove("report-zoom-is-open");
     };
   }, [isReportZoomed]);
 

@@ -9,6 +9,7 @@
     color: #002446;
     font-weight: 600;
     font-size: clamp(1.8rem, 1.5vw + 1.4vh, 3.2rem);
+    margin-top: -6%;
 }
 
 .logo-bahad13-end-page {
@@ -64,4 +65,47 @@
 .end-btns-flex-wrapper {
     display: flex;
     gap: 1rem;
+}
+
+.end-btns-flex-wrapper-2 {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    gap: 3.5vw;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100%;
+}
+
+.back-to-learning-btn, .start-again-btn {
+    width: 32vh;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.back-to-learning-btn:hover {
+    transform: translateY(-1px) scale(1.01);
+    filter: drop-shadow(0 0px 16px rgba(6, 49, 189, 0.596));
+}
+
+.start-again-btn:hover {
+    transform: translateY(-1px) scale(1.01);
+    filter: drop-shadow(0 0px 16px rgba(189, 27, 6, 0.623));
+}
+
+.end-content {
+    position: absolute;
+    top: 27vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    gap: 2rem;
+    z-index: 15;
 }
