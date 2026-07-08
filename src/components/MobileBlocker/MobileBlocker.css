@@ -32,19 +32,19 @@
 }
 
 .mobile-box h2 {
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-size: clamp(2rem, 6vw, 2.2rem);
     margin-bottom: 1vh;
     color: #023864;
 }
 
 .mobile-box h3 {
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
-    /* margin-bottom: 1vh; */ 
+    font-size: clamp(1.7rem, 2vw, 1.8rem);
+    margin-bottom: 1vh; 
     /* color: #95193D; */
     color: #95193D;
 }
 
 .mobile-box p {
-    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    font-size: clamp(1.5rem, 1.2vw, 1.3rem);
     color: #023864;
 }

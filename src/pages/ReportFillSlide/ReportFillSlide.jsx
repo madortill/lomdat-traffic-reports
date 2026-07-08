@@ -294,7 +294,7 @@ function hasFieldValue(value) {
   }
 
   if (typeof value === "string") {
-    return value.trim() !== "";
+    return value.replace(/\u00A0/g, " ").trim() !== "";
   }
 
   return value !== "";
@@ -451,11 +451,37 @@ function ReportFillSlide({ data, isPreview = false, onUnlock = () => {} }) {
     if (fieldName === "beidatzPage3Option1Text") {
       return formValues.beidatzPage3SelectedOption !== "option1";
     }
-
+  
     if (fieldName === "beidatzPage3Option2Text") {
       return formValues.beidatzPage3SelectedOption !== "option2";
     }
-
+  
+    /*
+      שדות מיקום ביצוע העבירה בביד"צ:
+      כל שדה טקסט נדרש רק אם החניך סימן את האופציה שאליה הוא שייך.
+      אם החניך סימן אופציה לא נכונה, לא נחייב אותו למלא את השדה של האופציה הנכונה,
+      אבל הבחירה עצמה עדיין תיבדק ותצא incorrect.
+    */
+    if (fieldName.startsWith("beidatzLoc1Field")) {
+      return formValues.beidatzOffenseLocationType !== "loc1";
+    }
+  
+    if (fieldName.startsWith("beidatzLoc2Field")) {
+      return formValues.beidatzOffenseLocationType !== "loc2";
+    }
+  
+    if (fieldName.startsWith("beidatzLoc3Field")) {
+      return formValues.beidatzOffenseLocationType !== "loc3";
+    }
+  
+    if (fieldName.startsWith("beidatzLoc4Field")) {
+      return formValues.beidatzOffenseLocationType !== "loc4";
+    }
+  
+    if (fieldName.startsWith("beidatzLoc5Field")) {
+      return formValues.beidatzOffenseLocationType !== "loc5";
+    }
+  
     return false;
   };
 
@@ -476,6 +502,26 @@ function ReportFillSlide({ data, isPreview = false, onUnlock = () => {} }) {
     return allAnswersFilled && allRequiredFilled;
   }, [formValues, reportConfig.validation]);
 
+  const getMissingFields = () => {
+    const rules = reportConfig.validation;
+    if (!rules) return { missingAnswers: [], missingRequired: [] };
+
+    const missingAnswers = Object.keys(rules.answers).filter((key) => {
+      if (shouldSkipValidationField(key)) return false;
+
+      return !hasFieldValue(formValues[key]);
+    });
+
+    const missingRequired = rules.requiredOnly.filter((key) => {
+      return !hasFieldValue(formValues[key]);
+    });
+
+    return {
+      missingAnswers,
+      missingRequired,
+    };
+  };
+
   const isEverythingCorrect = useMemo(() => {
     const rules = reportConfig.validation;
     if (!rules) return false;
@@ -492,6 +538,32 @@ function ReportFillSlide({ data, isPreview = false, onUnlock = () => {} }) {
 
     return allAnswersCorrect && allRequiredLocked;
   }, [validationResults, formValues, reportConfig.validation]);
+
+  useEffect(() => {
+    if (isPreview) return;
+
+    const { missingAnswers, missingRequired } = getMissingFields();
+
+    console.log("------ מצב כפתור בדיקת תשובות ------");
+    console.log("isFormComplete:", isFormComplete);
+    console.log("isEverythingCorrect:", isEverythingCorrect);
+
+    console.table(
+      missingAnswers.map((field) => ({
+        type: "answer",
+        field,
+        value: formValues[field],
+      }))
+    );
+
+    console.table(
+      missingRequired.map((field) => ({
+        type: "requiredOnly",
+        field,
+        value: formValues[field],
+      }))
+    );
+  }, [formValues, isFormComplete, isEverythingCorrect, isPreview]);
 
   useEffect(() => {
     if (isPreview) return;
@@ -519,6 +591,21 @@ function ReportFillSlide({ data, isPreview = false, onUnlock = () => {} }) {
   const handleValidate = () => {
     const rules = reportConfig.validation;
     if (!rules) return;
+
+    if (!isFormComplete) {
+      const { missingAnswers, missingRequired } = getMissingFields();
+
+      console.log("שדות תשובה חסרים:", missingAnswers);
+      console.log("שדות חובה חסרים:", missingRequired);
+
+      alert(
+        `עדיין חסרים שדות בדוח.\n\nשדות תשובה חסרים:\n${missingAnswers.join(
+          "\n"
+        )}\n\nשדות חובה חסרים:\n${missingRequired.join("\n")}`
+      );
+
+      return;
+    }
 
     const results = { ...validationResults };
 
@@ -797,6 +884,38 @@ function ReportFillSlide({ data, isPreview = false, onUnlock = () => {} }) {
         results[field] = "locked";
       }
     });
+
+    const stillNotCorrectAnswers = Object.keys(rules.answers).filter(
+      (field) => {
+        if (shouldSkipValidationField(field)) return false;
+
+        return results[field] !== "correct";
+      }
+    );
+
+    const stillNotLockedRequired = rules.requiredOnly.filter((field) => {
+      return results[field] !== "locked";
+    });
+
+    console.log("שדות תשובה שלא יצאו correct:", stillNotCorrectAnswers);
+    console.log("שדות חובה שלא יצאו locked:", stillNotLockedRequired);
+
+    console.table(
+      stillNotCorrectAnswers.map((field) => ({
+        field,
+        value: formValues[field],
+        result: results[field],
+        allowedAnswers: rules.answers[field],
+      }))
+    );
+
+    console.table(
+      stillNotLockedRequired.map((field) => ({
+        field,
+        value: formValues[field],
+        result: results[field],
+      }))
+    );
 
     setValidationResults(results);
     setCheckCount((prev) => prev + 1);
