@@ -604,15 +604,10 @@ function BeidatzReportPage3({
                   cursor: isFieldLocked("beidatzVehicleStopOption")
                     ? "not-allowed"
                     : "pointer",
-                  background: "transparent",
-                  borderRadius: "50%",
+                  background: "rgba(255, 255, 255, 0.38)",
+                  borderRadius: "0.25rem",
                   boxSizing: "border-box",
-                  border:
-                    formValues.beidatzVehicleStopOption === "stop1"
-                      ? `6px solid ${getCircleBorderColor(
-                          "beidatzVehicleStopOption"
-                        )}`
-                      : "none",
+                  border: "1.5px solid rgba(31, 42, 68, 0.38)",
                 }}
                 type="button"
                 onClick={() => {
@@ -626,7 +621,18 @@ function BeidatzReportPage3({
                   );
                 }}
                 disabled={isFieldLocked("beidatzVehicleStopOption")}
-              />
+              >
+                {formValues.beidatzVehicleStopOption === "stop1" && (
+                  <span
+                    className="svg-circle-mark"
+                    style={{
+                      borderColor: getCircleBorderColor(
+                        "beidatzVehicleStopOption"
+                      ),
+                    }}
+                  />
+                )}
+              </button>
             </div>
           </foreignObject>
 
@@ -668,15 +674,10 @@ function BeidatzReportPage3({
                   cursor: isFieldLocked("beidatzVehicleStopOption")
                     ? "not-allowed"
                     : "pointer",
-                  background: "transparent",
-                  borderRadius: "50%",
+                  background: "rgba(255, 255, 255, 0.38)",
+                  borderRadius: "0.25rem",
                   boxSizing: "border-box",
-                  border:
-                    formValues.beidatzVehicleStopOption === "stop2"
-                      ? `6px solid ${getCircleBorderColor(
-                          "beidatzVehicleStopOption"
-                        )}`
-                      : "none",
+                  border: "1.5px solid rgba(31, 42, 68, 0.38)",
                 }}
                 type="button"
                 onClick={() => {
@@ -690,7 +691,18 @@ function BeidatzReportPage3({
                   );
                 }}
                 disabled={isFieldLocked("beidatzVehicleStopOption")}
-              />
+              >
+                {formValues.beidatzVehicleStopOption === "stop2" && (
+                  <span
+                    className="svg-circle-mark"
+                    style={{
+                      borderColor: getCircleBorderColor(
+                        "beidatzVehicleStopOption"
+                      ),
+                    }}
+                  />
+                )}
+              </button>
             </div>
           </foreignObject>
 
@@ -732,15 +744,10 @@ function BeidatzReportPage3({
                   cursor: isFieldLocked("beidatzVehicleStopOption")
                     ? "not-allowed"
                     : "pointer",
-                  background: "transparent",
-                  borderRadius: "50%",
+                  background: "rgba(255, 255, 255, 0.38)",
+                  borderRadius: "0.25rem",
                   boxSizing: "border-box",
-                  border:
-                    formValues.beidatzVehicleStopOption === "stop3"
-                      ? `6px solid ${getCircleBorderColor(
-                          "beidatzVehicleStopOption"
-                        )}`
-                      : "none",
+                  border: "1.5px solid rgba(31, 42, 68, 0.38)",
                 }}
                 type="button"
                 onClick={() => {
@@ -754,7 +761,18 @@ function BeidatzReportPage3({
                   );
                 }}
                 disabled={isFieldLocked("beidatzVehicleStopOption")}
-              />
+              >
+                {formValues.beidatzVehicleStopOption === "stop3" && (
+                  <span
+                    className="svg-circle-mark"
+                    style={{
+                      borderColor: getCircleBorderColor(
+                        "beidatzVehicleStopOption"
+                      ),
+                    }}
+                  />
+                )}
+              </button>
             </div>
           </foreignObject>
 

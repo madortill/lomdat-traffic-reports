@@ -147,102 +147,31 @@
 .svg-input-host,
 .svg-checkbox-host,
 .svg-textarea-host,
-.svg-select-host {
-    width: 100%;
-    height: 100%;
-    pointer-events: auto;
-}
-
-/* סימון בקו */
+.svg-select-host,
 .svg-line-host {
     width: 100%;
     height: 100%;
     pointer-events: auto;
 }
 
-.svg-line-checkbox {
+/* ======================================================= */
+/* בסיס משותף לשדות בתוך SVG */
+/* ======================================================= */
+
+.svg-report-input,
+.svg-report-textarea,
+.svg-report-select {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 
-    border: none;
     outline: none;
-    background: transparent;
-
-    cursor: pointer;
-    padding: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    pointer-events: auto;
-}
-
-.svg-line-checkbox:disabled {
-    cursor: not-allowed;
-}
-
-.svg-line-mark {
-    display: block;
-    width: 100%;
-    height: 8px;
-    background-color: #000;
-    border-radius: 999px;
-}
-
-.svg-line-checkbox.validation-correct .svg-line-mark {
-    background-color: #419648 !important;
-}
-
-.svg-line-checkbox.validation-incorrect .svg-line-mark {
-    background-color: #f3b0b7 !important;
-}
-
-.svg-line-checkbox.validation-locked .svg-line-mark {
-    background-color: #b0c4de !important;
-}
-
-/* .svg-line-checkbox.validation-correct {
-    background-color: rgba(196, 233, 206, 0.35) !important;
-    cursor: default;
-} */
-
-/* .svg-line-checkbox.validation-incorrect {
-    background-color: rgba(252, 216, 213, 0.35) !important;
-} */
-
-/* .svg-line-checkbox.validation-locked {
-    background-color: rgba(244, 246, 249, 0.6) !important;
-    cursor: not-allowed !important;
-} */
-
-/* ======================================================= */
-/* אינפוטים בתוך SVG */
-/* ======================================================= */
-
-.svg-report-input {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-
-    border: 5px solid rgba(2, 26, 100, 0.28);
-    outline: none;
-
-    background: rgba(255, 255, 255, 0.856);
-    /* color: #002446; */
     color: #000;
 
     font-family: "Fredoka", Arial, sans-serif;
-    font-size: 32px;
-    line-height: 1;
-
-    text-align: center;
     direction: rtl;
 
-    padding: 0 6px;
     border-radius: 6px;
-
     pointer-events: auto;
 
     transition:
@@ -251,18 +180,44 @@
         box-shadow 0.18s ease;
 }
 
-.svg-report-input:hover {
-    background: rgba(255, 247, 205, 0.78);
-    border-color: rgba(56, 82, 163, 0.65);
-    box-shadow: 0 0 0 2px rgba(56, 82, 163, 0.12);
+.svg-report-input,
+.svg-report-select {
+    text-align: center;
+    line-height: 1;
 }
 
-.svg-report-input:focus {
+.svg-report-input:hover,
+.svg-report-textarea:hover,
+.svg-report-select:hover {
+    background: rgba(255, 247, 205, 0.78);
+    border-color: rgba(56, 82, 163, 0.65);
+}
+
+.svg-report-input:focus,
+.svg-report-textarea:focus,
+.svg-report-select:focus {
     background: rgba(255, 255, 255, 0.94);
     border-color: #3852A3;
     box-shadow:
         0 0 0 3px rgba(56, 82, 163, 0.25),
         0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ======================================================= */
+/* אינפוטים בתוך SVG */
+/* ======================================================= */
+
+.svg-report-input {
+    border: 5px solid rgba(2, 26, 100, 0.28);
+    background: rgba(255, 255, 255, 0.856);
+
+    font-size: 32px;
+
+    padding: 0 6px;
+}
+
+.svg-report-input:hover {
+    box-shadow: 0 0 0 2px rgba(56, 82, 163, 0.12);
 }
 
 /* מספר אישי / תעודת זהות / שדות מספריים ארוכים */
@@ -290,47 +245,17 @@
 /* ======================================================= */
 
 .svg-report-textarea {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-
     border: 5px solid rgba(3, 29, 107, 0.28);
-    outline: none;
     resize: none;
 
     background: rgba(255, 255, 255, 0.877);
-    /* color: #002446; */
-    color: #000;
 
-    font-family: "Fredoka", Arial, sans-serif;
     font-size: 34px;
     line-height: 1.35;
 
-    direction: rtl;
     text-align: right;
 
     padding: 8px 10px;
-    border-radius: 6px;
-
-    pointer-events: auto;
-
-    transition:
-        background-color 0.18s ease,
-        border-color 0.18s ease,
-        box-shadow 0.18s ease;
-}
-
-.svg-report-textarea:hover {
-    background: rgba(255, 247, 205, 0.78);
-    border-color: rgba(56, 82, 163, 0.65);
-}
-
-.svg-report-textarea:focus {
-    background: rgba(255, 255, 255, 0.94);
-    border-color: #3852A3;
-    box-shadow:
-        0 0 0 3px rgba(56, 82, 163, 0.25),
-        0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 /* ======================================================= */
@@ -338,78 +263,91 @@
 /* ======================================================= */
 
 .svg-report-select {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-
     border: 5px solid rgba(56, 82, 163, 0.28);
-    outline: none;
-
     background: rgba(255, 255, 255, 0.904);
-    /* color: #002446; */
-    color: #000;
 
-    font-family: "Fredoka", Arial, sans-serif;
-    font-size: 36px;
-    line-height: 1;
-
-    text-align: center;
-    direction: rtl;
+    font-size: 32px;
 
     cursor: pointer;
     padding: 0 4px;
-    border-radius: 6px;
-
-    pointer-events: auto;
-
-    transition:
-        background-color 0.18s ease,
-        border-color 0.18s ease,
-        box-shadow 0.18s ease;
 }
 
-.svg-report-select:hover {
-    background: rgba(255, 247, 205, 0.82);
-    border-color: rgba(56, 82, 163, 0.65);
+/* האפשרויות שנפתחות בדרופדאון */
+.svg-report-select option {
+    font-size: 14px !important;
+    background-color: #ffffff;
+    color: #000;
 }
-
-.svg-report-select:focus {
-    background: rgba(255, 255, 255, 0.96);
-    border-color: #3852A3;
-    box-shadow:
-        0 0 0 3px rgba(56, 82, 163, 0.25),
-        0 4px 10px rgba(0, 0, 0, 0.12);
-}
-
-/* Selectים קטנים כמו שעה/דקות */
-/* .svg-report-select-time {
-    font-size: 22px;
-} */
 
 /* Selectים צפופים ממש */
 .svg-report-select-tiny {
     font-size: 18px;
 }
 
+.svg-report-select-beidatz {
+    font-size: 39px;
+}
+
 /* ======================================================= */
-/* כפתורי X בתוך SVG */
+/* חתימה בתוך SVG */
 /* ======================================================= */
 
-.svg-x-checkbox {
+.sign-input {
+    background-color: transparent;
+    border: 5px solid rgba(56, 82, 163, 0.28);
+}
+
+.sign-input:hover {
+    background: rgba(255, 247, 205, 0.86);
+    border-color: rgba(56, 82, 163, 0.75);
+    box-shadow: 0 0 0 2px rgba(56, 82, 163, 0.18);
+}
+
+.svg-sign-clickable {
+    fill: rgba(56, 82, 163, 0.05);
+    stroke: rgba(56, 82, 163, 0.28);
+    stroke-width: 5px;
+    rx: 6px;
+    ry: 6px;
+
+    cursor: pointer;
+    pointer-events: auto;
+
+    transition:
+        fill 0.18s ease,
+        stroke-color 0.18s ease,
+        filter 0.18s ease;
+}
+
+.svg-sign-clickable:hover {
+    fill: rgba(255, 247, 205, 0.82);
+    stroke: rgba(56, 82, 163, 0.65);
+}
+
+.svg-sign-clickable.is-signed {
+    fill: transparent;
+    stroke: transparent;
+}
+
+.svg-sign-image {
+    pointer-events: none;
+    opacity: 1;
+    filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.18));
+}
+
+/* ======================================================= */
+/* כפתורי סימון בתוך SVG */
+/* X / קו / עיגול */
+/* ======================================================= */
+
+.svg-x-checkbox,
+.svg-line-checkbox,
+.svg-circle-checkbox {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
 
-    border: 5px solid rgba(56, 82, 163, 0.35);
     outline: none;
-
-    background: rgba(255, 255, 255, 0.692);
-    color: #000;
-
-    font-family: Arial, sans-serif;
-    font-size: 45px;
-    font-weight: 700;
-    line-height: 1;
 
     display: flex;
     align-items: center;
@@ -421,19 +359,28 @@
 
     pointer-events: auto;
 
+    background-color: rgba(255, 255, 255, 0.55);
+    border: 5px solid rgba(56, 82, 163, 0.35);
+    box-shadow: 0 0 0.35rem rgba(33, 74, 191, 0.18);
+
     transition:
         background-color 0.18s ease,
         border-color 0.18s ease,
-        box-shadow 0.18s ease;
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
 }
 
-.svg-x-checkbox:hover {
-    background: rgba(255, 247, 205, 0.86);
+.svg-x-checkbox:hover,
+.svg-line-checkbox:hover,
+.svg-circle-checkbox:hover {
+    background-color: rgba(255, 247, 205, 0.86);
     border-color: rgba(56, 82, 163, 0.75);
-    box-shadow: 0 0 0 2px rgba(56, 82, 163, 0.18);
+    box-shadow: 0 0 0.55rem rgba(33, 74, 191, 0.3);
 }
 
-.svg-x-checkbox:focus-visible {
+.svg-x-checkbox:focus-visible,
+.svg-line-checkbox:focus-visible,
+.svg-circle-checkbox:focus-visible {
     background: rgba(255, 255, 255, 0.96);
     border-color: #3852A3;
     box-shadow:
@@ -441,147 +388,153 @@
         0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
-
+.svg-x-checkbox:disabled,
+.svg-line-checkbox:disabled,
+.svg-circle-checkbox:disabled {
+    cursor: not-allowed;
+}
 
 /* ======================================================= */
-/* התיקון לדרופדאון בתוך SVG */
+/* כפתורי X */
 /* ======================================================= */
 
-.svg-report-select {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-
-    border: 5px solid rgba(56, 82, 163, 0.28);
-    outline: none;
-
-    background: rgba(255, 255, 255, 0.904);
-    /* color: #002446; */
+.svg-x-checkbox {
     color: #000;
 
-    font-family: "Fredoka", Arial, sans-serif;
-    /* 1. הטקסט הראשי שמוצג בטופס נשאר גדול ויפה */
-    font-size: 32px; 
+    font-family: Arial, sans-serif;
+    font-size: 45px;
+    font-weight: 700;
     line-height: 1;
-
-    text-align: center;
-    direction: rtl;
-
-    cursor: pointer;
-    padding: 0 4px;
-    border-radius: 6px;
-    pointer-events: auto;
-
-    transition:
-        background-color 0.18s ease,
-        border-color 0.18s ease,
-        box-shadow 0.18s ease;
-}
-
-/* 2. התיקון הקריטי: מחזירים רק את האפשרויות שבתוך התפריט לגודל קטן */
-.svg-report-select option {
-    font-size: 14px !important;
-    background-color: #ffffff; /* מונע שקיפויות מוזרות בדפדפנים מסוימים */
-    /* color: #002446; */
-    color: #000;
-}
-
-.sign-input {
-    background-color: none;
-    border: 5px solid rgba(56, 82, 163, 0.28);
-
-}
-
-.sign-input:hover {
-    background: rgba(255, 247, 205, 0.86);
-    border-color: rgba(56, 82, 163, 0.75);
-    box-shadow: 0 0 0 2px rgba(56, 82, 163, 0.18);
-}
-
-.svg-report-select-beidatz {
-    font-size: 39px;
 }
 
 /* ======================================================= */
-/* קלאס ייעודי לחתימה בתוך SVG */
+/* סימון בקו */
 /* ======================================================= */
 
-.svg-sign-clickable {
-    /* עיצוב התחלתי - המלבן מציג מסגרת ורקע בהיר */
-    fill: rgba(56, 82, 163, 0.05);
-    stroke: rgba(56, 82, 163, 0.28);
-    stroke-width: 5px;
-    rx: 6px; /* מעגל פינות ב-SVG */
-    ry: 6px;
-
-    cursor: pointer;
-    pointer-events: auto;
-    
-    transition: 
-        fill 0.18s ease, 
-        stroke-color 0.18s ease, 
-        filter 0.18s ease;
+.svg-line-checkbox {
+    background-color: rgba(255, 255, 255, 0.38);
 }
 
-/* אפקט הובר כשעומדים על אזור החתימה */
-.svg-sign-clickable:hover {
-    fill: rgba(255, 247, 205, 0.82);
-    stroke: rgba(56, 82, 163, 0.65);
+.svg-line-mark {
+    display: block;
+    width: 100%;
+    height: 8px;
+    background-color: #000;
+    border-radius: 999px;
 }
 
-/* מצב מיוחד כאשר החתימה כבר קיימת - מעלימים את הרקע והבורדר */
-.svg-sign-clickable.is-signed {
-    fill: transparent;
-    stroke: transparent;
+/* ======================================================= */
+/* סימון בעיגול */
+/* ריבוע לחיץ + עיגול פנימי גדול */
+/* ======================================================= */
+
+.svg-circle-checkbox {
+    background-color: rgba(255, 255, 255, 0.38) !important;
+
+    border: 2px solid rgba(31, 42, 68, 0.42) !important;
+    border-radius: 0.25rem !important;
+
+    box-shadow:
+        inset 0 0 0.25rem rgba(31, 42, 68, 0.1),
+        0 0 0.35rem rgba(33, 74, 191, 0.12);
+
+    overflow: visible;
 }
 
-/* עיצוב תמונת החתימה עצמה */
-.svg-sign-image {
+.svg-circle-checkbox:hover {
+    background-color: rgba(255, 238, 141, 0.40) !important;
+    border-color: rgba(31, 42, 68, 0.62) !important;
+}
+
+.svg-circle-mark {
+    width: 140%;
+    height: 140%;
+
+    border: 4px solid black;
+    border-radius: 50%;
+
+    display: block;
+    box-sizing: border-box;
     pointer-events: none;
-    opacity: 1;
-    filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.18));
 }
 
 /* ======================================================= */
-/* בדיקה SVG */
+/* מצבי בדיקה בתוך SVG */
 /* ======================================================= */
 
-/* מצבי בדיקה פסטליים לשדות בתוך ה-SVG */
 .svg-report-input.validation-correct,
 .svg-report-select.validation-correct,
+.svg-report-textarea.validation-correct,
 .svg-x-checkbox.validation-correct,
-.svg-sign-clickable.validation-correct {
-    /* background-color: #e2f5e7 !important; */
+.svg-circle-checkbox.validation-correct {
     background-color: #c4e9ce !important;
-    /* border-color: #a3cfbb !important; */
     border-color: #7fbea2 !important;
-    cursor:default;
+    cursor: default;
 }
 
 .svg-report-input.validation-incorrect,
 .svg-report-select.validation-incorrect,
+.svg-report-textarea.validation-incorrect,
 .svg-x-checkbox.validation-incorrect,
-.svg-sign-clickable.validation-incorrect {
-    /* background-color: #fce8e6 !important; */
+.svg-circle-checkbox.validation-incorrect {
     background-color: #fcd8d5 !important;
-    /* border-color: #f5c2c7 !important; */
     border-color: #f3b0b7 !important;
 }
 
 .svg-report-input.validation-skipped,
 .svg-report-select.validation-skipped,
+.svg-report-textarea.validation-skipped,
 .svg-x-checkbox.validation-skipped,
-.svg-sign-clickable.validation-skipped {
-    background-color: #f0f4f8 !important; /* תכלת-אפור בהיר (לא נבדק) */
+.svg-circle-checkbox.validation-skipped {
+    background-color: #f0f4f8 !important;
     border-color: #d0d7de !important;
+}
+
+/* קו — החיווי צובע את הקו עצמו, לא את כל הריבוע */
+.svg-line-checkbox.validation-correct {
+    background-color: rgba(196, 233, 206, 0.35) !important;
+    border-color: #7fbea2 !important;
+}
+
+.svg-line-checkbox.validation-incorrect {
+    background-color: rgba(252, 216, 213, 0.35) !important;
+    border-color: #f3b0b7 !important;
+}
+
+.svg-line-checkbox.validation-locked {
+    background-color: rgba(244, 246, 249, 0.6) !important;
+    border-color: #b0c4de !important;
+}
+
+.svg-line-checkbox.validation-correct .svg-line-mark {
+    background-color: #419648 !important;
+}
+
+.svg-line-checkbox.validation-incorrect .svg-line-mark {
+    background-color: #f3b0b7 !important;
+}
+
+.svg-line-checkbox.validation-locked .svg-line-mark {
+    background-color: #b0c4de !important;
+}
+
+/* עיגול — החיווי צובע גם את הריבוע וגם את העיגול הפנימי */
+.svg-circle-checkbox.validation-correct .svg-circle-mark {
+    border-color: #419648 !important;
+}
+
+.svg-circle-checkbox.validation-incorrect .svg-circle-mark {
+    border-color: #b94452 !important;
+}
+
+.svg-circle-checkbox.validation-locked .svg-circle-mark {
+    border-color: #6f87a6 !important;
 }
 
 .validation-locked {
     border-color: #b0c4de !important;
     background-color: #f4f6f9 !important;
-    /* color: #556b2f !important; */
     cursor: not-allowed !important;
-    /* cursor: auto !important; */
     opacity: 0.85;
 }
 
@@ -594,107 +547,114 @@ rect.validation-locked.is-signed {
     fill: transparent !important;
     stroke: transparent !important;
     cursor: not-allowed !important;
-    /* cursor: auto !important; */
 }
 
 .svg-report-input.validation-locked,
 .svg-report-textarea.validation-locked,
 .svg-report-select.validation-locked,
-.svg-x-checkbox.validation-locked {
+.svg-x-checkbox.validation-locked,
+.svg-line-checkbox.validation-locked,
+.svg-circle-checkbox.validation-locked {
     pointer-events: none !important;
     user-select: none;
 }
 
-/* קונטיינר הפידבק והכפתור בתחתית */
+/* ======================================================= */
+/* כפתור בדיקת תשובות */
+/* ======================================================= */
+
 .validation-footer-container {
     position: fixed;
     bottom: 3rem;
     left: 12.5rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
+
     z-index: 30;
-  }
-  
-  /* טקסט מונה הבדיקות */
-  .validation-count-text {
+}
+
+.validation-count-text {
     font-family: "Fredoka", Arial, sans-serif;
     font-size: 15px;
     color: #cfcece;
-  }
-  
-  /* כפתור הבדיקה הראשי */
-  .validation-submit-btn {
+}
+
+.validation-btn-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.validation-submit-btn {
     padding: 0.6rem 1.6rem;
+
     font-family: "Fredoka", Arial, sans-serif;
     font-size: 1rem;
     font-weight: 500;
+
     border-radius: 10px;
     border: none;
+
     color: white;
-    transition: all 0.2s ease;
-    
-    /* ברירת מחדל כשהכפתור מאופשר ומלא */
     background-color: #4f73ff;
+
     cursor: pointer;
     box-shadow: 0 4px 14px rgba(79, 115, 255, 0.35);
-  }
-  
-  /* אפקט ריחופ קל כשהכפתור פעיל */
-  .validation-submit-btn:not(:disabled):hover {
+
+    transition: all 0.2s ease;
+}
+
+.validation-submit-btn:not(:disabled):hover {
     background-color: #3b5cd6;
     transform: translateY(-1px);
-  }
-  
-  /* מצב שבו הכפתור חסום (הטופס לא מלא) */
-  .validation-submit-btn:disabled {
+}
+
+.validation-submit-btn:disabled {
     background-color: #cbd5e1;
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
-  }
+}
 
-  /* עטיפה לכפתור כדי שהמיקום היחסי יעבוד */
-.validation-btn-wrapper {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* עיצוב כפתור הבדיקה כשהוא מושלם */
-  .validation-submit-btn.all-correct {
-    background-color: #e2f0d9 !important; /* צבע רקע ירוק בהיר מאוד ועדין */
-    color: #385723 !important; /* טקסט ירוק כהה */
+.validation-submit-btn.all-correct {
+    background-color: #e2f0d9 !important;
+    color: #385723 !important;
     border: 1px solid #385723 !important;
     cursor: not-allowed;
     opacity: 0.9;
-  }
-  
-  /* ה-Badge העגול עם ה-וי הלבן בפינה הימנית העליונה */
-  .success-badge-checkmark {
+}
+
+.success-badge-checkmark {
     position: absolute;
-    top: -10px; /* מושך את העיגול קצת למעלה מהכפתור */
-    right: -10px; /* מושך את העיגול ימינה מעבר לגבולות הכפתור */
+    top: -10px;
+    right: -10px;
+
     width: 22px;
     height: 22px;
-    background-color: #2e7d32; /* ירוק חזק וברור */
+
+    background-color: #2e7d32;
     color: white;
-    border-radius: 50%; /* הופך את זה לעיגול מושלם */
+    border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     font-size: 14px;
     font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* צל קטן כדי לתת לזה עומק */
-    z-index: 10;
-    pointer-events: none; /* שלא יפריע פיזית לקליקים */
-  }
-  
 
-  /* ========================= */
-  /* חיווי - תמונה - יש עוד תשובות לא נכונות */
-  /* ========================= */
-  .report-validation-feedback-image {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* ======================================================= */
+/* חיווי - תמונה - יש עוד תשובות לא נכונות */
+/* ======================================================= */
+
+.report-validation-feedback-image {
     position: fixed;
     bottom: 6rem;
     left: 5rem;
@@ -720,40 +680,9 @@ rect.validation-locked.is-signed {
     }
 }
 
-
-/* ========================================== */
+/* ======================================================= */
 /* הגדלת מסמך הדוח */
-/* ========================================== */
-
-/* .report-zoom-btn {
-    position: fixed;
-    right: 18rem;
-    top: 50%;
-    transform: translateY(-50%);
-
-    z-index: 35;
-
-    padding: 0.7rem 1rem;
-    border-radius: 999px;
-    border: none;
-
-    background-color: #ffffff;
-    color: #1f2a44;
-
-    font-family: "Fredoka", Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-
-    cursor: pointer;
-    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.22);
-
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-} */
-
-/* .report-zoom-btn:hover {
-    transform: translateY(-50%) scale(1.04);
-    box-shadow: 0 0.55rem 1.2rem rgba(0, 0, 0, 0.28);
-} */
+/* ======================================================= */
 
 .report-zoom-overlay {
     position: fixed;
@@ -841,61 +770,6 @@ rect.validation-locked.is-signed {
     transform: scale(1.08);
 }
 
-@media (max-width: 1600px) {
-    .report-zoom-btn-img {
-        left: 26vw;
-    }
-}
-
-@media (max-width: 1450px) {
-    .report-zoom-btn-img {
-        left: 24vw;
-    }
-}
-
-@media (max-width: 1330px) {
-    .report-zoom-btn-img {
-        left: 22vw;
-    }
-}
-
-@media (max-width: 1230px) {
-    .report-zoom-btn-img {
-        left: 20vw;
-    }
-}
-
-@media (max-width: 1150px) {  
-    .validation-footer-container {
-        bottom: 10vh;
-        left: 3vw;
-    }
-
-    .report-validation-feedback-image {
-        bottom: 15vh;
-        left: 1.5vh;
-    }
-}
-
-@media (max-width: 1130px) {
-    .report-zoom-btn-img {
-        left: 18vw;
-    }
-}
-
-@media (max-width: 1050px) {
-    .report-zoom-btn-img {
-        left: 16vw;
-    }
-}
-
-@media (max-width: 980px) {
-    .report-zoom-btn-img {
-        top: 85vh;
-        right: 14vw;
-    }
-}
-
 /* רק האזור הזה נגלל, לא כל העמוד */
 .report-zoom-scroll-area {
     height: 100%;
@@ -908,12 +782,11 @@ rect.validation-locked.is-signed {
     justify-content: center;
     align-items: flex-start;
 
-    padding: 1.5rem 1rem 1.5rem 1rem;
+    padding: 1.5rem 1rem;
 
     overscroll-behavior: contain;
 }
 
-/* עיצוב גלילה עדין, רק בתוך ההגדלה */
 .report-zoom-scroll-area::-webkit-scrollbar {
     width: 0.65rem;
 }
@@ -943,4 +816,64 @@ rect.validation-locked.is-signed {
 
     flex-shrink: 0;
     transform: none;
+}
+
+/* ======================================================= */
+/* רספונסיביות */
+/* ======================================================= */
+
+@media (max-width: 1600px) {
+    .report-zoom-btn-img {
+        left: 26vw;
+    }
+}
+
+@media (max-width: 1450px) {
+    .report-zoom-btn-img {
+        left: 24vw;
+    }
+}
+
+@media (max-width: 1330px) {
+    .report-zoom-btn-img {
+        left: 22vw;
+    }
+}
+
+@media (max-width: 1230px) {
+    .report-zoom-btn-img {
+        left: 20vw;
+    }
+}
+
+@media (max-width: 1150px) {
+    .validation-footer-container {
+        bottom: 10vh;
+        left: 3vw;
+    }
+
+    .report-validation-feedback-image {
+        bottom: 15vh;
+        left: 1.5vh;
+    }
+}
+
+@media (max-width: 1130px) {
+    .report-zoom-btn-img {
+        left: 18vw;
+    }
+}
+
+@media (max-width: 1050px) {
+    .report-zoom-btn-img {
+        left: 16vw;
+    }
+}
+
+@media (max-width: 980px) {
+    .report-zoom-btn-img {
+        top: 85vh;
+        right: 14vw;
+        left: auto;
+    }
 }

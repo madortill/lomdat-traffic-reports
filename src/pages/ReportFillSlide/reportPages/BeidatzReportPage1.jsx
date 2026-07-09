@@ -54,6 +54,14 @@ function BeidatzReportPage1({
     "55",
   ];
 
+  const getCircleBorderColor = (fieldName) => {
+    if (validationResults[fieldName] === "correct") return "#7fbea2";
+    if (validationResults[fieldName] === "incorrect") return "#f3b0b7";
+    if (validationResults[fieldName] === "locked") return "#b0c4de";
+
+    return "black";
+  };
+
   return (
     <svg
       id="Layer_2"
@@ -103,7 +111,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("serviceType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "serviceType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -133,7 +143,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("serviceType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "serviceType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -163,7 +175,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("serviceType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "serviceType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -193,7 +207,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("serviceType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "serviceType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -223,7 +239,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("serviceType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "serviceType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -253,7 +271,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-personal-number svg-report-input-small-beidatz ${getValidationClass("beidatzPersonalNumber")}`}
+                className={`svg-report-input svg-report-input-personal-number svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPersonalNumber"
+                )}`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.beidatzPersonalNumber || ""}
@@ -281,7 +301,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzRank")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzRank"
+                )}`}
                 type="text"
                 value={formValues.beidatzRank || ""}
                 onChange={(e) => updateField("beidatzRank", e.target.value)}
@@ -305,7 +327,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLastName")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzLastName"
+                )}`}
                 type="text"
                 value={formValues.beidatzLastName || ""}
                 onChange={(e) => updateField("beidatzLastName", e.target.value)}
@@ -329,7 +353,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzFirstName")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzFirstName"
+                )}`}
                 type="text"
                 value={formValues.beidatzFirstName || ""}
                 onChange={(e) =>
@@ -355,7 +381,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzCorps")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzCorps"
+                )}`}
                 type="text"
                 value={formValues.beidatzCorps || ""}
                 onChange={(e) => updateField("beidatzCorps", e.target.value)}
@@ -379,7 +407,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzUnit")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzUnit"
+                )}`}
                 type="text"
                 value={formValues.beidatzUnit || ""}
                 onChange={(e) => updateField("beidatzUnit", e.target.value)}
@@ -403,7 +433,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzAddress")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzAddress"
+                )}`}
                 type="text"
                 value={formValues.beidatzAddress || ""}
                 onChange={(e) => updateField("beidatzAddress", e.target.value)}
@@ -427,7 +459,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-personal-number svg-report-input-small-beidatz ${getValidationClass("beidatzIdNumber")}`}
+                className={`svg-report-input svg-report-input-personal-number svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzIdNumber"
+                )}`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.beidatzIdNumber || ""}
@@ -455,7 +489,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzPhoneNumber")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzPhoneNumber"
+                )}`}
                 type="text"
                 inputMode="numeric"
                 value={formValues.beidatzPhoneNumber || ""}
@@ -484,7 +520,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select ${getValidationClass("beidatzYear")}`}
+                className={`svg-report-select ${getValidationClass(
+                  "beidatzYear"
+                )}`}
                 value={formValues.beidatzYear || ""}
                 onChange={(e) => updateField("beidatzYear", e.target.value)}
                 disabled={isFieldLocked("beidatzYear")}
@@ -510,7 +548,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select ${getValidationClass("beidatzMonth")}`}
+                className={`svg-report-select ${getValidationClass(
+                  "beidatzMonth"
+                )}`}
                 value={formValues.beidatzMonth || ""}
                 onChange={(e) => updateField("beidatzMonth", e.target.value)}
                 disabled={isFieldLocked("beidatzMonth")}
@@ -537,7 +577,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select ${getValidationClass("beidatzDay")}`}
+                className={`svg-report-select ${getValidationClass(
+                  "beidatzDay"
+                )}`}
                 value={formValues.beidatzDay || ""}
                 onChange={(e) => updateField("beidatzDay", e.target.value)}
                 disabled={isFieldLocked("beidatzDay")}
@@ -564,7 +606,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select ${getValidationClass("beidatzWeekDay")}`}
+                className={`svg-report-select ${getValidationClass(
+                  "beidatzWeekDay"
+                )}`}
                 value={formValues.beidatzWeekDay || ""}
                 onChange={(e) => updateField("beidatzWeekDay", e.target.value)}
                 disabled={isFieldLocked("beidatzWeekDay")}
@@ -591,7 +635,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select svg-report-select-time ${getValidationClass("beidatzMinute")}`}
+                className={`svg-report-select svg-report-select-time ${getValidationClass(
+                  "beidatzMinute"
+                )}`}
                 value={formValues.beidatzMinute || ""}
                 onChange={(e) => updateField("beidatzMinute", e.target.value)}
                 disabled={isFieldLocked("beidatzMinute")}
@@ -617,7 +663,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <select
-                className={`svg-report-select svg-report-select-time ${getValidationClass("beidatzHour")}`}
+                className={`svg-report-select svg-report-select-time ${getValidationClass(
+                  "beidatzHour"
+                )}`}
                 value={formValues.beidatzHour || ""}
                 onChange={(e) => updateField("beidatzHour", e.target.value)}
                 disabled={isFieldLocked("beidatzHour")}
@@ -644,7 +692,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzVehicleType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzVehicleType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -674,7 +724,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzVehicleType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzVehicleType"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -705,7 +757,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzPoliceUnit")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzPoliceUnit"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -735,7 +789,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzPoliceUnit")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzPoliceUnit"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -765,7 +821,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzPoliceUnit")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzPoliceUnit"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -795,7 +853,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzPoliceUnit")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzPoliceUnit"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -825,7 +885,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzPoliceUnit")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzPoliceUnit"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -855,7 +917,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzPoliceUnit")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzPoliceUnit"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -886,7 +950,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzDeliveryMethod")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzDeliveryMethod"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -918,7 +984,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzDeliveryMethod")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzDeliveryMethod"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -951,7 +1019,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzActivityFramework")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzActivityFramework"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -981,7 +1051,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzActivityFramework")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzActivityFramework"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1011,7 +1083,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzActivityFramework")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzActivityFramework"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1041,7 +1115,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzActivityFramework")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzActivityFramework"
+                )}`}
                 type="button"
                 onClick={() =>
                   updateField(
@@ -1071,7 +1147,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzActivityFramework")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzActivityFramework"
+                )}`}
                 type="button"
                 onClick={() => {
                   const newValue =
@@ -1107,7 +1185,9 @@ function BeidatzReportPage1({
                 className="svg-input-host"
               >
                 <input
-                  className={`svg-report-input svg-report-input-small ${getValidationClass("beidatzActivityFrameworkOtherText")}`}
+                  className={`svg-report-input svg-report-input-small ${getValidationClass(
+                    "beidatzActivityFrameworkOtherText"
+                  )}`}
                   type="text"
                   placeholder="פירוט..."
                   value={formValues.beidatzActivityFrameworkOtherText || ""}
@@ -1138,7 +1218,9 @@ function BeidatzReportPage1({
               className="svg-textarea-host"
             >
               <textarea
-                className={`svg-report-textarea ${getValidationClass("beidatzOffenseNature")}`}
+                className={`svg-report-textarea ${getValidationClass(
+                  "beidatzOffenseNature"
+                )}`}
                 placeholder="מהות העבירה..."
                 value={formValues.beidatzOffenseNature || ""}
                 onChange={(e) =>
@@ -1164,7 +1246,9 @@ function BeidatzReportPage1({
               className="svg-textarea-host"
             >
               <textarea
-                className={`svg-report-textarea ${getValidationClass("beidatzOffenseDetails")}`}
+                className={`svg-report-textarea ${getValidationClass(
+                  "beidatzOffenseDetails"
+                )}`}
                 placeholder="פרטי העבירה..."
                 value={formValues.beidatzOffenseDetails || ""}
                 onChange={(e) =>
@@ -1192,7 +1276,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzOffenseLocationType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzOffenseLocationType"
+                )}`}
                 type="button"
                 onClick={() => {
                   const newValue =
@@ -1238,7 +1324,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc1Field1")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc1Field1"
+                    )}`}
                     value={formValues.beidatzLoc1Field1 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc1Field1", e.target.value)
@@ -1269,7 +1357,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc1Field2")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc1Field2"
+                    )}`}
                     value={formValues.beidatzLoc1Field2 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc1Field2", e.target.value)
@@ -1300,7 +1390,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc1Field3")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc1Field3"
+                    )}`}
                     value={formValues.beidatzLoc1Field3 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc1Field3", e.target.value)
@@ -1326,7 +1418,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc1Field4")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc1Field4"
+                    )}`}
                     value={formValues.beidatzLoc1Field4 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc1Field4", e.target.value)
@@ -1353,7 +1447,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzOffenseLocationType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzOffenseLocationType"
+                )}`}
                 type="button"
                 onClick={() => {
                   const newValue =
@@ -1399,7 +1495,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc2Field1")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc2Field1"
+                    )}`}
                     value={formValues.beidatzLoc2Field1 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc2Field1", e.target.value)
@@ -1430,7 +1528,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc2Field2")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc2Field2"
+                    )}`}
                     value={formValues.beidatzLoc2Field2 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc2Field2", e.target.value)
@@ -1461,7 +1561,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc2Field3")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc2Field3"
+                    )}`}
                     value={formValues.beidatzLoc2Field3 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc2Field3", e.target.value)
@@ -1492,7 +1594,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc2Field4")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc2Field4"
+                    )}`}
                     value={formValues.beidatzLoc2Field4 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc2Field4", e.target.value)
@@ -1519,7 +1623,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzOffenseLocationType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzOffenseLocationType"
+                )}`}
                 type="button"
                 onClick={() => {
                   const newValue =
@@ -1559,7 +1665,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc3Field1")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc3Field1"
+                    )}`}
                     value={formValues.beidatzLoc3Field1 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc3Field1", e.target.value)
@@ -1585,7 +1693,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc3Field2")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc3Field2"
+                    )}`}
                     value={formValues.beidatzLoc3Field2 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc3Field2", e.target.value)
@@ -1616,7 +1726,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc3Field3")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc3Field3"
+                    )}`}
                     value={formValues.beidatzLoc3Field3 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc3Field3", e.target.value)
@@ -1643,7 +1755,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzOffenseLocationType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzOffenseLocationType"
+                )}`}
                 type="button"
                 onClick={() => {
                   const newValue =
@@ -1686,7 +1800,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc4Field1")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc4Field1"
+                    )}`}
                     value={formValues.beidatzLoc4Field1 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc4Field1", e.target.value)
@@ -1713,7 +1829,9 @@ function BeidatzReportPage1({
               className="svg-checkbox-host"
             >
               <button
-                className={`svg-x-checkbox ${getValidationClass("beidatzOffenseLocationType")}`}
+                className={`svg-x-checkbox ${getValidationClass(
+                  "beidatzOffenseLocationType"
+                )}`}
                 type="button"
                 onClick={() => {
                   const newValue =
@@ -1756,7 +1874,9 @@ function BeidatzReportPage1({
                   <input
                     type="text"
                     placeholder=""
-                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLoc5Field1")}`}
+                    className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                      "beidatzLoc5Field1"
+                    )}`}
                     value={formValues.beidatzLoc5Field1 || ""}
                     onChange={(e) =>
                       updateField("beidatzLoc5Field1", e.target.value)
@@ -1783,7 +1903,9 @@ function BeidatzReportPage1({
               className="svg-input-host"
             >
               <input
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzBase")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzBase"
+                )}`}
                 type="text"
                 value={formValues.beidatzBase || ""}
                 onChange={(e) => updateField("beidatzBase", e.target.value)}
@@ -1808,7 +1930,9 @@ function BeidatzReportPage1({
             >
               <input
                 type="text"
-                className={`svg-report-input svg-report-input-personal-number svg-report-input-small-beidatz ${getValidationClass("beidatzOfficerPersonalNumber")}`}
+                className={`svg-report-input svg-report-input-personal-number svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzOfficerPersonalNumber"
+                )}`}
                 placeholder="מספר אישי..."
                 value={formValues.beidatzOfficerPersonalNumber || ""}
                 onChange={(e) =>
@@ -1835,7 +1959,9 @@ function BeidatzReportPage1({
             >
               <input
                 type="text"
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzOfficerRank")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzOfficerRank"
+                )}`}
                 placeholder="דרגה..."
                 value={formValues.beidatzOfficerRank || ""}
                 onChange={(e) =>
@@ -1862,7 +1988,9 @@ function BeidatzReportPage1({
             >
               <input
                 type="text"
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzOfficerFamilyName")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzOfficerFamilyName"
+                )}`}
                 placeholder="שם משפחה..."
                 value={formValues.beidatzOfficerFamilyName || ""}
                 onChange={(e) =>
@@ -1889,7 +2017,9 @@ function BeidatzReportPage1({
             >
               <input
                 type="text"
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzOfficerFirstName")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzOfficerFirstName"
+                )}`}
                 placeholder="שם פרטי..."
                 value={formValues.beidatzOfficerFirstName || ""}
                 onChange={(e) =>
@@ -1934,104 +2064,172 @@ function BeidatzReportPage1({
           </g>
 
           {/* === מספר רישיון - טקסט מספרים === */}
-<rect
-  className="cls-1"
-  x="1116.18"
-  y="862.5"
-  width="410.12"
-  height="67.33"
-  style={{ pointerEvents: "none" }}
-/>
-<foreignObject x="1116.18" y="862.5" width="410.12" height="67.33">
-  <div xmlns="http://www.w3.org/1999/xhtml" className="svg-input-host">
-    <input
-      type="text"
-      inputMode="numeric"
-      pattern="[0-9]*"
-      className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzLicenseNumber")}`}
-      placeholder="מספר רישיון..."
-      value={formValues.beidatzLicenseNumber || ""}
-      // מאפשר הקלדת ספרות בלבד
-      onChange={(e) => updateField("beidatzLicenseNumber", e.target.value.replace(/\D/g, ""))}
-      disabled={isFieldLocked("beidatzLicenseNumber")}
-    />
-  </div>
-</foreignObject>
+          <rect
+            className="cls-1"
+            x="1116.18"
+            y="862.5"
+            width="410.12"
+            height="67.33"
+            style={{ pointerEvents: "none" }}
+          />
+          <foreignObject x="1116.18" y="862.5" width="410.12" height="67.33">
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-input-host"
+            >
+              <input
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzLicenseNumber"
+                )}`}
+                placeholder="מספר רישיון..."
+                value={formValues.beidatzLicenseNumber || ""}
+                // מאפשר הקלדת ספרות בלבד
+                onChange={(e) =>
+                  updateField(
+                    "beidatzLicenseNumber",
+                    e.target.value.replace(/\D/g, "")
+                  )
+                }
+                disabled={isFieldLocked("beidatzLicenseNumber")}
+              />
+            </div>
+          </foreignObject>
 
           {/* === רישיון בתוקף? - סימון בעיגול (כן/לא) === */}
-{/* אופציה: כן */}
-<rect
-  className="cls-1"
-  x="955.91"
-  y="880.33"
-  width="45.39"
-  height="39.13"
-  style={{ pointerEvents: "none", opacity: 0 }}
-/>
-<foreignObject x="955.91" y="880.33" width="45.39" height="39.13" style={{ overflow: "visible" }}>
-  <div
-    xmlns="http://www.w3.org/1999/xhtml"
-    className="svg-checkbox-host"
-    style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}
-  >
-    <button
-      className={`svg-circle-checkbox ${getValidationClass("beidatzIsLicenseValid")}`}
-      style={{
-        width: "90px",
-        height: "60px",
-        flexShrink: 0,
-        cursor: "pointer",
-        background: "transparent",
-        borderRadius: "50%",
-        boxSizing: "border-box",
-        // התיקון: קביעת צבע הגבול לפי סטטוס הוולידציה
-        border: formValues.beidatzIsLicenseValid === "yes" 
-          ? `3px solid ${isFieldLocked("beidatzIsLicenseValid") ? "#28a745" : "black"}` 
-          : "none"
-      }}
-      type="button"
-      onClick={() => updateField("beidatzIsLicenseValid", formValues.beidatzIsLicenseValid === "yes" ? "" : "yes")}
-      disabled={isFieldLocked("beidatzIsLicenseValid")}
-    />
-  </div>
-</foreignObject>
+          {/* אופציה: כן */}
+          <rect
+            className="cls-1"
+            x="955.91"
+            y="880.33"
+            width="45.39"
+            height="39.13"
+            style={{ pointerEvents: "none", opacity: 0 }}
+          />
+          <foreignObject
+            x="955.91"
+            y="880.33"
+            width="45.39"
+            height="39.13"
+            style={{ overflow: "visible" }}
+          >
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-checkbox-host"
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <button
+                className={`svg-circle-checkbox ${getValidationClass(
+                  "beidatzIsLicenseValid"
+                )}`}
+                style={{
+                  width: "90px",
+                  height: "60px",
+                  flexShrink: 0,
+                  cursor: isFieldLocked("beidatzIsLicenseValid")
+                    ? "not-allowed"
+                    : "pointer",
+                  background: "rgba(255, 255, 255, 0.38)",
+                  borderRadius: "0.25rem",
+                  boxSizing: "border-box",
+                  border: "1.5px solid rgba(31, 42, 68, 0.38)",
+                }}
+                type="button"
+                onClick={() =>
+                  updateField(
+                    "beidatzIsLicenseValid",
+                    formValues.beidatzIsLicenseValid === "yes" ? "" : "yes"
+                  )
+                }
+                disabled={isFieldLocked("beidatzIsLicenseValid")}
+              >
+                {formValues.beidatzIsLicenseValid === "yes" && (
+                  <span
+                    className="svg-circle-mark"
+                    style={{
+                      borderColor: getCircleBorderColor(
+                        "beidatzIsLicenseValid"
+                      ),
+                    }}
+                  />
+                )}
+              </button>
+            </div>
+          </foreignObject>
 
-{/* אופציה: לא */}
-<rect
-  className="cls-1"
-  x="892.23"
-  y="880.37"
-  width="45.39"
-  height="39.13"
-  style={{ pointerEvents: "none", opacity: 0 }}
-/>
-<foreignObject x="892.23" y="880.37" width="45.39" height="39.13" style={{ overflow: "visible" }}>
-  <div
-    xmlns="http://www.w3.org/1999/xhtml"
-    className="svg-checkbox-host"
-    style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}
-  >
-    <button
-      className={`svg-circle-checkbox ${getValidationClass("beidatzIsLicenseValid")}`}
-      style={{
-        width: "90px",
-        height: "60px",
-        flexShrink: 0,
-        cursor: "pointer",
-        background: "transparent",
-        borderRadius: "50%",
-        boxSizing: "border-box",
-        // התיקון: קביעת צבע הגבול לפי סטטוס הוולידציה
-        border: formValues.beidatzIsLicenseValid === "no" 
-          ? `3px solid ${isFieldLocked("beidatzIsLicenseValid") ? "#28a745" : "black"}` 
-          : "none"
-      }}
-      type="button"
-      onClick={() => updateField("beidatzIsLicenseValid", formValues.beidatzIsLicenseValid === "no" ? "" : "no")}
-      disabled={isFieldLocked("beidatzIsLicenseValid")}
-    />
-  </div>
-</foreignObject>
+          {/* אופציה: לא */}
+          <rect
+            className="cls-1"
+            x="892.23"
+            y="880.37"
+            width="45.39"
+            height="39.13"
+            style={{ pointerEvents: "none", opacity: 0 }}
+          />
+          <foreignObject
+            x="892.23"
+            y="880.37"
+            width="45.39"
+            height="39.13"
+            style={{ overflow: "visible" }}
+          >
+            <div
+              xmlns="http://www.w3.org/1999/xhtml"
+              className="svg-checkbox-host"
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <button
+                className={`svg-circle-checkbox ${getValidationClass(
+                  "beidatzIsLicenseValid"
+                )}`}
+                style={{
+                  width: "90px",
+                  height: "60px",
+                  flexShrink: 0,
+                  cursor: isFieldLocked("beidatzIsLicenseValid")
+                    ? "not-allowed"
+                    : "pointer",
+                  background: "rgba(255, 255, 255, 0.38)",
+                  borderRadius: "0.25rem",
+                  boxSizing: "border-box",
+                  border: "1.5px solid rgba(31, 42, 68, 0.38)",
+                }}
+                type="button"
+                onClick={() =>
+                  updateField(
+                    "beidatzIsLicenseValid",
+                    formValues.beidatzIsLicenseValid === "no" ? "" : "no"
+                  )
+                }
+                disabled={isFieldLocked("beidatzIsLicenseValid")}
+              >
+                {formValues.beidatzIsLicenseValid === "no" && (
+                  <span
+                    className="svg-circle-mark"
+                    style={{
+                      borderColor: getCircleBorderColor(
+                        "beidatzIsLicenseValid"
+                      ),
+                    }}
+                  />
+                )}
+              </button>
+            </div>
+          </foreignObject>
 
           {/* === סוג רישיון - דרופדאון === */}
           <rect
@@ -2048,7 +2246,9 @@ function BeidatzReportPage1({
               className="svg-select-host"
             >
               <select
-                className={`svg-report-select svg-report-select-beidatz ${getValidationClass("beidatzLicenseType")}`}
+                className={`svg-report-select svg-report-select-beidatz ${getValidationClass(
+                  "beidatzLicenseType"
+                )}`}
                 value={formValues.beidatzLicenseType || ""}
                 onChange={(e) =>
                   updateField("beidatzLicenseType", e.target.value)
@@ -2082,7 +2282,9 @@ function BeidatzReportPage1({
                 type="text"
                 inputMode="numeric"
                 pattern="[0-9]*"
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzCivilPlateNumber")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzCivilPlateNumber"
+                )}`}
                 placeholder="מספר רכב..."
                 value={formValues.beidatzCivilPlateNumber || ""}
                 onChange={(e) =>
@@ -2112,7 +2314,9 @@ function BeidatzReportPage1({
             >
               <input
                 type="text"
-                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass("beidatzVehicleName")}`}
+                className={`svg-report-input svg-report-input-small-beidatz ${getValidationClass(
+                  "beidatzVehicleName"
+                )}`}
                 placeholder="סוג הרכב..."
                 value={formValues.beidatzVehicleName || ""}
                 onChange={(e) =>
@@ -2138,7 +2342,9 @@ function BeidatzReportPage1({
               className="svg-select-host"
             >
               <select
-                className={`svg-report-select svg-report-select-beidatz ${getValidationClass("beidatzPermit")}`}
+                className={`svg-report-select svg-report-select-beidatz ${getValidationClass(
+                  "beidatzPermit"
+                )}`}
                 value={formValues.beidatzPermit || ""}
                 onChange={(e) => updateField("beidatzPermit", e.target.value)}
                 disabled={isFieldLocked("beidatzPermit")}
@@ -2165,7 +2371,9 @@ function BeidatzReportPage1({
               className="svg-select-host"
             >
               <select
-                className={`svg-report-select svg-report-select-beidatz ${getValidationClass("beidatzVehicleColor")}`}
+                className={`svg-report-select svg-report-select-beidatz ${getValidationClass(
+                  "beidatzVehicleColor"
+                )}`}
                 value={formValues.beidatzVehicleColor || ""}
                 onChange={(e) =>
                   updateField("beidatzVehicleColor", e.target.value)
