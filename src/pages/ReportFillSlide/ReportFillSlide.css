@@ -447,6 +447,9 @@
 }
 
 .svg-circle-mark {
+    position: relative;
+    z-index: 2;
+
     width: 140%;
     height: 140%;
 
@@ -462,11 +465,11 @@
 /* מצבי בדיקה בתוך SVG */
 /* ======================================================= */
 
+/* שדות רגילים + איקסים */
 .svg-report-input.validation-correct,
 .svg-report-select.validation-correct,
 .svg-report-textarea.validation-correct,
-.svg-x-checkbox.validation-correct,
-.svg-circle-checkbox.validation-correct {
+.svg-x-checkbox.validation-correct {
     background-color: #c4e9ce !important;
     border-color: #7fbea2 !important;
     cursor: default;
@@ -475,8 +478,7 @@
 .svg-report-input.validation-incorrect,
 .svg-report-select.validation-incorrect,
 .svg-report-textarea.validation-incorrect,
-.svg-x-checkbox.validation-incorrect,
-.svg-circle-checkbox.validation-incorrect {
+.svg-x-checkbox.validation-incorrect {
     background-color: #fcd8d5 !important;
     border-color: #f3b0b7 !important;
 }
@@ -484,10 +486,26 @@
 .svg-report-input.validation-skipped,
 .svg-report-select.validation-skipped,
 .svg-report-textarea.validation-skipped,
-.svg-x-checkbox.validation-skipped,
-.svg-circle-checkbox.validation-skipped {
+.svg-x-checkbox.validation-skipped {
     background-color: #f0f4f8 !important;
     border-color: #d0d7de !important;
+}
+
+/* עיגולים - הריבוע נשאר שקוף יותר כדי שהעיגול הפנימי יבלוט */
+.svg-circle-checkbox.validation-correct {
+    background-color: rgba(196, 233, 206, 0.28) !important;
+    border-color: rgba(127, 190, 162, 0.65) !important;
+    cursor: default;
+}
+
+.svg-circle-checkbox.validation-incorrect {
+    background-color: rgba(252, 216, 213, 0.30) !important;
+    border-color: rgba(243, 176, 183, 0.75) !important;
+}
+
+.svg-circle-checkbox.validation-skipped {
+    background-color: rgba(240, 244, 248, 0.35) !important;
+    border-color: rgba(208, 215, 222, 0.75) !important;
 }
 
 /* קו — החיווי צובע את הקו עצמו, לא את כל הריבוע */
@@ -518,13 +536,20 @@
     background-color: #b0c4de !important;
 }
 
-/* עיגול — החיווי צובע גם את הריבוע וגם את העיגול הפנימי */
+/* עיגול — החיווי החזק נמצא על העיגול הפנימי */
+.svg-circle-checkbox .svg-circle-mark {
+    position: relative;
+    z-index: 2;
+}
+
 .svg-circle-checkbox.validation-correct .svg-circle-mark {
-    border-color: #419648 !important;
+    border-color: #2f8f46 !important;
+    filter: drop-shadow(0 0 0.08rem rgba(47, 143, 70, 0.55));
 }
 
 .svg-circle-checkbox.validation-incorrect .svg-circle-mark {
     border-color: #b94452 !important;
+    filter: drop-shadow(0 0 0.08rem rgba(185, 68, 82, 0.55));
 }
 
 .svg-circle-checkbox.validation-locked .svg-circle-mark {
