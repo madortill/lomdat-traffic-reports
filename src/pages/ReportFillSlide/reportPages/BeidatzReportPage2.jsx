@@ -2,6 +2,8 @@ import beidatz2 from "../../../assets/בידצ2.jpg";
 import danisHatima from "../../../assets/danis-hatima.png";
 import AvivsHatima from "../../../assets/Avivs-hatima.png";
 import Text from "../../../assets/beidatz-2-text-format.png";
+import dargaDani from "../../../assets/רבט.png";
+import personalNumberDani from "../../../assets/9694646.png";
 
 function BeidatzReportPage2({
   formValues = {},
@@ -243,7 +245,7 @@ function BeidatzReportPage2({
           )}
 
           {/* === מספר אישי השוטר - מספרים === */}
-          <rect
+          {/* <rect
             className="cls-1"
             x="1564"
             y="2339.87"
@@ -274,10 +276,10 @@ function BeidatzReportPage2({
                 disabled={isFieldLocked("beidatzSecondOfficerPersonalNumber")}
               />
             </div>
-          </foreignObject>
+          </foreignObject> */}
 
           {/* === דרגה השוטר - טקסט === */}
-          <rect
+          {/* <rect
             className="cls-1"
             x="1424.7"
             y="2339.87"
@@ -303,7 +305,7 @@ function BeidatzReportPage2({
                 disabled={isFieldLocked("beidatzSecondOfficerRank")}
               />
             </div>
-          </foreignObject>
+          </foreignObject> */}
 
           {/* === שם פרטי השוטר - טקסט === */}
           <rect
@@ -423,13 +425,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="776.11"
+            x="788.11"
             y="1152.91"
             width="290.89"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="776.11" y="1152.91" width="290.89" height="42.26">
+          <foreignObject x="788.11" y="1152.91" width="290.89" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -450,13 +452,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="344.11"
+            x="360.11"
             y="1152.91"
             width="290.89"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="344.11" y="1152.91" width="290.89" height="42.26">
+          <foreignObject x="360.11" y="1152.91" width="290.89" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -477,13 +479,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="1453.46"
+            x="1240.46"
             y="1205.74"
             width="290.89"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="1453.46" y="1205.74" width="290.89" height="42.26">
+          <foreignObject x="1240.46" y="1205.74" width="290.89" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -504,13 +506,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="954.54"
+            x="735.54"
             y="1205.74"
             width="290.89"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="954.54" y="1205.74" width="290.89" height="42.26">
+          <foreignObject x="735.54" y="1205.74" width="290.89" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -531,13 +533,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="565.98"
+            x="345.98"
             y="1205.74"
             width="290.89"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="565.98" y="1205.74" width="290.89" height="42.26">
+          <foreignObject x="345.98" y="1205.74" width="290.89" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -558,13 +560,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="1574"
+            x="1414"
             y="1258.57"
             width="186.78"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="1574" y="1258.57" width="186.78" height="42.26">
+          <foreignObject x="1414" y="1258.57" width="186.78" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -585,13 +587,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="1335.7"
+            x="1178.7"
             y="1258.57"
             width="144.52"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="1335.7" y="1258.57" width="144.52" height="42.26">
+          <foreignObject x="1178.7" y="1258.57" width="144.52" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -612,13 +614,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="1489.48"
+            x="1470.48"
             y="1311.39"
             width="163.3"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="1489.48" y="1311.39" width="163.3" height="42.26">
+          <foreignObject x="1470.48" y="1311.39" width="163.3" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -637,7 +639,7 @@ function BeidatzReportPage2({
             </div>
           </foreignObject>
 
-          <rect
+          {/* <rect
             className="cls-1"
             x="1049.26"
             y="1311.39"
@@ -645,7 +647,7 @@ function BeidatzReportPage2({
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="1049.26" y="1311.39" width="163.3" height="42.26">
+          <foreignObject x="1169.26" y="1311.39" width="163.3" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -662,17 +664,17 @@ function BeidatzReportPage2({
                 readOnly={isFieldLocked("beidatzPage2ReportDetail10")}
               />
             </div>
-          </foreignObject>
+          </foreignObject> */}
 
           <rect
             className="cls-1"
-            x="719.57"
+            x="1146.57"
             y="1313.39"
             width="206.61"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="719.57" y="1313.39" width="206.61" height="42.26">
+          <foreignObject x="1146.57" y="1313.39" width="206.61" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -693,13 +695,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="1396.74"
+            x="1400.74"
             y="1469.87"
             width="267.83"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="1396.74" y="1469.87" width="267.83" height="42.26">
+          <foreignObject x="1400.74" y="1469.87" width="267.83" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -720,13 +722,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="1538.48"
+            x="1540.48"
             y="1576.35"
             width="267.83"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="1538.48" y="1576.35" width="267.83" height="42.26">
+          <foreignObject x="1540.48" y="1576.35" width="267.83" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -747,13 +749,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="949.48"
+            x="960.48"
             y="1576.35"
             width="284.42"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="949.48" y="1576.35" width="284.42" height="42.26">
+          <foreignObject x="960.48" y="1576.35" width="284.42" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -774,13 +776,13 @@ function BeidatzReportPage2({
 
           <rect
             className="cls-1"
-            x="321.83"
+            x="348.83"
             y="1419.7"
             width="203.03"
             height="42.26"
             style={{ pointerEvents: "none" }}
           />
-          <foreignObject x="321.83" y="1419.7" width="203.03" height="42.26">
+          <foreignObject x="348.83" y="1419.7" width="203.03" height="42.26">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               className="svg-input-host"
@@ -833,6 +835,18 @@ function BeidatzReportPage2({
             transform="translate(192 1161.65)"
             xlinkHref={Text}
             style={{ pointerEvents: "none" }}
+          />
+          <image
+            width="83"
+            height="36"
+            transform="translate(1439.17 2348.83)"
+            xlinkHref={dargaDani}
+          />
+          <image
+            width="243"
+            height="34"
+            transform="translate(1552.17 2348.83)"
+            xlinkHref={personalNumberDani}
           />
         </g>
       </g>

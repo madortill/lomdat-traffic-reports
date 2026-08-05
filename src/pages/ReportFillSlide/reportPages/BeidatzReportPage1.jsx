@@ -5,6 +5,8 @@ import FirstName from "../../../assets/שיר.png";
 import shirsHatima from "../../../assets/shirs-hatima.png";
 import beidatzPaper from "../../../assets/בידצ1.jpg";
 import danisHatima from "../../../assets/danis-hatima.png";
+import dargaDani from "../../../assets/רבט.png";
+import personalNumberDani from "../../../assets/9694646.png";
 
 function BeidatzReportPage1({
   formValues = {},
@@ -1915,7 +1917,7 @@ function BeidatzReportPage1({
           </foreignObject>
 
           {/* מספר אישי השוטר - טקסט מספרים */}
-          <rect
+          {/* <rect
             className="cls-1"
             x="1170.28"
             y="2046.54"
@@ -1941,10 +1943,10 @@ function BeidatzReportPage1({
                 disabled={isFieldLocked("beidatzOfficerPersonalNumber")}
               />
             </div>
-          </foreignObject>
+          </foreignObject> */}
 
           {/* דרגה השוטר - טקסט */}
-          <rect
+          {/* <rect
             className="cls-1"
             x="847.07"
             y="2046.54"
@@ -1970,7 +1972,7 @@ function BeidatzReportPage1({
                 disabled={isFieldLocked("beidatzOfficerRank")}
               />
             </div>
-          </foreignObject>
+          </foreignObject> */}
 
           {/* שם משפחה השוטר - טקסט */}
           <rect
@@ -2350,7 +2352,7 @@ function BeidatzReportPage1({
                 disabled={isFieldLocked("beidatzPermit")}
               >
                 <option value="">בחר היתר...</option>
-                <option value="35">35</option>
+                {/* <option value="35">35</option> */}
                 <option value="no">ללא</option>
               </select>
             </div>
@@ -2428,6 +2430,18 @@ function BeidatzReportPage1({
             height="369"
             transform="translate(183.62 2102.18) scale(.18)"
             xlinkHref={shirsHatima}
+          />
+          <image
+            width="83"
+            height="36"
+            transform="translate(969.17 2054.83)"
+            xlinkHref={dargaDani}
+          />
+          <image
+            width="243"
+            height="34"
+            transform="translate(1209.87 2057.83)"
+            xlinkHref={personalNumberDani}
           />
         </g>
       </g>
