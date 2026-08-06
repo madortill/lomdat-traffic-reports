@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import damashReportImage from "../../../assets/דוח-דמש.png";
 import noasHatima from "../../../assets/Noas-hatima.svg";
 import ronisHatima from "../../../assets/Ronis-hatima.svg";
+import personalNumber from "../../../assets/9685856.png";
+import darga from "../../../assets/רבט.png";
 
 // function DamashReportPage1({ formValues = {}, updateField = () => {} }) {
 function DamashReportPage1({
@@ -1052,7 +1054,7 @@ function DamashReportPage1({
 
           {/* פרטי השוטר בעדים */}
           {/* מספר אישי - השוטר */}
-          <rect
+          {/* <rect
             className="cls-1"
             x="870.33"
             y="2048.9"
@@ -1078,10 +1080,10 @@ function DamashReportPage1({
                 disabled={isFieldLocked("witnessOfficerPersonalNumber")}
               />
             </div>
-          </foreignObject>
+          </foreignObject> */}
 
           {/* דרגה - השוטר טקסט */}
-          <rect
+          {/* <rect
             className="cls-1"
             x="695.02"
             y="2046.9"
@@ -1107,7 +1109,7 @@ function DamashReportPage1({
                 disabled={isFieldLocked("witnessOfficerRank")}
               />
             </div>
-          </foreignObject>
+          </foreignObject> */}
 
           {/* שם פרטי - השוטר */}
           <rect
@@ -1981,6 +1983,21 @@ function DamashReportPage1({
               </foreignObject>
             </>
           )}
+
+          {/* נתון מראש בדו"ח */}
+          <image
+            width="215"
+            height="30"
+            transform="translate(880.17 2050.83)"
+            xlinkHref={personalNumber}
+          />
+
+          <image
+            width="83"
+            height="28"
+            transform="translate(739.17 2050.83)"
+            xlinkHref={darga}
+          />
         </g>
       </g>
     </svg>
